@@ -1,0 +1,23 @@
+{
+  "name": "samples",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "axios-retry": "^4.5.0",
+    "ccxt": "^4.5.32",
+    "dotenv": "^17.2.3",
+    "kalshi-js-sdk": "^1.0.1",
+    "kalshi-typescript": "^3.4.0",
+    "nodemailer": "^7.0.13",
+    "string-similarity": "^4.0.4"
+  }
+}
