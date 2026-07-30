@@ -18,11 +18,12 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        #npm install
         # Remove this line if you have no package.json / dependencies
 
       - name: Run climate script
-        run: node ./climate_bot_alpha_v2.js
+        run: node ./climate_bot.js
           # Replace this with the actual command you use to run your script
           # node your-script.js > reports/latest.log
           # Example alternatives:
