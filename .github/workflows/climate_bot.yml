@@ -1,0 +1,43 @@
+name: Generate Kalshi_Climate_Markets Report
+
+on:
+  workflow_dispatch:          # Allows manual + API triggering
+  # You can also add a schedule later if you want
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        # Remove this line if you have no package.json / dependencies
+
+      - name: Run climate script
+        run: node climate_bot_alpha_v2.js
+          # Replace this with the actual command you use to run your script
+          # node your-script.js > reports/latest.log
+          # Example alternatives:
+          # node src/climate-bot.js > reports/latest.log
+          # npm run climate-report > reports/latest.log
+
+      - name: Commit and push the report
+        run:
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          mkdir -p reports
+          cp /workspaces/climate_bot/climate_bot.log reports/latest.log
+          git add reports/latest.log
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update climate report - $(date -u +"%Y-%m-%d %H:%M UTC")"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
