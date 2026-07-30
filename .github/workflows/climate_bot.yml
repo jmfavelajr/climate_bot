@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -23,7 +24,8 @@ jobs:
         # Remove this line if you have no package.json / dependencies
 
       - name: Run climate script
-        run: node ./climate_bot.js
+        run: 
+          node ./climate_bot.js > reports/latest.log
           # Replace this with the actual command you use to run your script
           # node your-script.js > reports/latest.log
           # Example alternatives:
@@ -36,9 +38,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           mkdir -p reports
-          cp /workspaces/climate_bot/climate_bot.log reports/latest.log
           git add reports/latest.log
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update climate report - $(date -u +"%Y-%m-%d %H:%M UTC")"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update climate report - $(date -u +"%Y-%m-%d %H:%M UTC")"
+            git push
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
