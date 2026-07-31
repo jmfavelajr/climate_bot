@@ -1,4 +1,4 @@
-name = "climate-report"
+name = "clima-markets-report-fetch"
 main = "worker.js"
 compatibility_date = "2026-07-30"
 
