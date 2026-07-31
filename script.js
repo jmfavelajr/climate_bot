@@ -1,4 +1,5 @@
-const WORKER_URL = 'https://clima-markets-report-fetch.jfavela.workers.dev';
+//const WORKER_URL = 'https://clima-markets-report-fetch.jfavela.workers.dev';
+const WORKER_URL = 'https://kalshi-climate.wtfdis.com';
 
 // Use relative paths because the page and API are on the same Worker
 const TRIGGER_URL = '/api/trigger';
