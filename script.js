@@ -1,8 +1,7 @@
 const WORKER_URL = 'https://clima-markets-report-fetch.jfavela.workers.dev';
 
-// Use relative paths because the page and API are on the same Worker
-const TRIGGER_URL = '/api/trigger';
-const REPORT_URL = '/api/report';
+const TRIGGER_URL = 'https://clima-markets-report-fetch.jfavela.workers.dev/api/trigger';
+const REPORT_URL  = 'https://clima-markets-report-fetch.jfavela.workers.dev/api/report';
 
 const reportEl = document.getElementById('report');
 const statusEl = document.getElementById('status');
