@@ -1,5 +1,11 @@
 const WORKER_URL = 'https://clima-markets-report-fetch.jfavela.workers.dev';
 
+// Trigger
+await fetch("/api/trigger", { method: "POST" });
+
+// Get report
+await fetch("/api/report");
+
 const reportEl = document.getElementById('report');
 const statusEl = document.getElementById('status');
 const button = document.getElementById('generate-btn');
