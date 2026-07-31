@@ -25,7 +25,7 @@ jobs:
 
       - name: Run climate script
         run: 
-          node ./climate_bot.js > reports/latest.log
+          node climate_bot.js > reports/latest.log
           # Replace this with the actual command you use to run your script
           # node your-script.js > reports/latest.log
           # Example alternatives:
