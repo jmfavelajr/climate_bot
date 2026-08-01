@@ -1,0 +1,84 @@
+validation of dates: Today's date: 26AUG01/20260801, Tomorrow's date: 26AUG02/20260802
+Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26AUG02 - Chicago: 76, Confidence: 50
+Forecasted temperatures(OM) - daily High for KXHIGHCHI-26AUG02 - Chicago: 76.2, Confidence: 45
+Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26AUG01 - Chicago: 71, Confidence: 50
+Forecasted temperatures(OM) - daily High for KXHIGHCHI-26AUG01 - Chicago: 70.6, Confidence: 45
+Forecasted temperatures(OM) - daily High for KXHIGHDEN-26AUG02 - Denver: 101.6, Confidence: 35
+Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26AUG02 - Denver: 99, Confidence: 40
+Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26AUG01 - Denver: 93, Confidence: 40
+Forecasted temperatures(OM) - daily High for KXHIGHDEN-26AUG01 - Denver: 94, Confidence: 40
+Forecasted temperatures(OM) - daily High for KXHIGHLAX-26AUG02 - Los Angeles: 84.7, Confidence: 65
+Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26AUG02 - Los Angeles: 80, Confidence: 60
+Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26AUG01 - Los Angeles: 80, Confidence: 60
+Forecasted temperatures(OM) - daily High for KXHIGHLAX-26AUG01 - Los Angeles: 82.3, Confidence: 65
+Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26AUG02 - Philadelphia: 85.9, Confidence: 50
+Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26AUG02 - Philadelphia: 87, Confidence: 50
+Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26AUG01 - Philadelphia: 88, Confidence: 50
+Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26AUG01 - Philadelphia: 87.4, Confidence: 55
+Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26AUG02 - San Francisco: 82.5, Confidence: 65
+Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26AUG02 - San Francisco: 77, Confidence: 60
+Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26AUG01 - San Francisco: 76, Confidence: 60
+Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26AUG01 - San Francisco: 76.7, Confidence: 65
+Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26AUG02 - Las Vegas: 113, Confidence: 50
+Forecasted temperatures(OM) - daily High for KXHIGHTLV-26AUG02 - Las Vegas: 112.7, Confidence: 45
+Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26AUG01 - Las Vegas: 115, Confidence: 50
+Forecasted temperatures(OM) - daily High for KXHIGHTLV-26AUG01 - Las Vegas: 115.2, Confidence: 50
+Forecasted temperatures(NWS) - daily Low for KXLOWTCHI-26AUG02 - Chicago: 62, Confidence: 40
+Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26AUG02 - Chicago: 65.8, Confidence: 40
+Forecasted temperatures(NWS) - daily Low for KXLOWTCHI-26AUG01 - Chicago: 67, Confidence: 40
+Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26AUG01 - Chicago: 65.8, Confidence: 40
+Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26AUG02 - Denver: 71, Confidence: 30
+Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26AUG02 - Denver: 67.1, Confidence: 30
+Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26AUG01 - Denver: 66, Confidence: 30
+Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26AUG01 - Denver: 59.2, Confidence: 30
+Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26AUG02 - Los Angeles: 67, Confidence: 60
+Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26AUG02 - Los Angeles: 63.1, Confidence: 60
+Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26AUG01 - Los Angeles: 70, Confidence: 60
+Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26AUG01 - Los Angeles: 65.3, Confidence: 60
+Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26AUG02 - Philadelphia: 73, Confidence: 50
+Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26AUG02 - Philadelphia: 72.4, Confidence: 45
+Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26AUG01 - Philadelphia: 73, Confidence: 50
+Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26AUG01 - Philadelphia: 70.6, Confidence: 45
+Current forecast confidence: 45 for market: KXHIGHCHI-26AUG02-B77.5
+Verification of unsure bet/LOSER - Confidence:45 too low for: KXHIGHCHI-26AUG02-B77.5
+Current forecast confidence: 45 for market: KXHIGHCHI-26AUG01-B70.5
+Verification of unsure bet/LOSER - Confidence:45 too low for: KXHIGHCHI-26AUG01-B70.5
+Current forecast confidence: 35 for market: KXHIGHDEN-26AUG02-B102.5
+Verification of unsure bet/LOSER - Confidence:35 too low for: KXHIGHDEN-26AUG02-B102.5
+Current forecast confidence: 40 for market: KXHIGHDEN-26AUG01-B94.5
+Verification of unsure bet/LOSER - Confidence:40 too low for: KXHIGHDEN-26AUG01-B94.5
+Current forecast confidence: 65 for market: KXHIGHLAX-26AUG02-B84.5
+WINNER! - Market: KXHIGHLAX-26AUG02-B84.5, Event: KXHIGHLAX-26AUG02, Confidence:65
+Executing buy YES on KXHIGHLAX-26AUG02-B84.5 for $2
+autoExecute is currently set to false/disable
+Trade execution logic success
+Current forecast confidence: 65 for market: KXHIGHLAX-26AUG01-B82.5
+WINNER! - Market: KXHIGHLAX-26AUG01-B82.5, Event: KXHIGHLAX-26AUG01, Confidence:65
+Executing buy YES on KXHIGHLAX-26AUG01-B82.5 for $2
+autoExecute is currently set to false/disable
+Trade execution logic success
+Current forecast confidence: 50 for market: KXHIGHPHIL-26AUG02-B85.5
+Verification of unsure bet/LOSER - Confidence:50 too low for: KXHIGHPHIL-26AUG02-B85.5
+Current forecast confidence: 55 for market: KXHIGHPHIL-26AUG01-B88.5
+Verification of unsure bet/LOSER - Confidence:55 too low for: KXHIGHPHIL-26AUG01-B88.5
+Current forecast confidence: 65 for market: KXHIGHTSFO-26AUG01-B77.5
+WINNER! - Market: KXHIGHTSFO-26AUG01-B77.5, Event: KXHIGHTSFO-26AUG01, Confidence:65
+Executing buy YES on KXHIGHTSFO-26AUG01-B77.5 for $2
+autoExecute is currently set to false/disable
+Trade execution logic success
+Current forecast confidence: 45 for market: KXHIGHTLV-26AUG02-B113.5
+Verification of unsure bet/LOSER - Confidence:45 too low for: KXHIGHTLV-26AUG02-B113.5
+Current forecast confidence: 50 for market: KXHIGHTLV-26AUG01-B116.5
+Verification of unsure bet/LOSER - Confidence:50 too low for: KXHIGHTLV-26AUG01-B116.5
+Current forecast confidence: 40 for market: KXLOWTCHI-26AUG02-B66.5
+Verification of unsure bet/LOSER - Confidence:40 too low for: KXLOWTCHI-26AUG02-B66.5
+Current forecast confidence: 40 for market: KXLOWTCHI-26AUG01-B66.5
+Verification of unsure bet/LOSER - Confidence:40 too low for: KXLOWTCHI-26AUG01-B66.5
+Current forecast confidence: 30 for market: KXLOWTDEN-26AUG01-B60.5
+Verification of unsure bet/LOSER - Confidence:30 too low for: KXLOWTDEN-26AUG01-B60.5
+Current forecast confidence: 60 for market: KXLOWTLAX-26AUG02-B63.5
+Verification of unsure bet/LOSER - Confidence:60 too low for: KXLOWTLAX-26AUG02-B63.5
+Current forecast confidence: 60 for market: KXLOWTLAX-26AUG01-B66.5
+Verification of unsure bet/LOSER - Confidence:60 too low for: KXLOWTLAX-26AUG01-B66.5
+Current forecast confidence: 45 for market: KXLOWTPHIL-26AUG02-B72.5
+Verification of unsure bet/LOSER - Confidence:45 too low for: KXLOWTPHIL-26AUG02-B72.5
