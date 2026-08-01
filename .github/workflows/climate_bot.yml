@@ -3,10 +3,12 @@ name: Generate Kalshi_Climate_Markets Report
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate-report:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
