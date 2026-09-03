@@ -1,252 +1,28 @@
-validation of dates: Today's date: 26SEP03/20260903, Tomorrow's date: 26SEP04/20260904
-Connected to Kalshi successfully. Balance: 11.84
-Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26SEP04 - Chicago: 93, Confidence: null
-Live confidence KXHIGHCHI-26SEP04 Chicago: sigma=4.688 disagree=2.546 conf=44 (Low) rev=-0.3
-Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP04 - Chicago: 96.6, Confidence: 44
-Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26SEP03 - Chicago: 91, Confidence: null
-REVISION KXHIGHCHI-26SEP03 Chicago: 92.5 -> 91.1 (dT=-1.4F)
-Live confidence KXHIGHCHI-26SEP03 Chicago: sigma=2.228 disagree=0.071 conf=78 (High) rev=-1.4
-Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP03 - Chicago: 91.1, Confidence: 78
-Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP04 - Denver: 92.9, Confidence: null
-Live confidence KXHIGHDEN-26SEP04 Denver: sigma=4.83 disagree=0.778 conf=42 (Low) rev=-1.1
-Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP04 - Denver: 94, Confidence: 42
-Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP03 - Denver: 92, Confidence: null
-Live confidence KXHIGHDEN-26SEP03 Denver: sigma=2.654 disagree=0.212 conf=73 (Moderate) rev=0.7
-Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP03 - Denver: 92.3, Confidence: 73
-Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 74.8, Confidence: null
-Live confidence KXHIGHLAX-26SEP04 Los Angeles: sigma=2.936 disagree=1.273 conf=65 (Moderate) rev=-0.9
-Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 73, Confidence: 65
-Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 73, Confidence: null
-Live confidence KXHIGHLAX-26SEP03 Los Angeles: sigma=2.165 disagree=2.97 conf=74 (High) rev=0.7
-Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 77.2, Confidence: 74
-Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 85.9, Confidence: null
-Live confidence KXHIGHPHIL-26SEP04 Philadelphia: sigma=3.703 disagree=0.778 conf=56 (Low) rev=1.1
-Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 87, Confidence: 56
-Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 91, Confidence: null
-Live confidence KXHIGHPHIL-26SEP03 Philadelphia: sigma=2.83 disagree=3.748 conf=66 (Moderate) rev=0.8
-Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 85.7, Confidence: 66
-Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 67.5, Confidence: null
-Live confidence KXHIGHTSFO-26SEP04 San Francisco: sigma=2.694 disagree=0.354 conf=73 (Moderate) rev=0.5
-Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 68, Confidence: 68
-Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 70, Confidence: null
-REVISION KXHIGHTSFO-26SEP03 San Francisco: 69.7 -> 71.4 (dT=1.7F)
-Live confidence KXHIGHTSFO-26SEP03 San Francisco: sigma=1.575 disagree=0.99 conf=81 (Very High) rev=1.7
-Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 71.4, Confidence: 81
-Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 95.7, Confidence: null
-Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=4.011 disagree=0.919 conf=52 (Low) rev=0.9
-Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 97, Confidence: 52
-Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 96, Confidence: null
-Live confidence KXHIGHTLV-26SEP03 Las Vegas: sigma=2.228 disagree=0.919 conf=73 (High) rev=-0.2
-Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 94.7, Confidence: 73
-Forecasted temperatures(NWS) - daily Low for KXLOWTCHI-26SEP04 - Chicago: 72, Confidence: null
-REVISION KXLOWTCHI-26SEP04 Chicago: 74 -> 75.5 (dT=1.5F)
-Live confidence KXLOWTCHI-26SEP04 Chicago: sigma=4.986 disagree=2.475 conf=40 (Low) rev=1.5
-Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26SEP04 - Chicago: 75.5, Confidence: 40
-Forecasted temperatures(NWS) - daily Low for KXLOWTCHI-26SEP03 - Chicago: 73, Confidence: null
-Live confidence KXLOWTCHI-26SEP03 Chicago: sigma=2.806 disagree=2.616 conf=66 (Moderate) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26SEP03 - Chicago: 76.7, Confidence: 66
-Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26SEP04 - Denver: 63, Confidence: null
-REVISION KXLOWTDEN-26SEP04 Denver: 62.9 -> 64.8 (dT=1.9F)
-Live confidence KXLOWTDEN-26SEP04 Denver: sigma=5.575 disagree=1.273 conf=33 (Low) rev=1.9
-Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26SEP04 - Denver: 64.8, Confidence: 33
-Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26SEP03 - Denver: 61, Confidence: null
-Live confidence KXLOWTDEN-26SEP03 Denver: sigma=3.154 disagree=1.697 conf=62 (Moderate) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26SEP03 - Denver: 58.6, Confidence: 62
-Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26SEP04 - Los Angeles: 65, Confidence: null
-Live confidence KXLOWTLAX-26SEP04 Los Angeles: sigma=4.145 disagree=3.041 conf=50 (Low) rev=1.1
-Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26SEP04 - Los Angeles: 60.7, Confidence: 50
-Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26SEP03 - Los Angeles: 64, Confidence: null
-Live confidence KXLOWTLAX-26SEP03 Los Angeles: sigma=1.671 disagree=0.566 conf=85 (High) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26SEP03 - Los Angeles: 63.2, Confidence: 85
-Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26SEP04 - Philadelphia: 68, Confidence: null
-Live confidence KXLOWTPHIL-26SEP04 Philadelphia: sigma=4.717 disagree=2.758 conf=43 (Low) rev=0.1
-Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26SEP04 - Philadelphia: 71.9, Confidence: 43
-Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26SEP03 - Philadelphia: 73, Confidence: null
-Live confidence KXLOWTPHIL-26SEP03 Philadelphia: sigma=2.383 disagree=1.838 conf=71 (High) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26SEP03 - Philadelphia: 70.4, Confidence: 71
-Current forecast confidence: 78 for market: KXHIGHCHI-26SEP03-B92.5
-Verification of unsure bet/LOSER - Confidence:78 too low for: KXHIGHCHI-26SEP03-B92.5
-Current forecast confidence: 42 for market: KXHIGHDEN-26SEP04-B92.5
-Verification of unsure bet/LOSER - Confidence:42 too low for: KXHIGHDEN-26SEP04-B92.5
-Current forecast confidence: 73 for market: KXHIGHDEN-26SEP03-B93.5
-WINNER! - Market: KXHIGHDEN-26SEP03-B93.5, Event: KXHIGHDEN-26SEP03, Confidence:73
-Executing buy YES on KXHIGHDEN-26SEP03-B93.5 for $1
-Validation of order fields: count: 2, price: 0.08
-No existing trade in active positions confirmed for: KXHIGHDEN-26SEP03
-Kalshi v2 bid KXHIGHDEN-26SEP03-B93.5 count=2.00 price=0.0800 status=201 {
-  average_fee_paid: '0.0052',
-  average_fill_price: '0.0800',
-  client_order_id: 'ac18b6da-6b68-4346-a25a-3babd50cf78f',
-  fill_count: '2.00',
-  order_id: '01a068f4-0268-742a-9aa9-c44123f58512',
-  remaining_count: '0.00',
-  ts_ms: 1788467217345
-}
-Trade executed successfully for KXHIGHDEN-26SEP03-B93.5! - Response: {
-  average_fee_paid: '0.0052',
-  average_fill_price: '0.0800',
-  client_order_id: 'ac18b6da-6b68-4346-a25a-3babd50cf78f',
-  fill_count: '2.00',
-  order_id: '01a068f4-0268-742a-9aa9-c44123f58512',
-  remaining_count: '0.00',
-  ts_ms: 1788467217345
-}
-Trade execution logic success
-Current forecast confidence: 65 for market: KXHIGHLAX-26SEP04-B75.5
-WINNER! - Market: KXHIGHLAX-26SEP04-B75.5, Event: KXHIGHLAX-26SEP04, Confidence:65
-Executing buy YES on KXHIGHLAX-26SEP04-B75.5 for $2
-Validation of order fields: count: 4, price: 0.23
-No existing trade in active positions confirmed for: KXHIGHLAX-26SEP04
-Kalshi v2 bid KXHIGHLAX-26SEP04-B75.5 count=4.00 price=0.2300 status=201 {
-  average_fee_paid: '0.0124',
-  average_fill_price: '0.2300',
-  client_order_id: 'd7ab0ff7-ddda-4a1e-8caa-bdfae963b539',
-  fill_count: '4.00',
-  order_id: '01a068f4-0650-7e26-982a-079855710071',
-  remaining_count: '0.00',
-  ts_ms: 1788467218341
-}
-Trade executed successfully for KXHIGHLAX-26SEP04-B75.5! - Response: {
-  average_fee_paid: '0.0124',
-  average_fill_price: '0.2300',
-  client_order_id: 'd7ab0ff7-ddda-4a1e-8caa-bdfae963b539',
-  fill_count: '4.00',
-  order_id: '01a068f4-0650-7e26-982a-079855710071',
-  remaining_count: '0.00',
-  ts_ms: 1788467218341
-}
-Trade execution logic success
-Current forecast confidence: 74 for market: KXHIGHLAX-26SEP03-B78.5
-Verification of unsure bet/LOSER - Confidence:74 too low for: KXHIGHLAX-26SEP03-B78.5
-Current forecast confidence: 56 for market: KXHIGHPHIL-26SEP04-B86.5
-WINNER! - Market: KXHIGHPHIL-26SEP04-B86.5, Event: KXHIGHPHIL-26SEP04, Confidence:56
-Executing buy YES on KXHIGHPHIL-26SEP04-B86.5 for $2
-Validation of order fields: count: 4, price: 0.31
-No existing trade in active positions confirmed for: KXHIGHPHIL-26SEP04
-Kalshi v2 bid KXHIGHPHIL-26SEP04-B86.5 count=4.00 price=0.3100 status=201 {
-  average_fee_paid: '0.0149',
-  average_fill_price: '0.3100',
-  client_order_id: '9658ca9b-84df-4d4b-a0ff-cbed5ff17075',
-  fill_count: '4.00',
-  order_id: '01a068f4-0a38-7316-9e97-811631bd55b1',
-  remaining_count: '0.00',
-  ts_ms: 1788467219343
-}
-Trade executed successfully for KXHIGHPHIL-26SEP04-B86.5! - Response: {
-  average_fee_paid: '0.0149',
-  average_fill_price: '0.3100',
-  client_order_id: '9658ca9b-84df-4d4b-a0ff-cbed5ff17075',
-  fill_count: '4.00',
-  order_id: '01a068f4-0a38-7316-9e97-811631bd55b1',
-  remaining_count: '0.00',
-  ts_ms: 1788467219343
-}
-Trade execution logic success
-Current forecast confidence: 73 for market: KXHIGHTSFO-26SEP04-B68.5
-WINNER! - Market: KXHIGHTSFO-26SEP04-B68.5, Event: KXHIGHTSFO-26SEP04, Confidence:73
-Executing buy YES on KXHIGHTSFO-26SEP04-B68.5 for $1
-Validation of order fields: count: 2, price: 0.19
-No existing trade in active positions confirmed for: KXHIGHTSFO-26SEP04
-Kalshi v2 bid KXHIGHTSFO-26SEP04-B68.5 count=2.00 price=0.1900 status=201 {
-  average_fee_paid: '0.0108',
-  average_fill_price: '0.1900',
-  client_order_id: '3865fe99-2a8d-4460-a662-b3b90ab5e6ce',
-  fill_count: '2.00',
-  order_id: '01a068f4-0e20-7a67-a3b5-356451f5528f',
-  remaining_count: '0.00',
-  ts_ms: 1788467220383
-}
-Trade executed successfully for KXHIGHTSFO-26SEP04-B68.5! - Response: {
-  average_fee_paid: '0.0108',
-  average_fill_price: '0.1900',
-  client_order_id: '3865fe99-2a8d-4460-a662-b3b90ab5e6ce',
-  fill_count: '2.00',
-  order_id: '01a068f4-0e20-7a67-a3b5-356451f5528f',
-  remaining_count: '0.00',
-  ts_ms: 1788467220383
-}
-Trade execution logic success
-Current forecast confidence: 81 for market: KXHIGHTSFO-26SEP03-B72.5
-Verification of unsure bet/LOSER - Confidence:81 too low for: KXHIGHTSFO-26SEP03-B72.5
-Current forecast confidence: 52 for market: KXHIGHTLV-26SEP04-B95.5
-Verification of unsure bet/LOSER - Confidence:52 too low for: KXHIGHTLV-26SEP04-B95.5
-Current forecast confidence: 73 for market: KXHIGHTLV-26SEP03-B94.5
-WINNER! - Market: KXHIGHTLV-26SEP03-B94.5, Event: KXHIGHTLV-26SEP03, Confidence:73
-Executing buy YES on KXHIGHTLV-26SEP03-B94.5 for $1
-Validation of order fields: count: 2, price: 0.35
-No existing trade in active positions confirmed for: KXHIGHTLV-26SEP03
-Kalshi v2 bid KXHIGHTLV-26SEP03-B94.5 count=2.00 price=0.3500 status=201 {
-  average_fee_paid: '0.0159',
-  average_fill_price: '0.3500',
-  client_order_id: '5ec30cde-0b3a-4e5f-9988-5d32d028dddc',
-  fill_count: '2.00',
-  order_id: '01a068f4-1208-737e-af10-414c5802d3e1',
-  remaining_count: '0.00',
-  ts_ms: 1788467221344
-}
-Trade executed successfully for KXHIGHTLV-26SEP03-B94.5! - Response: {
-  average_fee_paid: '0.0159',
-  average_fill_price: '0.3500',
-  client_order_id: '5ec30cde-0b3a-4e5f-9988-5d32d028dddc',
-  fill_count: '2.00',
-  order_id: '01a068f4-1208-737e-af10-414c5802d3e1',
-  remaining_count: '0.00',
-  ts_ms: 1788467221344
-}
-Trade execution logic success
-Current forecast confidence: 66 for market: KXLOWTCHI-26SEP03-B77.5
-WINNER! - Market: KXLOWTCHI-26SEP03-B77.5, Event: KXLOWTCHI-26SEP03, Confidence:66
-Executing buy YES on KXLOWTCHI-26SEP03-B77.5 for $2
-Validation of order fields: count: 4, price: 0.19
-No existing trade in active positions confirmed for: KXLOWTCHI-26SEP03
-Kalshi v2 bid KXLOWTCHI-26SEP03-B77.5 count=4.00 price=0.1900 status=201 {
-  average_fee_paid: '0.0107',
-  average_fill_price: '0.1900',
-  client_order_id: '2ed445a6-a59d-45b0-9d1a-9ebb4ae9ef32',
-  fill_count: '4.00',
-  order_id: '01a068f4-15f0-73d3-9d07-a08705d39857',
-  remaining_count: '0.00',
-  ts_ms: 1788467222351
-}
-Trade executed successfully for KXLOWTCHI-26SEP03-B77.5! - Response: {
-  average_fee_paid: '0.0107',
-  average_fill_price: '0.1900',
-  client_order_id: '2ed445a6-a59d-45b0-9d1a-9ebb4ae9ef32',
-  fill_count: '4.00',
-  order_id: '01a068f4-15f0-73d3-9d07-a08705d39857',
-  remaining_count: '0.00',
-  ts_ms: 1788467222351
-}
-Trade execution logic success
-Current forecast confidence: 62 for market: KXLOWTDEN-26SEP03-B59.5
-Verification of unsure bet/LOSER - Confidence:62 too low for: KXLOWTDEN-26SEP03-B59.5
-Current forecast confidence: 50 for market: KXLOWTLAX-26SEP04-B60.5
-Verification of unsure bet/LOSER - Confidence:50 too low for: KXLOWTLAX-26SEP04-B60.5
-Current forecast confidence: 85 for market: KXLOWTLAX-26SEP03-B64.5
-WINNER! - Market: KXLOWTLAX-26SEP03-B64.5, Event: KXLOWTLAX-26SEP03, Confidence:85
-Executing buy YES on KXLOWTLAX-26SEP03-B64.5 for $1
-Validation of order fields: count: 2, price: 0.03
-No existing trade in active positions confirmed for: KXLOWTLAX-26SEP03
-Kalshi v2 bid KXLOWTLAX-26SEP03-B64.5 count=2.00 price=0.0300 status=201 {
-  average_fee_paid: '0.0020',
-  average_fill_price: '0.0300',
-  client_order_id: '63f08573-7c81-4a2f-acc6-a8162355c80e',
-  fill_count: '2.00',
-  order_id: '01a068f4-1dc0-7a28-966f-f6a7daab9d7d',
-  remaining_count: '0.00',
-  ts_ms: 1788467224376
-}
-Trade executed successfully for KXLOWTLAX-26SEP03-B64.5! - Response: {
-  average_fee_paid: '0.0020',
-  average_fill_price: '0.0300',
-  client_order_id: '63f08573-7c81-4a2f-acc6-a8162355c80e',
-  fill_count: '2.00',
-  order_id: '01a068f4-1dc0-7a28-966f-f6a7daab9d7d',
-  remaining_count: '0.00',
-  ts_ms: 1788467224376
-}
-Trade execution logic success
-Current forecast confidence: 43 for market: KXLOWTPHIL-26SEP04-B71.5
-Verification of unsure bet/LOSER - Confidence:43 too low for: KXLOWTPHIL-26SEP04-B71.5
-Current forecast confidence: 71 for market: KXLOWTPHIL-26SEP03-B71.5
-Verification of unsure bet/LOSER - Confidence:71 too low for: KXLOWTPHIL-26SEP03-B71.5
+Kalshi manage-only 2026-09-03T16:15:59-05:00
+Manage mark KXHIGHCHI-26SEP03-B94.5 2x but no live position
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.16 bid=0.07 target=0.32
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.19 target=0.42
+Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.85 bid=0 target=0.99
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.21 target=0.4
+Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.14 bid=0.05 target=0.28
+Manage hold KXHIGHTLV-26SEP03-B96.5 entry=0.48 bid=0.59 target=0.96
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.09 target=0.38
+Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
+Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.97 bid=0.93 target=0.99
+Manage mark KXHIGHCHI-26SEP03-B94.5 2x but no live position
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.15 bid=0.07 target=0.3
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.19 target=0.42
+Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.8 bid=0 target=0.99
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.21 target=0.4
+Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.23 bid=0.05 target=0.46
+Manage hold KXHIGHTLV-26SEP03-B96.5 entry=0.47 bid=0.59 target=0.94
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.2 bid=0.09 target=0.4
+Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
+Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.99 bid=0.93 target=0.99
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.08 bid=0.07 target=0.16
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.23 bid=0.19 target=0.46
+Manage hold KXHIGHPHIL-26SEP04-B86.5 entry=0.31 bid=0.31 target=0.62
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.19 bid=0.21 target=0.38
+Manage hold KXHIGHTLV-26SEP03-B94.5 entry=0.35 bid=0.35 target=0.7
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.09 target=0.38
+Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.03 bid=0 target=0.06
