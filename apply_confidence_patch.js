@@ -3,8 +3,35 @@ import fs from 'fs';
 const target = new URL('./climate_bot.js', import.meta.url);
 let src = fs.readFileSync(target, 'utf8');
 
+function injectSettle(source) {
+  let out = source;
+  if (!out.includes("from './settle.js'")) {
+    if (out.includes("import { persistCandidate } from './persist.js';")) {
+      out = out.replace(
+        "import { persistCandidate } from './persist.js';",
+        "import { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';"
+      );
+    } else if (out.includes("import {fileURLToPath} from 'url';")) {
+      out = out.replace(
+        "import {fileURLToPath} from 'url';",
+        "import {fileURLToPath} from 'url';\nimport { settlePaperTrades } from './settle.js';"
+      );
+    }
+  }
+  if (!out.includes('settlePaperTrades()')) {
+    out = out.replace('await runBot();', 'await runBot();\nawait settlePaperTrades();');
+  }
+  return out;
+}
+
 if (src.includes('liveCalculateConfidences')) {
-  console.log('confidence patch already applied');
+  const next = injectSettle(src);
+  if (next !== src) {
+    fs.writeFileSync(target, next);
+    console.log('added settlement hook to already-patched climate_bot.js');
+  } else {
+    console.log('confidence patch already applied');
+  }
   process.exit(0);
 }
 
@@ -16,7 +43,7 @@ if (!src.includes(importNeedle)) {
 
 src = src.replace(
   importNeedle,
-  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';\nimport { persistCandidate } from './persist.js';`
+  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';\nimport { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';`
 );
 
 src = src.replace(
@@ -51,6 +78,8 @@ src = src.slice(0, start) + `async function calculateConfidences(forecast){
 }
 
 ` + src.slice(end);
+
+src = injectSettle(src);
 
 fs.writeFileSync(target, src);
 console.log('applied live-sigma confidence patch to climate_bot.js');

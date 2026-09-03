@@ -39,7 +39,7 @@ export async function persistForecast(forecast) {
   if (!forecast) return;
   const om = Number(forecast.getForecastTemperature?.() ?? forecast.forecastTemperature);
   const nws = Number(forecast.getNWSForecastTemperature?.() ?? forecast.nwsForecastTemperature);
-  if (!Number.isFinite(om) || !Number.isFinite(nws)) return;
+  if (!Number.isFinite(om) || !Number.isFinite(nws) || om === 0 || nws === 0) return;
 
   const row = {
     event_ticker: forecast.name,
@@ -72,6 +72,23 @@ export async function persistCandidate(market, forecast, extras = {}) {
     live_sigma: forecast?.liveSigma ?? null,
   };
   return rest('trade_candidates', { method: 'POST', body: row });
+}
+
+export async function listUnscoredCandidates() {
+  const rows = await rest(
+    'trade_candidates',
+    { query: '?or=(settled_temp.is.null,action.eq.paper)&order=run_at.asc' }
+  );
+  return Array.isArray(rows) ? rows : [];
+}
+
+export async function scoreCandidate(id, fields) {
+  if (!id) return null;
+  return rest('trade_candidates', {
+    method: 'PATCH',
+    query: `?id=eq.${id}`,
+    body: fields,
+  });
 }
 
 export { dbEnabled };

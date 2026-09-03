@@ -19,7 +19,9 @@ function horizonMultiplier(forecast){
 function sourcesReady(forecast){
     const om = Number(forecast.getForecastTemperature());
     const nws = Number(forecast.getNWSForecastTemperature());
-    return Number.isFinite(om) && Number.isFinite(nws);
+    if (!Number.isFinite(om) || !Number.isFinite(nws)) return false;
+    if (om === 0 || nws === 0) return false;
+    return true;
 }
 
 function liveSigma(forecast){
