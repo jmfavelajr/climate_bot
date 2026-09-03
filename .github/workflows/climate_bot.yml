@@ -26,9 +26,19 @@ jobs:
         run: node apply_confidence_patch.js
 
       - name: Run climate script
+        env:
+          KALSHI_API_KEY_ID: ${{ secrets.KALSHI_API_KEY_ID }}
+          KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
         run: |
           mkdir -p reports
-          node climate_bot.js > reports/latest.log
+          if [ -z "$KALSHI_API_KEY_ID" ] || [ -z "$KALSHI_PRIVATE_KEY" ]; then
+            echo "Missing KALSHI_API_KEY_ID or KALSHI_PRIVATE_KEY repo secrets" >&2
+          fi
+          node climate_bot.js > reports/latest.log 2> reports/latest.err
+          if [ -s reports/latest.err ]; then
+            echo "----- stderr -----" >> reports/latest.log
+            cat reports/latest.err >> reports/latest.log
+          fi
 
       - name: Commit and push the report
         run: |
@@ -36,7 +46,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           mkdir -p reports
-          git add reports/latest.log
+          git add reports/latest.log reports/latest.err || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
