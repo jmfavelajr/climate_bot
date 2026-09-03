@@ -3,32 +3,65 @@ import fs from 'fs';
 const target = new URL('./climate_bot.js', import.meta.url);
 let src = fs.readFileSync(target, 'utf8');
 
-function injectSettle(source) {
+function injectHooks(source) {
   let out = source;
   if (!out.includes("from './settle.js'")) {
     if (out.includes("import { persistCandidate } from './persist.js';")) {
       out = out.replace(
         "import { persistCandidate } from './persist.js';",
-        "import { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';"
+        "import { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';\nimport { allowNewEntry, manageOpenTrades } from './manage.js';"
       );
     } else if (out.includes("import {fileURLToPath} from 'url';")) {
       out = out.replace(
         "import {fileURLToPath} from 'url';",
-        "import {fileURLToPath} from 'url';\nimport { settlePaperTrades } from './settle.js';"
+        "import {fileURLToPath} from 'url';\nimport { settlePaperTrades } from './settle.js';\nimport { allowNewEntry, manageOpenTrades } from './manage.js';"
       );
     }
+  } else if (!out.includes("from './manage.js'")) {
+    out = out.replace(
+      "import { settlePaperTrades } from './settle.js';",
+      "import { settlePaperTrades } from './settle.js';\nimport { allowNewEntry, manageOpenTrades } from './manage.js';"
+    );
   }
-  if (!out.includes('settlePaperTrades()')) {
-    out = out.replace('await runBot();', 'await runBot();\nawait settlePaperTrades();');
+  if (!out.includes('manageOpenTrades')) {
+    out = out.replace(
+      'await runBot();',
+      `await runBot();
+await manageOpenTrades({ flatten: process.env.FLATTEN_EOD === '1' });
+await settlePaperTrades();`
+    );
+  }
+  if (out.includes('const autoExecute = false')) {
+    out = out.replace('const autoExecute = false', 'const autoExecute = true');
+  }
+  if (out.includes('yes_ask_size_fp / 100')) {
+    out = out.replace(
+      'const yes_price = ((market.yes_ask_size_fp / 100).toFixed(2));',
+      `const _ask = Number(market.yes_ask_dollars ?? market.yes_ask);
+    const yes_price = ((_ask > 1 ? _ask / 100 : _ask) || 0).toFixed(2);`
+    );
+  }
+  if (!out.includes('allowNewEntry(market)')) {
+    out = out.replace(
+      'if(forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged){',
+      `const entryGate = allowNewEntry(market);
+    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
+    );
+  }
+  if (out.includes("action: 'paper'") && out.includes('persistCandidate(market, fc')) {
+    out = out.replace(
+      "action: 'paper', reason: revisionFlagged ? 'revision' : 'live_conf'",
+      "action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask"
+    );
   }
   return out;
 }
 
 if (src.includes('liveCalculateConfidences')) {
-  const next = injectSettle(src);
+  const next = injectHooks(src);
   if (next !== src) {
     fs.writeFileSync(target, next);
-    console.log('added settlement hook to already-patched climate_bot.js');
+    console.log('updated hooks on already-patched climate_bot.js');
   } else {
     console.log('confidence patch already applied');
   }
@@ -43,7 +76,7 @@ if (!src.includes(importNeedle)) {
 
 src = src.replace(
   importNeedle,
-  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';\nimport { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';`
+  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';\nimport { persistCandidate } from './persist.js';\nimport { settlePaperTrades } from './settle.js';\nimport { allowNewEntry, manageOpenTrades } from './manage.js';`
 );
 
 src = src.replace(
@@ -57,12 +90,13 @@ src = src.replace(
   '    if(forecastConfidence >= 65){',
   `    const fc = dailyForecastMap.get(market.event_ticker);
     const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);
-    if(forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged){`
+    const entryGate = allowNewEntry(market);
+    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
 );
 
 src = src.replace(
   '        await Promise.all([executeTrade(market, forecastConfidence)]);',
-  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'paper', reason: revisionFlagged ? 'revision' : 'live_conf' }).catch((err) => console.error(err.message));
+  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask }).catch((err) => console.error(err.message));
         await Promise.all([executeTrade(market, forecastConfidence)]);`
 );
 
@@ -79,7 +113,7 @@ src = src.slice(0, start) + `async function calculateConfidences(forecast){
 
 ` + src.slice(end);
 
-src = injectSettle(src);
+src = injectHooks(src);
 
 fs.writeFileSync(target, src);
 console.log('applied live-sigma confidence patch to climate_bot.js');
