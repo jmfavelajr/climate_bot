@@ -1,5 +1,6 @@
 import kalshiPkg from 'kalshi-typescript';
 import { listOpenCandidates, updateCandidate } from './persist.js';
+import { sellYes as submitSellYes } from './kalshi_orders.js';
 
 const MAX_ENTRY = 0.50;
 const TAKE_PROFIT_MULT = 2;
@@ -58,21 +59,10 @@ function positionCount(positions, ticker) {
   return Math.abs(Number(row.position_fp ?? row.position ?? row.yes_count ?? 0));
 }
 
-async function sellYes(ordersApi, ticker, count, bid) {
-  const price = Math.max(0.01, Number((bid ?? TAKE_PROFIT_CAP).toFixed(2)));
-  const postOrder = {
-    ticker,
-    side: 'yes',
-    action: 'sell',
-    count: Math.max(1, Math.floor(count) || 1),
-    type: 'limit',
-    yes_price_dollars: price.toFixed(2),
-    time_in_force: 'immediate_or_cancel',
-  };
-  console.log(`Selling YES ${ticker} count=${postOrder.count} @ ${postOrder.yes_price_dollars}`);
-  const tradeResponse = await ordersApi.createOrder(postOrder);
-  console.log(`Sell response ${tradeResponse?.status}:`, tradeResponse?.data || tradeResponse);
-  return tradeResponse;
+async function sellYes(_ordersApi, ticker, count, bid) {
+  const price = Math.max(0.01, Number((bid ?? TAKE_PROFIT_CAP).toFixed(4)));
+  console.log(`Selling YES ${ticker} count=${Math.max(1, Math.floor(count) || 1)} @ ${price}`);
+  return submitSellYes(ticker, Math.max(1, Math.floor(count) || 1), price);
 }
 
 export function allowNewEntry(market) {
@@ -130,7 +120,7 @@ export async function manageOpenTrades({ flatten = false } = {}) {
         reason: `${row.reason || ''}|${hitTp ? '2x' : 'eod_flat'}`,
       });
     } catch (err) {
-      console.error(`Sell failed ${row.market_ticker}:`, err.response?.data || err.message);
+      console.error(`Sell failed ${row.market_ticker}:`, err.data || err.message);
     }
   }
 }
