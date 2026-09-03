@@ -4,38 +4,39 @@ Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26SEP04 - Chicago: 93, C
 Live confidence KXHIGHCHI-26SEP04 Chicago: sigma=4.796 disagree=2.758 conf=42 (Low) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP04 - Chicago: 96.9, Confidence: 42
 Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26SEP03 - Chicago: 91, Confidence: null
-Live confidence KXHIGHCHI-26SEP03 Chicago: sigma=2.9 disagree=1.768 conf=65 (Moderate) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP03 - Chicago: 93.5, Confidence: 65
+REVISION KXHIGHCHI-26SEP03 Chicago: 93.5 -> 92.5 (dT=-1F)
+Live confidence KXHIGHCHI-26SEP03 Chicago: sigma=2.757 disagree=1.061 conf=67 (Moderate) rev=-1
+Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP03 - Chicago: 92.5, Confidence: 67
 Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP04 - Denver: 94, Confidence: null
-Live confidence KXHIGHDEN-26SEP04 Denver: sigma=5.185 disagree=2.121 conf=38 (Low) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP04 - Denver: 91, Confidence: 38
+Live confidence KXHIGHDEN-26SEP04 Denver: sigma=4.773 disagree=0 conf=48 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP04 - Denver: 94, Confidence: 43
 Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP03 - Denver: 92, Confidence: null
-Live confidence KXHIGHDEN-26SEP03 Denver: sigma=3.183 disagree=0.141 conf=67 (Moderate) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP03 - Denver: 92.2, Confidence: 67
+Live confidence KXHIGHDEN-26SEP03 Denver: sigma=3.187 disagree=0.283 conf=67 (Moderate) rev=-0.6
+Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP03 - Denver: 91.6, Confidence: 67
 Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 75.7, Confidence: null
 Live confidence KXHIGHLAX-26SEP04 Los Angeles: sigma=3.235 disagree=1.909 conf=61 (Moderate) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 73, Confidence: 61
 Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 73, Confidence: null
-Live confidence KXHIGHLAX-26SEP03 Los Angeles: sigma=2.209 disagree=2.051 conf=73 (High) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 75.9, Confidence: 73
+Live confidence KXHIGHLAX-26SEP03 Los Angeles: sigma=2.378 disagree=2.475 conf=71 (High) rev=0.6
+Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 76.5, Confidence: 71
 Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 84.8, Confidence: null
 Live confidence KXHIGHPHIL-26SEP04 Philadelphia: sigma=4.222 disagree=2.263 conf=49 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 88, Confidence: 49
 Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 91, Confidence: null
-Live confidence KXHIGHPHIL-26SEP03 Philadelphia: sigma=3.558 disagree=4.101 conf=57 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 85.2, Confidence: 57
+Live confidence KXHIGHPHIL-26SEP03 Philadelphia: sigma=3.658 disagree=4.313 conf=56 (Low) rev=-0.3
+Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 84.9, Confidence: 56
 Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 67, Confidence: null
 Live confidence KXHIGHTSFO-26SEP04 San Francisco: sigma=2.757 disagree=0.707 conf=72 (Moderate) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 68, Confidence: 67
 Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 70, Confidence: null
-Live confidence KXHIGHTSFO-26SEP03 San Francisco: sigma=1.827 disagree=0.636 conf=83 (High) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 69.1, Confidence: 83
+Live confidence KXHIGHTSFO-26SEP03 San Francisco: sigma=1.787 disagree=0.212 conf=84 (High) rev=0.6
+Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 69.7, Confidence: 84
 Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 94.8, Confidence: null
-Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=3.997 disagree=0.849 conf=52 (Low) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 96, Confidence: 52
+Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=4.186 disagree=1.556 conf=50 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 97, Confidence: 50
 Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 96, Confidence: null
-Live confidence KXHIGHTLV-26SEP03 Las Vegas: sigma=2.628 disagree=0.495 conf=73 (Moderate) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 95.3, Confidence: 73
+Live confidence KXHIGHTLV-26SEP03 Las Vegas: sigma=2.656 disagree=0.778 conf=68 (Moderate) rev=-0.4
+Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 94.9, Confidence: 68
 Forecasted temperatures(NWS) - daily Low for KXLOWTCHI-26SEP04 - Chicago: 72, Confidence: null
 Live confidence KXLOWTCHI-26SEP04 Chicago: sigma=4.594 disagree=1.414 conf=45 (Low) rev=0
 Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26SEP04 - Chicago: 74, Confidence: 45
@@ -45,9 +46,9 @@ Forecasted temperatures(OM) - daily Low for KXLOWTCHI-26SEP03 - Chicago: 76.7, C
 Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26SEP04 - Denver: 63, Confidence: null
 Live confidence KXLOWTDEN-26SEP04 Denver: sigma=5.442 disagree=0.071 conf=40 (Low) rev=0
 Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26SEP04 - Denver: 62.9, Confidence: 40
-Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26SEP03 - Denver: 62, Confidence: null
-Live confidence KXLOWTDEN-26SEP03 Denver: sigma=3.937 disagree=2.404 conf=53 (Low) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26SEP03 - Denver: 58.6, Confidence: 53
+Forecasted temperatures(NWS) - daily Low for KXLOWTDEN-26SEP03 - Denver: 61, Confidence: null
+Live confidence KXLOWTDEN-26SEP03 Denver: sigma=3.785 disagree=1.697 conf=55 (Low) rev=0
+Forecasted temperatures(OM) - daily Low for KXLOWTDEN-26SEP03 - Denver: 58.6, Confidence: 55
 Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26SEP04 - Los Angeles: 65, Confidence: null
 Live confidence KXLOWTLAX-26SEP04 Los Angeles: sigma=4.695 disagree=3.818 conf=44 (Low) rev=0
 Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26SEP04 - Los Angeles: 59.6, Confidence: 44
@@ -55,89 +56,126 @@ Forecasted temperatures(NWS) - daily Low for KXLOWTLAX-26SEP03 - Los Angeles: 64
 Live confidence KXLOWTLAX-26SEP03 Los Angeles: sigma=2.005 disagree=0.566 conf=81 (High) rev=0
 Forecasted temperatures(OM) - daily Low for KXLOWTLAX-26SEP03 - Los Angeles: 63.2, Confidence: 81
 Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26SEP04 - Philadelphia: 68, Confidence: null
-Live confidence KXLOWTPHIL-26SEP04 Philadelphia: sigma=4.14 disagree=1.414 conf=50 (Low) rev=0
-Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26SEP04 - Philadelphia: 70, Confidence: 50
+REVISION KXLOWTPHIL-26SEP04 Philadelphia: 70 -> 71.8 (dT=1.8F)
+Live confidence KXLOWTPHIL-26SEP04 Philadelphia: sigma=4.679 disagree=2.687 conf=44 (Low) rev=1.8
+Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26SEP04 - Philadelphia: 71.8, Confidence: 44
 Forecasted temperatures(NWS) - daily Low for KXLOWTPHIL-26SEP03 - Philadelphia: 73, Confidence: null
 Live confidence KXLOWTPHIL-26SEP03 Philadelphia: sigma=2.86 disagree=1.838 conf=66 (Moderate) rev=0
 Forecasted temperatures(OM) - daily Low for KXLOWTPHIL-26SEP03 - Philadelphia: 70.4, Confidence: 66
-Current forecast confidence: 65 for market: KXHIGHCHI-26SEP03-B94.5
-WINNER! - Market: KXHIGHCHI-26SEP03-B94.5, Event: KXHIGHCHI-26SEP03, Confidence:65
-Executing buy YES on KXHIGHCHI-26SEP03-B94.5 for $2
-autoExecute is currently set to false/disable
+Current forecast confidence: 67 for market: KXHIGHCHI-26SEP03-B92.5
+WINNER! - Market: KXHIGHCHI-26SEP03-B92.5, Event: KXHIGHCHI-26SEP03, Confidence:67
+Executing buy YES on KXHIGHCHI-26SEP03-B92.5 for $1
+Validation of order fields: count: 2, price: 0.41
+No existing trade in active positions confirmed for: KXHIGHCHI-26SEP03
 Trade execution logic success
-Current forecast confidence: 38 for market: KXHIGHDEN-26SEP04-B94.5
-Verification of unsure bet/LOSER - Confidence:38 too low for: KXHIGHDEN-26SEP04-B94.5
-Current forecast confidence: 67 for market: KXHIGHDEN-26SEP03-B93.5
-WINNER! - Market: KXHIGHDEN-26SEP03-B93.5, Event: KXHIGHDEN-26SEP03, Confidence:67
-Executing buy YES on KXHIGHDEN-26SEP03-B93.5 for $2
-autoExecute is currently set to false/disable
-Trade execution logic success
+Current forecast confidence: 48 for market: KXHIGHDEN-26SEP04-B94.5
+Verification of unsure bet/LOSER - Confidence:48 too low for: KXHIGHDEN-26SEP04-B94.5
+Current forecast confidence: 67 for market: KXHIGHDEN-26SEP03-B91.5
+Verification of unsure bet/LOSER - Confidence:67 too low for: KXHIGHDEN-26SEP03-B91.5
 Current forecast confidence: 61 for market: KXHIGHLAX-26SEP04-B75.5
 WINNER! - Market: KXHIGHLAX-26SEP04-B75.5, Event: KXHIGHLAX-26SEP04, Confidence:61
 Executing buy YES on KXHIGHLAX-26SEP04-B75.5 for $2
-autoExecute is currently set to false/disable
+Validation of order fields: count: 4, price: 0.20
+No existing trade in active positions confirmed for: KXHIGHLAX-26SEP04
 Trade execution logic success
-Current forecast confidence: 73 for market: KXHIGHLAX-26SEP03-B76.5
-WINNER! - Market: KXHIGHLAX-26SEP03-B76.5, Event: KXHIGHLAX-26SEP03, Confidence:73
-Verification of 'bad bet' result: No edge/Kelly Fraction negative/0!
-Verification of trade execution logic safeguard : No Bet value or Bet too risky!: 0
+Current forecast confidence: 71 for market: KXHIGHLAX-26SEP03-B76.5
+Verification of unsure bet/LOSER - Confidence:71 too low for: KXHIGHLAX-26SEP03-B76.5
 Current forecast confidence: 72 for market: KXHIGHTSFO-26SEP04-B68.5
 WINNER! - Market: KXHIGHTSFO-26SEP04-B68.5, Event: KXHIGHTSFO-26SEP04, Confidence:72
 Executing buy YES on KXHIGHTSFO-26SEP04-B68.5 for $1
-autoExecute is currently set to false/disable
+Validation of order fields: count: 2, price: 0.18
+No existing trade in active positions confirmed for: KXHIGHTSFO-26SEP04
 Trade execution logic success
-Current forecast confidence: 83 for market: KXHIGHTSFO-26SEP03-B70.5
-WINNER! - Market: KXHIGHTSFO-26SEP03-B70.5, Event: KXHIGHTSFO-26SEP03, Confidence:83
+Current forecast confidence: 84 for market: KXHIGHTSFO-26SEP03-B70.5
+WINNER! - Market: KXHIGHTSFO-26SEP03-B70.5, Event: KXHIGHTSFO-26SEP03, Confidence:84
 Executing buy YES on KXHIGHTSFO-26SEP03-B70.5 for $1
-autoExecute is currently set to false/disable
+Validation of order fields: count: 2, price: 0.12
+No existing trade in active positions confirmed for: KXHIGHTSFO-26SEP03
 Trade execution logic success
-Current forecast confidence: 52 for market: KXHIGHTLV-26SEP04-B95.5
-Verification of unsure bet/LOSER - Confidence:52 too low for: KXHIGHTLV-26SEP04-B95.5
-Current forecast confidence: 73 for market: KXHIGHTLV-26SEP03-B96.5
-WINNER! - Market: KXHIGHTLV-26SEP03-B96.5, Event: KXHIGHTLV-26SEP03, Confidence:73
-Executing buy YES on KXHIGHTLV-26SEP03-B96.5 for $1
-autoExecute is currently set to false/disable
-Trade execution logic success
+Current forecast confidence: 50 for market: KXHIGHTLV-26SEP04-B95.5
+Verification of unsure bet/LOSER - Confidence:50 too low for: KXHIGHTLV-26SEP04-B95.5
+Current forecast confidence: 68 for market: KXHIGHTLV-26SEP03-B94.5
+Verification of unsure bet/LOSER - Confidence:68 too low for: KXHIGHTLV-26SEP03-B94.5
 Current forecast confidence: 60 for market: KXLOWTCHI-26SEP03-B77.5
 WINNER! - Market: KXLOWTCHI-26SEP03-B77.5, Event: KXLOWTCHI-26SEP03, Confidence:60
 Executing buy YES on KXLOWTCHI-26SEP03-B77.5 for $2
-autoExecute is currently set to false/disable
+Validation of order fields: count: 4, price: 0.19
+No existing trade in active positions confirmed for: KXLOWTCHI-26SEP03
 Trade execution logic success
 Current forecast confidence: 40 for market: KXLOWTDEN-26SEP04-B62.5
 Verification of unsure bet/LOSER - Confidence:40 too low for: KXLOWTDEN-26SEP04-B62.5
-Current forecast confidence: 53 for market: KXLOWTDEN-26SEP03-B59.5
-Verification of unsure bet/LOSER - Confidence:53 too low for: KXLOWTDEN-26SEP03-B59.5
+Current forecast confidence: 55 for market: KXLOWTDEN-26SEP03-B59.5
+Verification of unsure bet/LOSER - Confidence:55 too low for: KXLOWTDEN-26SEP03-B59.5
 Current forecast confidence: 44 for market: KXLOWTLAX-26SEP04-B60.5
 Verification of unsure bet/LOSER - Confidence:44 too low for: KXLOWTLAX-26SEP04-B60.5
 Current forecast confidence: 81 for market: KXLOWTLAX-26SEP03-B64.5
 WINNER! - Market: KXLOWTLAX-26SEP03-B64.5, Event: KXLOWTLAX-26SEP03, Confidence:81
 Executing buy YES on KXLOWTLAX-26SEP03-B64.5 for $1
-autoExecute is currently set to false/disable
+Validation of order fields: count: 2, price: 0.03
+No existing trade in active positions confirmed for: KXLOWTLAX-26SEP03
 Trade execution logic success
-Current forecast confidence: 50 for market: KXLOWTPHIL-26SEP04-B71.5
-Verification of unsure bet/LOSER - Confidence:50 too low for: KXLOWTPHIL-26SEP04-B71.5
+Current forecast confidence: 44 for market: KXLOWTPHIL-26SEP04-B71.5
+WINNER! - Market: KXLOWTPHIL-26SEP04-B71.5, Event: KXLOWTPHIL-26SEP04, Confidence:44
+Executing buy YES on KXLOWTPHIL-26SEP04-B71.5 for $2
+Validation of order fields: count: 4, price: 0.22
+No existing trade in active positions confirmed for: KXLOWTPHIL-26SEP04
+Trade execution logic success
 Current forecast confidence: 66 for market: KXLOWTPHIL-26SEP03-B71.5
-WINNER! - Market: KXLOWTPHIL-26SEP03-B71.5, Event: KXLOWTPHIL-26SEP03, Confidence:66
-Verification of 'bad bet' result: No edge/Kelly Fraction negative/0!
-Verification of trade execution logic safeguard : No Bet value or Bet too risky!: 0
-Settlement: scoring 20 paper trade(s)
-Settlement skip (not official yet): KXHIGHCHI-26SEP03-B94.5
-Settlement skip (not official yet): KXHIGHDEN-26SEP03-B93.5
-Settlement skip (not official yet): KXHIGHLAX-26SEP04-B75.5
-Settlement skip (not official yet): KXHIGHLAX-26SEP03-B76.5
-Settlement skip (not official yet): KXHIGHTSFO-26SEP04-B68.5
-Settlement skip (not official yet): KXHIGHTSFO-26SEP03-B70.5
-Settlement skip (not official yet): KXHIGHTLV-26SEP03-B96.5
-Settlement skip (not official yet): KXLOWTCHI-26SEP03-B77.5
-Settlement skip (not official yet): KXLOWTLAX-26SEP03-B64.5
-Settlement skip (not official yet): KXLOWTPHIL-26SEP03-B71.5
-Settlement skip (not official yet): KXHIGHCHI-26SEP03-B94.5
-Settlement skip (not official yet): KXHIGHDEN-26SEP03-B93.5
-Settlement skip (not official yet): KXHIGHLAX-26SEP04-B75.5
-Settlement skip (not official yet): KXHIGHLAX-26SEP03-B76.5
-Settlement skip (not official yet): KXHIGHTSFO-26SEP04-B68.5
-Settlement skip (not official yet): KXHIGHTSFO-26SEP03-B70.5
-Settlement skip (not official yet): KXHIGHTLV-26SEP03-B96.5
-Settlement skip (not official yet): KXLOWTCHI-26SEP03-B77.5
-Settlement skip (not official yet): KXLOWTLAX-26SEP03-B64.5
-Settlement skip (not official yet): KXLOWTPHIL-26SEP03-B71.5
+Verification of unsure bet/LOSER - Confidence:66 too low for: KXLOWTPHIL-26SEP03-B71.5
+----- stderr -----
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHCHI-26SEP03-B92.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHLAX-26SEP04-B75.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHTSFO-26SEP04-B68.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHTSFO-26SEP03-B70.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXLOWTCHI-26SEP03-B77.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXLOWTLAX-26SEP03-B64.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Error submitting order for KXLOWTPHIL-26SEP04-B71.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}

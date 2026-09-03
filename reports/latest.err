@@ -1,0 +1,56 @@
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHCHI-26SEP03-B92.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHLAX-26SEP04-B75.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHTSFO-26SEP04-B68.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXHIGHTSFO-26SEP03-B70.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXLOWTCHI-26SEP03-B77.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
+Error submitting order for KXLOWTLAX-26SEP03-B64.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Error submitting order for KXLOWTPHIL-26SEP04-B71.5: {
+  error: {
+    code: 'deprecated_v1_order_endpoint',
+    message: 'Please switch to the V2 endpoints',
+    details: 'https://docs.kalshi.com/api-reference/orders/create-order-v2'
+  }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'entry_yes_ask' column of 'trade_candidates' in the schema cache"}
