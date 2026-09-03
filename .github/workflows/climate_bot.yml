@@ -3,8 +3,7 @@ name: Generate Kalshi_Climate_Markets Report
 on:
   workflow_dispatch:
   schedule:
-    - cron: "5,25,45 13-23 * * *"
-    - cron: "5,25,45 0-1 * * *"
+    - cron: "*/5 * * * *"
 
 permissions:
   contents: write
@@ -20,12 +19,8 @@ jobs:
         id: window
         run: |
           NOW=$(TZ=America/Chicago date +%H%M)
+          MIN=$(TZ=America/Chicago date +%M)
           echo "chicago_hhmm=$NOW"
-          if [ "$NOW" -lt 0900 ]; then
-            echo "Before 9:00 CT — skip"
-            echo "run=0" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
           if [ "$NOW" -ge 1915 ]; then
             echo "After 19:15 CT — skip"
             echo "run=0" >> "$GITHUB_OUTPUT"
@@ -36,6 +31,11 @@ jobs:
             echo "flatten=1" >> "$GITHUB_OUTPUT"
           else
             echo "flatten=0" >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$MIN" = "00" ] || [ "$MIN" = "20" ] || [ "$MIN" = "40" ]; then
+            echo "mode=full" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=manage" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Setup Node.js
@@ -50,7 +50,7 @@ jobs:
         run: npm ci
 
       - name: Apply live-sigma confidence patch
-        if: steps.window.outputs.run == '1'
+        if: steps.window.outputs.run == '1' && steps.window.outputs.mode == 'full'
         run: node apply_confidence_patch.js
 
       - name: Run climate script
@@ -64,7 +64,12 @@ jobs:
           FLATTEN_EOD: ${{ steps.window.outputs.flatten }}
         run: |
           mkdir -p reports
-          node climate_bot.js > reports/latest.log 2> reports/latest.err
+          if [ "${{ steps.window.outputs.mode }}" = "full" ]; then
+            node climate_bot.js > reports/latest.log 2> reports/latest.err
+          else
+            echo "Kalshi manage-only $(TZ=America/Chicago date -Iseconds)" > reports/latest.log
+            node manage_only.js >> reports/latest.log 2> reports/latest.err
+          fi
           if [ -s reports/latest.err ]; then
             echo "----- stderr -----" >> reports/latest.log
             cat reports/latest.err >> reports/latest.log
