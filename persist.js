@@ -40,7 +40,6 @@ export async function persistForecast(forecast) {
   const om = Number(forecast.getForecastTemperature?.() ?? forecast.forecastTemperature);
   const nws = Number(forecast.getNWSForecastTemperature?.() ?? forecast.nwsForecastTemperature);
   if (!Number.isFinite(om) || !Number.isFinite(nws) || om === 0 || nws === 0) return;
-
   const row = {
     event_ticker: forecast.name,
     location: forecast.location || null,
@@ -56,22 +55,48 @@ export async function persistForecast(forecast) {
   return rest('forecast_snapshots', { method: 'POST', body: row });
 }
 
+function askDollars(market) {
+  const n = Number(market?.yes_ask_dollars ?? market?.yes_ask);
+  if (!Number.isFinite(n)) return null;
+  return n > 1 ? n / 100 : n;
+}
+
 export async function persistCandidate(market, forecast, extras = {}) {
   if (!market) return;
+  const ask = extras.entry_yes_ask ?? askDollars(market);
   const row = {
     market_ticker: market.ticker,
     event_ticker: market.event_ticker,
     confidence: extras.confidence ?? forecast?.getConfidence?.() ?? null,
     revision_flagged: Boolean(forecast?.revision?.flagged),
     revision_delta: forecast?.revision?.deltaF ?? 0,
-    action: extras.action || 'paper',
+    action: extras.action || 'live',
     reason: extras.reason || null,
-    yes_ask: market.yes_ask_dollars ?? market.yes_ask ?? null,
+    yes_ask: ask,
+    entry_yes_ask: ask,
+    latest_yes_bid: extras.latest_yes_bid ?? null,
     om_temp: Number(forecast?.getForecastTemperature?.()) || null,
     nws_temp: Number(forecast?.getNWSForecastTemperature?.()) || null,
     live_sigma: forecast?.liveSigma ?? null,
   };
   return rest('trade_candidates', { method: 'POST', body: row });
+}
+
+export async function listOpenCandidates() {
+  const rows = await rest(
+    'trade_candidates',
+    { query: '?action=in.(paper,live,open)&order=run_at.asc' }
+  );
+  return Array.isArray(rows) ? rows : [];
+}
+
+export async function updateCandidate(id, fields) {
+  if (!id) return null;
+  return rest('trade_candidates', {
+    method: 'PATCH',
+    query: `?id=eq.${id}`,
+    body: fields,
+  });
 }
 
 export async function listUnscoredCandidates() {
