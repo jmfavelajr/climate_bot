@@ -2,6 +2,8 @@ name: Generate Kalshi_Climate_Markets Report
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "5,25,45 13-23 * * *"
 
 permissions:
   contents: write
@@ -13,25 +15,52 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Trading window (America/Chicago)
+        id: window
+        run: |
+          NOW=$(TZ=America/Chicago date +%H%M)
+          echo "chicago_hhmm=$NOW"
+          if [ "$NOW" -lt 0900 ]; then
+            echo "Before 9:00 CT — skip"
+            echo "run=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$NOW" -ge 1815 ]; then
+            echo "After 18:15 CT — skip"
+            echo "run=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=1" >> "$GITHUB_OUTPUT"
+          if [ "$NOW" -ge 1800 ]; then
+            echo "flatten=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "flatten=0" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Setup Node.js
+        if: steps.window.outputs.run == '1'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
+        if: steps.window.outputs.run == '1'
         run: npm ci
 
       - name: Apply live-sigma confidence patch
+        if: steps.window.outputs.run == '1'
         run: node apply_confidence_patch.js
 
       - name: Run climate script
+        if: steps.window.outputs.run == '1'
         env:
           KALSHI_API_KEY_ID: ${{ secrets.KALSHI_API_KEY_ID }}
           KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          FLATTEN_EOD: ${{ steps.window.outputs.flatten }}
         run: |
           mkdir -p reports
           node climate_bot.js > reports/latest.log 2> reports/latest.err
@@ -41,6 +70,7 @@ jobs:
           fi
 
       - name: Commit and push the report
+        if: steps.window.outputs.run == '1'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
