@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "5,25,45 13-23 * * *"
+    - cron: "5,25,45 0-1 * * *"
 
 permissions:
   contents: write
@@ -25,13 +26,13 @@ jobs:
             echo "run=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if [ "$NOW" -ge 1815 ]; then
-            echo "After 18:15 CT — skip"
+          if [ "$NOW" -ge 1915 ]; then
+            echo "After 19:15 CT — skip"
             echo "run=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           echo "run=1" >> "$GITHUB_OUTPUT"
-          if [ "$NOW" -ge 1800 ]; then
+          if [ "$NOW" -ge 1900 ]; then
             echo "flatten=1" >> "$GITHUB_OUTPUT"
           else
             echo "flatten=0" >> "$GITHUB_OUTPUT"
