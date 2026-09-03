@@ -33,7 +33,7 @@ function injectHooks(source) {
     if (out.includes("from './manage.js';")) {
       out = out.replace(
         "from './manage.js';",
-        "from './manage.js';\nimport { buyYes } from './kalshi_orders.js';"
+        "from './manage.js';\nimport { buyYes } from './kalshi_orders.js';\nimport { eventPicks, impliedYes } from './entry_policy.js';"
       );
     }
   }
@@ -46,6 +46,9 @@ function injectHooks(source) {
   if (out.includes('const autoExecute = false')) {
     out = out.replace('const autoExecute = false', 'const autoExecute = true');
   }
+  if (out.includes('let DAILY_TRADE_CAP = 8')) {
+    out = out.replace('let DAILY_TRADE_CAP = 8', 'let DAILY_TRADE_CAP = 24');
+  }
   if (out.includes('yes_ask_size_fp / 100')) {
     out = out.replace(
       'const yes_price = ((market.yes_ask_size_fp / 100).toFixed(2));',
@@ -55,14 +58,30 @@ function injectHooks(source) {
   if (!out.includes('allowNewEntry(market)')) {
     out = out.replace(
       'if(forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged){',
-      `const entryGate = allowNewEntry(market);\n    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
+      `const entryGate = allowNewEntry(market);\n    if(entryGate.ok){`
     );
   }
-  if (out.includes("action: 'paper'") && out.includes('persistCandidate(market, fc')) {
+  if (out.includes('&& entryGate.ok){') && out.includes('MIN_LIVE_CONFIDENCE')) {
     out = out.replace(
-      "action: 'paper', reason: revisionFlagged ? 'revision' : 'live_conf'",
-      "action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask"
+      'if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){',
+      'if(entryGate.ok){'
     );
+  }
+  if (out.includes("reason: revisionFlagged ? 'revision' : 'live_conf'")) {
+    out = out.replace(
+      "reason: revisionFlagged ? 'revision' : 'live_conf'",
+      "reason: market.pickReason || (revisionFlagged ? 'revision' : 'live_conf')"
+    );
+  }
+  if (!out.includes('eventPicks(') && out.includes('for(const market of responseData.markets){')) {
+    const start = out.indexOf('    for(const market of responseData.markets){');
+    const end = out.indexOf('//normal CDF approximation', start);
+    if (start >= 0 && end > start) {
+      out =
+        out.slice(0, start) +
+        `    const picks = eventPicks(responseData.markets, eventTicker, eventTickerNextDay);\n    for (const pick of picks) {\n        const market = pick.market;\n        console.log(\`MARKET PICK \${pick.horizon} \${pick.role} \${market.ticker} implied=\${impliedYes(market)}\`);\n        market.pickReason = pick.reason;\n        const confMap = pick.horizon === 'today' ? eventTicker : eventTickerNextDay;\n        await scanAndSelectMarkets(market, dailyForecastMap.get(confMap)?.getConfidence?.() ?? 99);\n    }\n}\n\n` +
+        out.slice(end);
+    }
   }
   return out;
 }
@@ -98,12 +117,12 @@ src = src.replaceAll('calculateConfidences(forecast);', 'await calculateConfiden
 
 src = src.replace(
   '    if(forecastConfidence >= 65){',
-  `    const fc = dailyForecastMap.get(market.event_ticker);\n    const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);\n    const entryGate = allowNewEntry(market);\n    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
+  `    const fc = dailyForecastMap.get(market.event_ticker);\n    const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);\n    const entryGate = allowNewEntry(market);\n    if(entryGate.ok){`
 );
 
 src = src.replace(
   '        await Promise.all([executeTrade(market, forecastConfidence)]);',
-  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask }).catch((err) => console.error(err.message));\n        await Promise.all([executeTrade(market, forecastConfidence)]);`
+  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'live', reason: market.pickReason || 'live_conf', entry_yes_ask: entryGate.ask }).catch((err) => console.error(err.message));\n        await Promise.all([executeTrade(market, forecastConfidence)]);`
 );
 
 const start = src.indexOf('function calculateConfidences(forecast){');
