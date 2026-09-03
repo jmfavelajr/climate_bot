@@ -26,9 +26,21 @@ function injectHooks(source) {
   if (!out.includes('manageOpenTrades')) {
     out = out.replace(
       'await runBot();',
-      `await runBot();
-await manageOpenTrades({ flatten: process.env.FLATTEN_EOD === '1' });
-await settlePaperTrades();`
+      `await runBot();\nawait manageOpenTrades({ flatten: process.env.FLATTEN_EOD === '1' });\nawait settlePaperTrades();`
+    );
+  }
+  if (!out.includes("from './kalshi_orders.js'")) {
+    if (out.includes("from './manage.js';")) {
+      out = out.replace(
+        "from './manage.js';",
+        "from './manage.js';\nimport { buyYes } from './kalshi_orders.js';"
+      );
+    }
+  }
+  if (out.includes('ordersApi.createOrder')) {
+    out = out.replace(
+      'const tradeResponse = await ordersApi.createOrder(postOrder);',
+      'const tradeResponse = await buyYes(eventTicker, count, yes_price);'
     );
   }
   if (out.includes('const autoExecute = false')) {
@@ -37,15 +49,13 @@ await settlePaperTrades();`
   if (out.includes('yes_ask_size_fp / 100')) {
     out = out.replace(
       'const yes_price = ((market.yes_ask_size_fp / 100).toFixed(2));',
-      `const _ask = Number(market.yes_ask_dollars ?? market.yes_ask);
-    const yes_price = ((_ask > 1 ? _ask / 100 : _ask) || 0).toFixed(2);`
+      `const _ask = Number(market.yes_ask_dollars ?? market.yes_ask);\n    const yes_price = ((_ask > 1 ? _ask / 100 : _ask) || 0).toFixed(2);`
     );
   }
   if (!out.includes('allowNewEntry(market)')) {
     out = out.replace(
       'if(forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged){',
-      `const entryGate = allowNewEntry(market);
-    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
+      `const entryGate = allowNewEntry(market);\n    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
     );
   }
   if (out.includes("action: 'paper'") && out.includes('persistCandidate(market, fc')) {
@@ -88,16 +98,12 @@ src = src.replaceAll('calculateConfidences(forecast);', 'await calculateConfiden
 
 src = src.replace(
   '    if(forecastConfidence >= 65){',
-  `    const fc = dailyForecastMap.get(market.event_ticker);
-    const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);
-    const entryGate = allowNewEntry(market);
-    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
+  `    const fc = dailyForecastMap.get(market.event_ticker);\n    const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);\n    const entryGate = allowNewEntry(market);\n    if((forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged) && entryGate.ok){`
 );
 
 src = src.replace(
   '        await Promise.all([executeTrade(market, forecastConfidence)]);',
-  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask }).catch((err) => console.error(err.message));
-        await Promise.all([executeTrade(market, forecastConfidence)]);`
+  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'live', reason: revisionFlagged ? 'revision' : 'live_conf', entry_yes_ask: entryGate.ask }).catch((err) => console.error(err.message));\n        await Promise.all([executeTrade(market, forecastConfidence)]);`
 );
 
 const start = src.indexOf('function calculateConfidences(forecast){');
@@ -107,11 +113,7 @@ if (start < 0 || end < 0 || end <= start) {
   process.exit(1);
 }
 
-src = src.slice(0, start) + `async function calculateConfidences(forecast){
-    return liveCalculateConfidences(forecast);
-}
-
-` + src.slice(end);
+src = src.slice(0, start) + `async function calculateConfidences(forecast){\n    return liveCalculateConfidences(forecast);\n}\n\n` + src.slice(end);
 
 src = injectHooks(src);
 
