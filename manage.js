@@ -66,6 +66,7 @@ async function sellYes(_ordersApi, ticker, count, bid) {
 }
 
 export function allowNewEntry(market) {
+  if (process.env.FLATTEN_EOD === '1') return { ok: false, ask: null, reason: 'eod_flatten' };
   const ask = dollars(market.yes_ask_dollars ?? market.yes_ask);
   if (!Number.isFinite(ask)) return { ok: false, ask, reason: 'no_ask' };
   if (ask > MAX_ENTRY) return { ok: false, ask, reason: 'ask_above_50c' };
@@ -74,11 +75,6 @@ export function allowNewEntry(market) {
 }
 
 export async function manageOpenTrades({ flatten = false } = {}) {
-  const rows = await listOpenCandidates();
-  if (!rows.length && !flatten) {
-    console.log('Manage: no open candidates');
-    return;
-  }
   const api = client();
   let positions = null;
   try {
@@ -86,6 +82,25 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     positions = posRes?.data || posRes;
   } catch (err) {
     console.error('Manage: positions failed', err.message);
+  }
+
+  let rows = await listOpenCandidates();
+  const live = positions?.market_positions || positions?.marketPositions || [];
+  if (!rows.length && live.length) {
+    rows = live
+      .filter((p) => Math.abs(Number(p.position_fp ?? p.position ?? 0)) > 0)
+      .map((p) => ({
+        id: null,
+        market_ticker: p.ticker || p.market_ticker,
+        entry_yes_ask: p.average_price ?? p.average_price_dollars ?? null,
+        yes_ask: p.average_price ?? p.average_price_dollars ?? null,
+        reason: 'live_position',
+      }));
+    console.log(`Manage: no DB rows, tracking ${rows.length} live Kalshi positions`);
+  }
+  if (!rows.length && !flatten) {
+    console.log('Manage: no open candidates');
+    return;
   }
 
   for (const row of rows) {
