@@ -1,28 +1,26 @@
-Kalshi manage-only 2026-09-03T16:15:59-05:00
-Manage mark KXHIGHCHI-26SEP03-B94.5 2x but no live position
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.16 bid=0.07 target=0.32
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.19 target=0.42
+Kalshi manage-only 2026-09-03T18:18:53-05:00
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.16 bid=0.01 target=0.32
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.2 target=0.42
 Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.85 bid=0 target=0.99
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.21 target=0.4
-Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.14 bid=0.05 target=0.28
-Manage hold KXHIGHTLV-26SEP03-B96.5 entry=0.48 bid=0.59 target=0.96
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.09 target=0.38
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.24 target=0.4
+Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.14 bid=0.14 target=0.28
+Manage mark KXHIGHTLV-26SEP03-B96.5 2x but no live position
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.14 target=0.38
 Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
 Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.97 bid=0.93 target=0.99
-Manage mark KXHIGHCHI-26SEP03-B94.5 2x but no live position
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.15 bid=0.07 target=0.3
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.19 target=0.42
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.15 bid=0.01 target=0.3
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.2 target=0.42
 Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.8 bid=0 target=0.99
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.21 target=0.4
-Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.23 bid=0.05 target=0.46
-Manage hold KXHIGHTLV-26SEP03-B96.5 entry=0.47 bid=0.59 target=0.94
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.2 bid=0.09 target=0.4
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.24 target=0.4
+Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.23 bid=0.14 target=0.46
+Manage mark KXHIGHTLV-26SEP03-B96.5 2x but no live position
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.2 bid=0.14 target=0.4
 Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
 Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.99 bid=0.93 target=0.99
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.08 bid=0.07 target=0.16
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.23 bid=0.19 target=0.46
+Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.08 bid=0.01 target=0.16
+Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.23 bid=0.2 target=0.46
 Manage hold KXHIGHPHIL-26SEP04-B86.5 entry=0.31 bid=0.31 target=0.62
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.19 bid=0.21 target=0.38
-Manage hold KXHIGHTLV-26SEP03-B94.5 entry=0.35 bid=0.35 target=0.7
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.09 target=0.38
+Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.19 bid=0.24 target=0.38
+Manage hold KXHIGHTLV-26SEP03-B94.5 entry=0.35 bid=0 target=0.7
+Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.14 target=0.38
 Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.03 bid=0 target=0.06
