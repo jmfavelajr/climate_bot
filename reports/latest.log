@@ -8,42 +8,42 @@ Live confidence KXHIGHCHI-26SEP03 Chicago: sigma=10 disagree=64.347 conf=0 (Low)
 Forecasted temperatures(NWS) - daily High for KXHIGHCHI-26SEP03 - Chicago: 91, Confidence: 0
 Live confidence KXHIGHCHI-26SEP03 Chicago: sigma=2.9 disagree=1.768 conf=65 (Moderate) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHCHI-26SEP03 - Chicago: 93.5, Confidence: 65
-Live confidence KXHIGHDEN-26SEP04 Denver: sigma=10 disagree=2.121 conf=0 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP04 - Denver: 94, Confidence: 0
+Live confidence KXHIGHDEN-26SEP04 Denver: sigma=10 disagree=64.347 conf=0 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP04 - Denver: 91, Confidence: 0
 Live confidence KXHIGHDEN-26SEP04 Denver: sigma=5.185 disagree=2.121 conf=38 (Low) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP04 - Denver: 91, Confidence: 38
+Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP04 - Denver: 94, Confidence: 38
 Live confidence KXHIGHDEN-26SEP03 Denver: sigma=10 disagree=65.054 conf=0 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHDEN-26SEP03 - Denver: 92, Confidence: 0
 Live confidence KXHIGHDEN-26SEP03 Denver: sigma=3.183 disagree=0.141 conf=67 (Moderate) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHDEN-26SEP03 - Denver: 92.2, Confidence: 67
-Live confidence KXHIGHLAX-26SEP04 Los Angeles: sigma=10 disagree=1.909 conf=0 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 75.7, Confidence: 0
+Live confidence KXHIGHLAX-26SEP04 Los Angeles: sigma=10 disagree=51.619 conf=0 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 73, Confidence: 0
 Live confidence KXHIGHLAX-26SEP04 Los Angeles: sigma=3.235 disagree=1.909 conf=61 (Moderate) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 73, Confidence: 61
+Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP04 - Los Angeles: 75.7, Confidence: 61
 Live confidence KXHIGHLAX-26SEP03 Los Angeles: sigma=10 disagree=51.619 conf=0 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 73, Confidence: 0
 Live confidence KXHIGHLAX-26SEP03 Los Angeles: sigma=2.209 disagree=2.051 conf=73 (High) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHLAX-26SEP03 - Los Angeles: 75.9, Confidence: 73
-Live confidence KXHIGHPHIL-26SEP04 Philadelphia: sigma=10 disagree=2.263 conf=0 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 84.8, Confidence: 0
+Live confidence KXHIGHPHIL-26SEP04 Philadelphia: sigma=10 disagree=62.225 conf=0 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 88, Confidence: 0
 Live confidence KXHIGHPHIL-26SEP04 Philadelphia: sigma=4.222 disagree=2.263 conf=49 (Low) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 88, Confidence: 49
+Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP04 - Philadelphia: 84.8, Confidence: 49
 Live confidence KXHIGHPHIL-26SEP03 Philadelphia: sigma=10 disagree=64.347 conf=0 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 91, Confidence: 0
 Live confidence KXHIGHPHIL-26SEP03 Philadelphia: sigma=3.558 disagree=4.101 conf=57 (Low) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHPHIL-26SEP03 - Philadelphia: 85.2, Confidence: 57
-Live confidence KXHIGHTSFO-26SEP04 San Francisco: sigma=10 disagree=0.707 conf=0 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 67, Confidence: 0
+Live confidence KXHIGHTSFO-26SEP04 San Francisco: sigma=10 disagree=48.083 conf=0 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 68, Confidence: 0
 Live confidence KXHIGHTSFO-26SEP04 San Francisco: sigma=2.757 disagree=0.707 conf=72 (Moderate) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 68, Confidence: 67
+Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP04 - San Francisco: 67, Confidence: 72
 Live confidence KXHIGHTSFO-26SEP03 San Francisco: sigma=10 disagree=49.497 conf=0 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 70, Confidence: 0
 Live confidence KXHIGHTSFO-26SEP03 San Francisco: sigma=1.827 disagree=0.636 conf=83 (High) rev=0
 Forecasted temperatures(OM) - daily High for KXHIGHTSFO-26SEP03 - San Francisco: 69.1, Confidence: 83
-Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=10 disagree=0.849 conf=0 (Low) rev=0
-Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 94.8, Confidence: 0
+Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=10 disagree=67.882 conf=0 (Low) rev=0
+Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 96, Confidence: 0
 Live confidence KXHIGHTLV-26SEP04 Las Vegas: sigma=3.997 disagree=0.849 conf=52 (Low) rev=0
-Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 96, Confidence: 52
+Forecasted temperatures(OM) - daily High for KXHIGHTLV-26SEP04 - Las Vegas: 94.8, Confidence: 52
 Live confidence KXHIGHTLV-26SEP03 Las Vegas: sigma=10 disagree=67.882 conf=0 (Low) rev=0
 Forecasted temperatures(NWS) - daily High for KXHIGHTLV-26SEP03 - Las Vegas: 96, Confidence: 0
 Live confidence KXHIGHTLV-26SEP03 Las Vegas: sigma=2.628 disagree=0.495 conf=73 (Moderate) rev=0
@@ -140,79 +140,3 @@ Current forecast confidence: 66 for market: KXLOWTPHIL-26SEP03-B71.5
 WINNER! - Market: KXLOWTPHIL-26SEP03-B71.5, Event: KXLOWTPHIL-26SEP03, Confidence:66
 Verification of 'bad bet' result: No edge/Kelly Fraction negative/0!
 Verification of trade execution logic safeguard : No Bet value or Bet too risky!: 0
------ stderr -----
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase GET forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST forecast_snapshots failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.portfolio_snapshots'","message":"Could not find the table 'public.forecast_snapshots' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
-Supabase POST trade_candidates failed 404: {"code":"PGRST205","details":null,"hint":"Perhaps you meant the table 'public.trade_locks'","message":"Could not find the table 'public.trade_candidates' in the schema cache"}
