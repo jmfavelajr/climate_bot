@@ -1,6 +1,7 @@
 import kalshiPkg from 'kalshi-typescript';
 import { listOpenCandidates, updateCandidate } from './persist.js';
 import { sellYes as submitSellYes } from './kalshi_orders.js';
+import { exitDecision } from './entry_policy.js';
 
 const MAX_ENTRY = 0.50;
 const TAKE_PROFIT_MULT = 2;
@@ -15,11 +16,6 @@ function dollars(raw) {
   const n = Number(raw);
   if (!Number.isFinite(n)) return null;
   return n > 1 ? n / 100 : n;
-}
-
-function targetBid(entry) {
-  if (!Number.isFinite(entry) || entry <= 0) return null;
-  return Math.min(TAKE_PROFIT_CAP, Number((entry * TAKE_PROFIT_MULT).toFixed(2)));
 }
 
 function client() {
@@ -69,7 +65,6 @@ export function allowNewEntry(market) {
   if (process.env.FLATTEN_EOD === '1') return { ok: false, ask: null, reason: 'eod_flatten' };
   const ask = dollars(market.yes_ask_dollars ?? market.yes_ask);
   if (!Number.isFinite(ask)) return { ok: false, ask, reason: 'no_ask' };
-  if (ask > MAX_ENTRY) return { ok: false, ask, reason: 'ask_above_50c' };
   if (ask < 0.02) return { ok: false, ask, reason: 'ask_too_thin' };
   return { ok: true, ask };
 }
@@ -110,29 +105,28 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     if (Number.isFinite(bid)) {
       await updateCandidate(row.id, { latest_yes_bid: bid });
     }
-    const tgt = targetBid(entry);
-    const hitTp = Number.isFinite(bid) && Number.isFinite(tgt) && bid >= tgt;
-    const shouldFlat = flatten || hitTp;
-    if (!shouldFlat) {
-      console.log(`Manage hold ${row.market_ticker} entry=${entry} bid=${bid} target=${tgt}`);
+    const decision = exitDecision({ reason: row.reason, entry, bid, flatten });
+    if (!decision.sell) {
+      console.log(`Manage hold ${row.market_ticker} ${row.reason || ''} entry=${entry} bid=${bid} sl=${decision.sl} (${decision.why})`);
       continue;
     }
+    const hitTp = decision.why === 'runner_cover_cost';
     const count = positionCount(positions, row.market_ticker);
     if (count <= 0) {
       await updateCandidate(row.id, {
-        action: flatten ? 'eod_flat_no_pos' : 'tp_no_pos',
+        action: decision.why === 'stop_50pct' ? 'stopped' : 'tp_no_pos',
         latest_yes_bid: bid,
-        reason: `${row.reason || ''}|${flatten ? 'eod' : '2x'}`,
+        reason: `${row.reason || ''}|${decision.why}`,
       });
-      console.log(`Manage mark ${row.market_ticker} ${flatten ? 'eod' : '2x'} but no live position`);
+      console.log(`Manage mark ${row.market_ticker} ${decision.why} but no live position`);
       continue;
     }
     try {
-      await sellYes(api.ordersApi, row.market_ticker, count, hitTp ? bid : bid || TAKE_PROFIT_CAP);
+      await sellYes(api.ordersApi, row.market_ticker, count, bid || TAKE_PROFIT_CAP);
       await updateCandidate(row.id, {
-        action: flatten && !hitTp ? 'eod_flat' : 'take_profit',
+        action: decision.why,
         latest_yes_bid: bid,
-        reason: `${row.reason || ''}|${hitTp ? '2x' : 'eod_flat'}`,
+        reason: `${row.reason || ''}|${decision.why}`,
       });
     } catch (err) {
       console.error(`Sell failed ${row.market_ticker}:`, err.data || err.message);
