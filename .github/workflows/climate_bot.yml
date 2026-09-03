@@ -29,11 +29,10 @@ jobs:
         env:
           KALSHI_API_KEY_ID: ${{ secrets.KALSHI_API_KEY_ID }}
           KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           mkdir -p reports
-          if [ -z "$KALSHI_API_KEY_ID" ] || [ -z "$KALSHI_PRIVATE_KEY" ]; then
-            echo "Missing KALSHI_API_KEY_ID or KALSHI_PRIVATE_KEY repo secrets" >&2
-          fi
           node climate_bot.js > reports/latest.log 2> reports/latest.err
           if [ -s reports/latest.err ]; then
             echo "----- stderr -----" >> reports/latest.log
@@ -44,10 +43,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           mkdir -p reports
           git add reports/latest.log reports/latest.err || true
-
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else

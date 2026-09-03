@@ -16,7 +16,7 @@ if (!src.includes(importNeedle)) {
 
 src = src.replace(
   importNeedle,
-  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';`
+  `${importNeedle}\nimport { calculateConfidences as liveCalculateConfidences, MIN_LIVE_CONFIDENCE } from './confidence.js';\nimport { persistCandidate } from './persist.js';`
 );
 
 src = src.replace(
@@ -24,11 +24,19 @@ src = src.replace(
   'const std = dailyForecastMap.get(seriesForecast).liveSigma || dailyForecastMap.get(seriesForecast).deviation;'
 );
 
+src = src.replaceAll('calculateConfidences(forecast);', 'await calculateConfidences(forecast);');
+
 src = src.replace(
   '    if(forecastConfidence >= 65){',
   `    const fc = dailyForecastMap.get(market.event_ticker);
     const revisionFlagged = Boolean(fc && fc.revision && fc.revision.flagged);
     if(forecastConfidence >= MIN_LIVE_CONFIDENCE || revisionFlagged){`
+);
+
+src = src.replace(
+  '        await Promise.all([executeTrade(market, forecastConfidence)]);',
+  `        persistCandidate(market, fc, { confidence: forecastConfidence, action: 'paper', reason: revisionFlagged ? 'revision' : 'live_conf' }).catch((err) => console.error(err.message));
+        await Promise.all([executeTrade(market, forecastConfidence)]);`
 );
 
 const start = src.indexOf('function calculateConfidences(forecast){');
@@ -38,7 +46,7 @@ if (start < 0 || end < 0 || end <= start) {
   process.exit(1);
 }
 
-src = src.slice(0, start) + `function calculateConfidences(forecast){
+src = src.slice(0, start) + `async function calculateConfidences(forecast){
     return liveCalculateConfidences(forecast);
 }
 
