@@ -1,51 +1,16 @@
-Kalshi manage-only 2026-09-04T08:52:01-05:00
-Manage mark KXHIGHLAX-26SEP04-B75.5 stop_50pct but no live position
-Selling YES KXHIGHTSFO-26SEP04-B68.5 count=2 @ 0.1 (stop_50pct)
-Kalshi v2 ask KXHIGHTSFO-26SEP04-B68.5 count=2.00 price=0.1000 status=201 {
-  average_fee_paid: '0.0063',
-  average_fill_price: '0.1000',
-  client_order_id: '80939d87-d740-4810-a823-0bb6f25cf8a0',
-  fill_count: '2.00',
-  order_id: '01a06cb0-cfd0-74a5-b99f-5d86d489cd01',
-  remaining_count: '0.00',
-  ts_ms: 1788529922978
-}
+Kalshi manage-only 2026-09-04T09:13:37-05:00
 Selling YES KXLOWTLAX-26SEP03-B64.5 count=2 @ 0 (stop_50pct)
-Manage mark KXHIGHLAX-26SEP04-B75.5 stop_50pct but no live position
-Selling YES KXHIGHTSFO-26SEP04-B68.5 count=2 @ 0.1 (stop_50pct)
-Kalshi v2 ask KXHIGHTSFO-26SEP04-B68.5 count=2.00 price=0.1000 status=201 {
-  average_fee_paid: '0.0063',
-  average_fill_price: '0.1000',
-  client_order_id: 'd48692cb-6476-42bd-8b51-939970806e19',
-  fill_count: '2.00',
-  order_id: '01a06cb0-d3b8-7c1d-bb52-df5a0a280ddd',
-  remaining_count: '0.00',
-  ts_ms: 1788529923856
-}
 Selling YES KXLOWTLAX-26SEP03-B64.5 count=2 @ 0 (stop_50pct)
-Manage mark KXHIGHLAX-26SEP04-B75.5 stop_50pct but no live position
-Selling YES KXHIGHPHIL-26SEP04-B86.5 count=4 @ 0.09 (stop_50pct)
-Kalshi v2 ask KXHIGHPHIL-26SEP04-B86.5 count=4.00 price=0.0900 status=201 {
-  average_fee_paid: '0.0058',
-  average_fill_price: '0.0900',
-  client_order_id: '8cd778db-7ce3-4191-91ed-1029de12ce6e',
-  fill_count: '1.00',
-  order_id: '01a06cb0-d7a0-7388-b5b8-a8962822aa5d',
-  remaining_count: '0.00',
-  ts_ms: 1788529924513
-}
 Manage hold KXHIGHTSFO-26SEP04-B68.5 live_conf entry=0.19 bid=0.1 sl=0.095 (hold_settlement)
 Selling YES KXLOWTLAX-26SEP03-B64.5 count=2 @ 0 (stop_50pct)
-Manage hold KXHIGHCHI-26SEP04-B95.5 today_favorite entry=0.44 bid=0.3 sl=0.22 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP04-B92.5 today_favorite entry=0.55 bid=0.55 sl=0.275 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP04-B77.5 today_favorite entry=0.62 bid=0.66 sl=0.31 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP04-B88.5 today_favorite entry=0.51 bid=0.5 sl=0.255 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP04-B95.5 today_favorite entry=0.44 bid=0.33 sl=0.22 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP04-B92.5 today_favorite entry=0.55 bid=0.57 sl=0.275 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP04-B77.5 today_favorite entry=0.62 bid=0.65 sl=0.31 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP04-B88.5 today_favorite entry=0.51 bid=0.51 sl=0.255 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP04-B70.5 today_favorite entry=0.55 bid=0.55 sl=0.275 (hold_settlement)
-Manage hold KXHIGHTLV-26SEP04-B97.5 today_favorite entry=0.54 bid=0.51 sl=0.27 (hold_settlement)
-Manage mark KXLOWTCHI-26SEP04-B72.5 stop_50pct but no live position
-Manage mark KXLOWTDEN-26SEP04-B58.5 stop_50pct but no live position
-Manage hold KXLOWTLAX-26SEP04-B64.5 today_favorite entry=0.56 bid=0.91 sl=0.28 (hold_settlement)
-Manage hold KXLOWTPHIL-26SEP04-B73.5 today_favorite entry=0.51 bid=0.84 sl=0.255 (hold_settlement)
+Manage hold KXHIGHTLV-26SEP04-B97.5 today_favorite entry=0.54 bid=0.52 sl=0.27 (hold_settlement)
+Manage hold KXLOWTLAX-26SEP04-B64.5 today_favorite entry=0.56 bid=0.95 sl=0.28 (hold_settlement)
+Manage hold KXLOWTPHIL-26SEP04-B73.5 today_favorite entry=0.51 bid=0.83 sl=0.255 (hold_settlement)
 ----- stderr -----
 Sell failed KXLOWTLAX-26SEP03-B64.5: { error: { code: 'market_closed', message: 'market closed' } }
 Sell failed KXLOWTLAX-26SEP03-B64.5: { error: { code: 'market_closed', message: 'market closed' } }
