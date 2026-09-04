@@ -2,8 +2,13 @@ name: Generate Kalshi_Climate_Markets Report
 
 on:
   workflow_dispatch:
+  # Backup only. Cloudflare cron is the primary 5-minute clock.
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/20 * * * *"
+
+concurrency:
+  group: climate-bot
+  cancel-in-progress: false
 
 permissions:
   contents: write
