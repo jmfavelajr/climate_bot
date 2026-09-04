@@ -1,26 +1,73 @@
-Kalshi manage-only 2026-09-03T18:18:53-05:00
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.16 bid=0.01 target=0.32
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.2 target=0.42
-Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.85 bid=0 target=0.99
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.24 target=0.4
-Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.14 bid=0.14 target=0.28
-Manage mark KXHIGHTLV-26SEP03-B96.5 2x but no live position
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.14 target=0.38
-Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
-Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.97 bid=0.93 target=0.99
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.15 bid=0.01 target=0.3
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.21 bid=0.2 target=0.42
-Manage hold KXHIGHLAX-26SEP03-B76.5 entry=0.8 bid=0 target=0.99
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.2 bid=0.24 target=0.4
-Manage hold KXHIGHTSFO-26SEP03-B70.5 entry=0.23 bid=0.14 target=0.46
-Manage mark KXHIGHTLV-26SEP03-B96.5 2x but no live position
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.2 bid=0.14 target=0.4
-Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.05 bid=0 target=0.1
-Manage hold KXLOWTPHIL-26SEP03-B71.5 entry=0.99 bid=0.93 target=0.99
-Manage hold KXHIGHDEN-26SEP03-B93.5 entry=0.08 bid=0.01 target=0.16
-Manage hold KXHIGHLAX-26SEP04-B75.5 entry=0.23 bid=0.2 target=0.46
-Manage hold KXHIGHPHIL-26SEP04-B86.5 entry=0.31 bid=0.31 target=0.62
-Manage hold KXHIGHTSFO-26SEP04-B68.5 entry=0.19 bid=0.24 target=0.38
-Manage hold KXHIGHTLV-26SEP03-B94.5 entry=0.35 bid=0 target=0.7
-Manage hold KXLOWTCHI-26SEP03-B77.5 entry=0.19 bid=0.14 target=0.38
-Manage hold KXLOWTLAX-26SEP03-B64.5 entry=0.03 bid=0 target=0.06
+Kalshi manage-only 2026-09-04T00:56:47-05:00
+Selling YES KXHIGHDEN-26SEP03-B93.5 count=2 @ 0.99
+Kalshi v2 ask KXHIGHDEN-26SEP03-B93.5 count=2.00 price=0.9900 status=201 {
+  client_order_id: 'fb9e6997-f7c0-4df4-b6b0-b3d4067630ad',
+  fill_count: '0.00',
+  order_id: '01a06afd-b900-7446-9c99-393e5ca994c7',
+  remaining_count: '0.00',
+  ts_ms: 1788501408825
+}
+Manage hold KXHIGHLAX-26SEP04-B75.5 live_conf entry=0.21 bid=0.13 sl=0.105 (hold_settlement)
+Manage mark KXHIGHLAX-26SEP03-B76.5 stop_50pct but no live position
+Manage hold KXHIGHTSFO-26SEP04-B68.5 live_conf entry=0.2 bid=0.22 sl=0.1 (hold_settlement)
+Manage mark KXHIGHTSFO-26SEP03-B70.5 stop_50pct but no live position
+Selling YES KXLOWTCHI-26SEP03-B77.5 count=4 @ 0.99
+Kalshi v2 ask KXLOWTCHI-26SEP03-B77.5 count=4.00 price=0.9900 status=201 {
+  client_order_id: 'a15a4ba3-6ee0-4bc6-9d99-6acb3e1b53e3',
+  fill_count: '0.00',
+  order_id: '01a06afd-c0d0-7c21-a7fc-39fc987d770f',
+  remaining_count: '0.00',
+  ts_ms: 1788501410670
+}
+Manage hold KXLOWTLAX-26SEP03-B64.5 live_conf entry=0.05 bid=0.07 sl=0.025 (hold_settlement)
+Manage mark KXLOWTPHIL-26SEP03-B71.5 stop_50pct but no live position
+Selling YES KXHIGHDEN-26SEP03-B93.5 count=2 @ 0.99
+Kalshi v2 ask KXHIGHDEN-26SEP03-B93.5 count=2.00 price=0.9900 status=201 {
+  client_order_id: 'e059abe9-e56a-4109-82e5-19828d11f276',
+  fill_count: '0.00',
+  order_id: '01a06afd-c4b8-76b3-86bb-b64e7ed47459',
+  remaining_count: '0.00',
+  ts_ms: 1788501411485
+}
+Manage hold KXHIGHLAX-26SEP04-B75.5 live_conf entry=0.21 bid=0.13 sl=0.105 (hold_settlement)
+Manage mark KXHIGHLAX-26SEP03-B76.5 stop_50pct but no live position
+Manage hold KXHIGHTSFO-26SEP04-B68.5 live_conf entry=0.2 bid=0.22 sl=0.1 (hold_settlement)
+Manage mark KXHIGHTSFO-26SEP03-B70.5 stop_50pct but no live position
+Selling YES KXLOWTCHI-26SEP03-B77.5 count=4 @ 0.99
+Kalshi v2 ask KXLOWTCHI-26SEP03-B77.5 count=4.00 price=0.9900 status=201 {
+  client_order_id: '1edfe1bd-452d-4b1a-8eb1-97fabe3a63b4',
+  fill_count: '0.00',
+  order_id: '01a06afd-c8a0-7ed9-81c2-8aa579f3975f',
+  remaining_count: '0.00',
+  ts_ms: 1788501412747
+}
+Manage hold KXLOWTLAX-26SEP03-B64.5 live_conf entry=0.05 bid=0.07 sl=0.025 (hold_settlement)
+Manage mark KXLOWTPHIL-26SEP03-B71.5 stop_50pct but no live position
+Selling YES KXHIGHDEN-26SEP03-B93.5 count=2 @ 0.99
+Kalshi v2 ask KXHIGHDEN-26SEP03-B93.5 count=2.00 price=0.9900 status=201 {
+  client_order_id: '7bc0c420-d73f-4c71-a978-6611f403c5e1',
+  fill_count: '0.00',
+  order_id: '01a06afd-cc88-72c9-b413-265a132cbb2d',
+  remaining_count: '0.00',
+  ts_ms: 1788501413741
+}
+Manage hold KXHIGHLAX-26SEP04-B75.5 live_conf entry=0.23 bid=0.14 sl=0.115 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP04-B86.5 live_conf entry=0.31 bid=0.22 sl=0.155 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP04-B68.5 live_conf entry=0.19 bid=0.22 sl=0.095 (hold_settlement)
+Selling YES KXHIGHTLV-26SEP03-B94.5 count=2 @ 0.99
+Kalshi v2 ask KXHIGHTLV-26SEP03-B94.5 count=2.00 price=0.9900 status=201 {
+  client_order_id: '4160f233-12d5-4db9-85f4-d620d34f0ab7',
+  fill_count: '0.00',
+  order_id: '01a06afd-d070-7494-ad88-e14a4cae1306',
+  remaining_count: '0.00',
+  ts_ms: 1788501414646
+}
+Selling YES KXLOWTCHI-26SEP03-B77.5 count=4 @ 0.99
+Kalshi v2 ask KXLOWTCHI-26SEP03-B77.5 count=4.00 price=0.9900 status=201 {
+  client_order_id: 'b9ce3c38-3a6b-4f25-9b5d-73ab1c6cac2f',
+  fill_count: '0.00',
+  order_id: '01a06afd-d070-70c2-bf30-f6268d5b68a0',
+  remaining_count: '0.00',
+  ts_ms: 1788501414982
+}
+Manage hold KXLOWTLAX-26SEP03-B64.5 live_conf entry=0.03 bid=0.07 sl=0.015 (hold_settlement)
