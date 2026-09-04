@@ -43,15 +43,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        if: steps.window.outputs.run == '1'
-        run: npm ci
-
-      - name: Apply live-sigma confidence patch
-        if: steps.window.outputs.run == '1' && steps.window.outputs.mode == 'full'
-        run: node apply_confidence_patch.js
 
       - name: Run climate script
         if: steps.window.outputs.run == '1'
@@ -65,7 +56,7 @@ jobs:
         run: |
           mkdir -p reports
           if [ "${{ steps.window.outputs.mode }}" = "full" ]; then
-            node climate_bot.js > reports/latest.log 2> reports/latest.err
+            node scan.js > reports/latest.log 2> reports/latest.err
           else
             echo "Kalshi manage-only $(TZ=America/Chicago date -Iseconds)" > reports/latest.log
             node manage_only.js >> reports/latest.log 2> reports/latest.err

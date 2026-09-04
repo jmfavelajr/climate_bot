@@ -95,3 +95,58 @@ export async function sellYes(ticker, count, price) {
     timeInForce: 'immediate_or_cancel',
   });
 }
+
+export async function kalshiGet(path, { auth = true } = {}) {
+  const url = `${BASE_URL}${path}`;
+  const headers = auth ? authHeaders('GET', path.split('?')[0]) : {};
+  const res = await fetch(url, { headers });
+  const text = await res.text();
+  let data = null;
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    data = { raw: text };
+  }
+  if (!res.ok) {
+    const err = new Error(`Kalshi GET ${path} failed ${res.status}`);
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+  return data;
+}
+
+export async function getBalance() {
+  const data = await kalshiGet('/trade-api/v2/portfolio/balance');
+  return Number(data?.balance ?? data?.balance_dollars ?? 0);
+}
+
+export async function getPositions() {
+  try {
+    return await kalshiGet('/trade-api/v2/portfolio/positions');
+  } catch (err) {
+    console.error('positions failed', err.data || err.message);
+    return { market_positions: [] };
+  }
+}
+
+export async function getSeriesMarkets(seriesTicker) {
+  const path = `/trade-api/v2/markets?series_ticker=${encodeURIComponent(seriesTicker)}&status=open&limit=200`;
+  try {
+    const data = await kalshiGet(path, { auth: false });
+    return data?.markets || [];
+  } catch (err) {
+    console.error(`markets ${seriesTicker} failed`, err.data || err.message);
+    return [];
+  }
+}
+
+export async function getMarket(ticker) {
+  try {
+    const data = await kalshiGet(`/trade-api/v2/markets/${encodeURIComponent(ticker)}`, { auth: false });
+    return data?.market || data;
+  } catch (err) {
+    console.error('market lookup failed', ticker, err.message);
+    return null;
+  }
+}
