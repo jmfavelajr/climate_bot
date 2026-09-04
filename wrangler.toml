@@ -2,5 +2,6 @@ name = "clima-markets-report-fetch"
 main = "worker.js"
 compatibility_date = "2026-07-30"
 
+# Redeploy trigger 2026-09-04 14:41 CT
 [triggers]
 crons = ["*/5 * * * *"]
