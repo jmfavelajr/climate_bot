@@ -1,2 +1,3 @@
 Sell failed KXHIGHPHIL-26SEP04-B88.5: { error: { code: 'market_closed', message: 'market closed' } }
 Sell failed KXLOWTPHIL-26SEP04-B73.5: { error: { code: 'market_closed', message: 'market closed' } }
+Sell failed KXHIGHCHI-26SEP04-B93.5: { error: { code: 'market_closed', message: 'market closed' } }
