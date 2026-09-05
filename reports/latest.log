@@ -1,78 +1,16 @@
-Kalshi-only scan 26SEP05 / 26SEP06 (no NWS, no Open-Meteo, no Kelly)
-Connected to Kalshi. Balance: 68
-MARKET PICK today favorite KXHIGHCHI-26SEP05-B83.5 implied=0.94 ask=0.95
-SKIP already held KXHIGHCHI-26SEP05-B83.5
-MARKET PICK tomorrow favorite KXHIGHCHI-26SEP06-B79.5 implied=0.39 ask=0.4
-SKIP already held KXHIGHCHI-26SEP06-B79.5
-MARKET PICK tomorrow runner KXHIGHCHI-26SEP06-B77.5 implied=0.38 ask=0.39
-BUY YES KXHIGHCHI-26SEP06-B77.5 count=3 @ 0.39 (tomorrow_runner)
-MARKET PICK today favorite KXHIGHDEN-26SEP05-B93.5 implied=0.7 ask=0.69
-SKIP already held KXHIGHDEN-26SEP05-B93.5
-MARKET PICK tomorrow favorite KXHIGHDEN-26SEP06-B91.5 implied=0.46 ask=0.46
-BUY YES KXHIGHDEN-26SEP06-B91.5 count=2 @ 0.46 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXHIGHDEN-26SEP06-B93.5 implied=0.32 ask=0.31
-BUY YES KXHIGHDEN-26SEP06-B93.5 count=3 @ 0.31 (tomorrow_runner)
-MARKET PICK today favorite KXHIGHLAX-26SEP05-B79.5 implied=0.32 ask=0.34
-BUY YES KXHIGHLAX-26SEP05-B79.5 count=3 @ 0.34 (today_favorite)
-MARKET PICK tomorrow favorite KXHIGHLAX-26SEP06-B80.5 implied=0.41 ask=0.41
-SKIP already held KXHIGHLAX-26SEP06-B80.5
-MARKET PICK tomorrow runner KXHIGHLAX-26SEP06-B78.5 implied=0.27 ask=0.27
-SKIP already held KXHIGHLAX-26SEP06-B78.5
-MARKET PICK today favorite KXHIGHPHIL-26SEP05-B84.5 implied=0.63 ask=0.63
-SKIP already held KXHIGHPHIL-26SEP05-B84.5
-MARKET PICK tomorrow favorite KXHIGHPHIL-26SEP06-B81.5 implied=0.43 ask=0.44
-BUY YES KXHIGHPHIL-26SEP06-B81.5 count=2 @ 0.44 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXHIGHPHIL-26SEP06-B79.5 implied=0.33 ask=0.34
-SKIP already held KXHIGHPHIL-26SEP06-B79.5
-MARKET PICK today favorite KXHIGHTSFO-26SEP05-B73.5 implied=0.53 ask=0.53
-BUY YES KXHIGHTSFO-26SEP05-B73.5 count=2 @ 0.53 (today_favorite)
-MARKET PICK tomorrow favorite KXHIGHTSFO-26SEP06-B69.5 implied=0.4 ask=0.41
-BUY YES KXHIGHTSFO-26SEP06-B69.5 count=2 @ 0.41 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXHIGHTSFO-26SEP06-B71.5 implied=0.3 ask=0.29
-BUY YES KXHIGHTSFO-26SEP06-B71.5 count=3 @ 0.29 (tomorrow_runner)
-MARKET PICK today favorite KXHIGHTLV-26SEP05-B97.5 implied=0.75 ask=0.72
-SKIP already held KXHIGHTLV-26SEP05-B97.5
-MARKET PICK tomorrow favorite KXHIGHTLV-26SEP06-B84.5 implied=0.41 ask=0.41
-BUY YES KXHIGHTLV-26SEP06-B84.5 count=2 @ 0.41 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXHIGHTLV-26SEP06-B82.5 implied=0.29 ask=0.29
-BUY YES KXHIGHTLV-26SEP06-B82.5 count=3 @ 0.29 (tomorrow_runner)
-MARKET PICK today favorite KXLOWTCHI-26SEP05-B72.5 implied=0.52 ask=0.51
-BUY YES KXLOWTCHI-26SEP05-B72.5 count=2 @ 0.51 (today_favorite)
-MARKET PICK tomorrow favorite KXLOWTCHI-26SEP06-B68.5 implied=0.34 ask=0.43
-BUY YES KXLOWTCHI-26SEP06-B68.5 count=2 @ 0.43 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXLOWTCHI-26SEP06-B66.5 implied=0.165 ask=0.2
-BUY YES KXLOWTCHI-26SEP06-B66.5 count=4 @ 0.2 (tomorrow_runner)
-MARKET PICK today favorite KXLOWTDEN-26SEP05-B61.5 implied=0.92 ask=0.92
-BUY YES KXLOWTDEN-26SEP05-B61.5 count=1 @ 0.92 (today_favorite)
-MARKET PICK tomorrow favorite KXLOWTDEN-26SEP06-B63.5 implied=0.36 ask=0.59
-BUY YES KXLOWTDEN-26SEP06-B63.5 count=2 @ 0.59 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXLOWTDEN-26SEP06-B61.5 implied=0.25 ask=0.28
-BUY YES KXLOWTDEN-26SEP06-B61.5 count=4 @ 0.28 (tomorrow_runner)
-MARKET PICK today favorite KXLOWTLAX-26SEP05-B65.5 implied=0.99 ask=1
-BUY YES KXLOWTLAX-26SEP05-B65.5 count=1 @ 1 (today_favorite)
-MARKET PICK tomorrow favorite KXLOWTLAX-26SEP06-B68.5 implied=0.39 ask=0.46
-BUY YES KXLOWTLAX-26SEP06-B68.5 count=2 @ 0.46 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXLOWTLAX-26SEP06-B66.5 implied=0.06 ask=0.06
-SKIP already held KXLOWTLAX-26SEP06-B66.5
-MARKET PICK today favorite KXLOWTPHIL-26SEP05-B69.5 implied=0.44 ask=0.44
-BUY YES KXLOWTPHIL-26SEP05-B69.5 count=2 @ 0.44 (today_favorite)
-MARKET PICK tomorrow favorite KXLOWTPHIL-26SEP06-B64.5 implied=0.31 ask=0.33
-BUY YES KXLOWTPHIL-26SEP06-B64.5 count=3 @ 0.33 (tomorrow_favorite)
-MARKET PICK tomorrow runner KXLOWTPHIL-26SEP06-B62.5 implied=0.07 ask=0.07
-SKIP already held KXLOWTPHIL-26SEP06-B62.5
-New orders this run: 0
+Kalshi manage-only 2026-09-05T13:45:12-05:00
 Manage hold KXHIGHDEN-26SEP05-B91.5 tomorrow_favorite entry=0.47 bid=0.27 sl=0.235 (hold_settlement)
 Manage hold KXHIGHPHIL-26SEP05-B82.5 tomorrow_favorite entry=0.43 bid=0.35 sl=0.215 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP05-B97.5 tomorrow_favorite entry=0.58 bid=0.71 sl=0.29 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 tomorrow_favorite entry=0.61 bid=0.94 sl=0.305 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 tomorrow_favorite entry=0.33 bid=0.36 sl=0.165 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP05-B91.5 tomorrow_favorite entry=0.47 bid=0.27 sl=0.235 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 tomorrow_favorite entry=0.44 bid=0.54 sl=0.22 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 tomorrow_favorite entry=0.44 bid=0.61 sl=0.22 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP05-B97.5 tomorrow_favorite entry=0.6 bid=0.71 sl=0.3 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 tomorrow_favorite entry=0.61 bid=0.94 sl=0.305 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 tomorrow_favorite entry=0.33 bid=0.36 sl=0.165 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP05-B91.5 tomorrow_favorite entry=0.45 bid=0.27 sl=0.225 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 tomorrow_favorite entry=0.46 bid=0.54 sl=0.23 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 tomorrow_favorite entry=0.46 bid=0.61 sl=0.23 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP05-B97.5 tomorrow_favorite entry=0.61 bid=0.71 sl=0.305 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 tomorrow_favorite entry=0.58 bid=0.94 sl=0.29 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 tomorrow_favorite entry=0.29 bid=0.36 sl=0.145 (hold_settlement)
@@ -111,24 +49,24 @@ Manage hold KXHIGHPHIL-26SEP05-B82.5 tomorrow_favorite entry=0.49 bid=0.35 sl=0.
 Manage hold KXHIGHTLV-26SEP05-B97.5 tomorrow_favorite entry=0.59 bid=0.71 sl=0.295 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 tomorrow_favorite entry=0.5 bid=0.94 sl=0.25 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 tomorrow_favorite entry=0.32 bid=0.36 sl=0.16 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.47 bid=0.63 sl=0.235 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.52 bid=0.54 sl=0.26 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.47 bid=0.64 sl=0.235 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.52 bid=0.61 sl=0.26 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP05-B97.5 today_favorite entry=0.71 bid=0.71 sl=0.355 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.55 bid=0.94 sl=0.275 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.27 bid=0.36 sl=0.135 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.14 bid=0.91 sl=0.07 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.46 bid=0.63 sl=0.23 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.51 bid=0.54 sl=0.255 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.14 bid=0.92 sl=0.07 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.46 bid=0.64 sl=0.23 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.51 bid=0.61 sl=0.255 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.56 bid=0.94 sl=0.28 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.27 bid=0.36 sl=0.135 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.15 bid=0.91 sl=0.075 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.48 bid=0.63 sl=0.24 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.53 bid=0.54 sl=0.265 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.15 bid=0.92 sl=0.075 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.48 bid=0.64 sl=0.24 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.53 bid=0.61 sl=0.265 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.55 bid=0.94 sl=0.275 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.28 bid=0.36 sl=0.14 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.52 bid=0.91 sl=0.26 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.48 bid=0.63 sl=0.24 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.53 bid=0.54 sl=0.265 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP05-B83.5 today_favorite entry=0.52 bid=0.92 sl=0.26 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP05-B93.5 today_favorite entry=0.48 bid=0.64 sl=0.24 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP05-B84.5 today_favorite entry=0.53 bid=0.61 sl=0.265 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.72 bid=0.94 sl=0.36 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.32 bid=0.36 sl=0.16 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.7 bid=0.94 sl=0.35 (hold_settlement)
@@ -144,13 +82,13 @@ Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.28 bid=0.36 sl=0.14 
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=0.8 bid=0.94 sl=0.4 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.27 bid=0.36 sl=0.135 (hold_settlement)
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.34 bid=0.38 sl=0.17 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP06-B79.5 tomorrow_runner entry=0.3 bid=0.39 sl=0.15 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP06-B79.5 tomorrow_runner entry=0.3 bid=0.37 sl=0.15 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.34 bid=0.45 sl=0.17 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.31 bid=0.3 sl=0.155 (hold_settlement)
 Manage hold KXHIGHLAX-26SEP06-B78.5 tomorrow_favorite entry=0.28 bid=0.26 sl=0.14 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP06-B80.5 tomorrow_runner entry=0.21 bid=0.4 sl=0.105 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP06-B80.5 tomorrow_runner entry=0.21 bid=0.41 sl=0.105 (hold_settlement)
 Manage hold KXHIGHPHIL-26SEP06-B79.5 tomorrow_favorite entry=0.45 bid=0.31 sl=0.225 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B67.5 tomorrow_runner entry=0.24 bid=0.2 sl=0.12 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.28 bid=0.4 sl=0.14 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.29 bid=0.26 sl=0.145 (hold_settlement)
@@ -164,7 +102,7 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.38 bid=0.38 sl=0.19 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.34 bid=0.45 sl=0.17 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.31 bid=0.3 sl=0.155 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.26 bid=0.28 sl=0.13 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_favorite entry=0.31 bid=0.26 sl=0.155 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_runner entry=0.28 bid=0.4 sl=0.14 (hold_settlement)
@@ -177,7 +115,7 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.38 bid=0.38 sl=0.19 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.37 bid=0.45 sl=0.185 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.27 bid=0.3 sl=0.135 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.34 bid=0.4 sl=0.17 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.34 bid=0.39 sl=0.17 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B67.5 tomorrow_runner entry=0.26 bid=0.2 sl=0.13 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_favorite entry=0.34 bid=0.26 sl=0.17 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_runner entry=0.29 bid=0.4 sl=0.145 (hold_settlement)
@@ -191,7 +129,7 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.34 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.4 bid=0.38 sl=0.2 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.28 bid=0.3 sl=0.14 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.34 bid=0.4 sl=0.17 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -205,7 +143,7 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.34 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.41 bid=0.38 sl=0.205 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.29 bid=0.3 sl=0.145 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.3 bid=0.28 sl=0.15 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -219,7 +157,7 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.43 bid=0.38 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.42 bid=0.45 sl=0.21 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.31 bid=0.3 sl=0.155 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.35 bid=0.39 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.31 bid=0.28 sl=0.155 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.29 bid=0.26 sl=0.145 (hold_settlement)
@@ -233,8 +171,8 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.32 bid=0.3 sl=0.16 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.29 bid=0.43 sl=0.145 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.29 bid=0.41 sl=0.145 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.31 bid=0.28 sl=0.155 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -248,8 +186,8 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.41 bid=0.38 sl=0.205 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.42 bid=0.45 sl=0.21 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.32 bid=0.3 sl=0.16 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.29 bid=0.43 sl=0.145 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.29 bid=0.41 sl=0.145 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.29 bid=0.26 sl=0.145 (hold_settlement)
@@ -263,9 +201,9 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.33 bid=0.3 sl=0.165 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.2 bid=0.32 sl=0.1 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.34 bid=0.43 sl=0.17 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.4 sl=0.18 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.2 bid=0.27 sl=0.1 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.34 bid=0.41 sl=0.17 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.36 bid=0.39 sl=0.18 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -279,9 +217,9 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.4 bid=0.38 sl=0.2 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.34 bid=0.3 sl=0.17 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.17 bid=0.32 sl=0.085 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.4 bid=0.43 sl=0.2 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.17 bid=0.27 sl=0.085 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_runner entry=0.4 bid=0.41 sl=0.2 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.35 bid=0.39 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.35 bid=0.4 sl=0.175 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -295,9 +233,9 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.43 bid=0.45 sl=0.215 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.36 bid=0.3 sl=0.18 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.14 bid=0.32 sl=0.07 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.4 bid=0.43 sl=0.2 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.37 bid=0.4 sl=0.185 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.14 bid=0.27 sl=0.07 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.4 bid=0.41 sl=0.2 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.37 bid=0.39 sl=0.185 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.4 bid=0.4 sl=0.2 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -311,9 +249,9 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.35 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_favorite entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.45 bid=0.45 sl=0.225 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.34 bid=0.3 sl=0.17 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.23 bid=0.32 sl=0.115 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.43 bid=0.43 sl=0.215 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.39 bid=0.4 sl=0.195 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.23 bid=0.27 sl=0.115 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.43 bid=0.41 sl=0.215 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.39 bid=0.39 sl=0.195 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.4 bid=0.4 sl=0.2 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.3 bid=0.26 sl=0.15 (hold_settlement)
@@ -327,10 +265,10 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.33 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.46 bid=0.45 sl=0.23 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.33 bid=0.3 sl=0.165 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.29 bid=0.32 sl=0.145 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.43 bid=0.43 sl=0.215 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP05-B73.5 today_favorite entry=0.5 bid=0.5 sl=0.25 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.4 bid=0.4 sl=0.2 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.29 bid=0.27 sl=0.145 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.43 bid=0.41 sl=0.215 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP05-B73.5 today_favorite entry=0.5 bid=0.53 sl=0.25 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.4 bid=0.39 sl=0.2 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.4 bid=0.4 sl=0.2 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.29 bid=0.26 sl=0.145 (hold_settlement)
@@ -346,10 +284,10 @@ Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.33 bid=0.27 sl=0.
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner entry=0.39 bid=0.38 sl=0.195 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite entry=0.46 bid=0.45 sl=0.23 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner entry=0.31 bid=0.3 sl=0.155 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.34 bid=0.32 sl=0.17 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.44 bid=0.43 sl=0.22 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP05-B73.5 today_favorite entry=0.53 bid=0.5 sl=0.265 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.41 bid=0.4 sl=0.205 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP05-B79.5 today_favorite entry=0.34 bid=0.27 sl=0.17 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite entry=0.44 bid=0.41 sl=0.22 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP05-B73.5 today_favorite entry=0.53 bid=0.53 sl=0.265 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite entry=0.41 bid=0.39 sl=0.205 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 tomorrow_runner entry=0.29 bid=0.28 sl=0.145 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite entry=0.41 bid=0.4 sl=0.205 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B82.5 tomorrow_runner entry=0.29 bid=0.26 sl=0.145 (hold_settlement)
@@ -357,79 +295,8 @@ Manage hold KXLOWTCHI-26SEP05-B72.5 today_favorite entry=0.51 bid=0.45 sl=0.255 
 Manage hold KXLOWTCHI-26SEP06-B68.5 tomorrow_favorite entry=0.43 bid=0.36 sl=0.215 (hold_settlement)
 Manage hold KXLOWTCHI-26SEP06-B66.5 tomorrow_runner entry=0.2 bid=0.13 sl=0.1 (hold_settlement)
 Manage hold KXLOWTDEN-26SEP05-B61.5 today_favorite entry=0.92 bid=0.85 sl=0.46 (hold_settlement)
-Manage mark KXLOWTDEN-26SEP06-B63.5 stop_50pct but no live position
 Manage hold KXLOWTDEN-26SEP06-B61.5 tomorrow_runner entry=0.28 bid=0.19 sl=0.14 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP05-B65.5 today_favorite entry=1 bid=0.94 sl=0.5 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP06-B68.5 tomorrow_favorite entry=0.46 bid=0.39 sl=0.23 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP05-B69.5 today_favorite entry=0.44 bid=0.36 sl=0.22 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_favorite entry=0.33 bid=0.27 sl=0.165 (hold_settlement)
------ stderr -----
-Buy failed KXHIGHCHI-26SEP06-B77.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHDEN-26SEP06-B91.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHDEN-26SEP06-B93.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHLAX-26SEP05-B79.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHPHIL-26SEP06-B81.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHTSFO-26SEP05-B73.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHTSFO-26SEP06-B69.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHTSFO-26SEP06-B71.5: {
-  error: {
-    code: 'fill_or_kill_insufficient_resting_volume',
-    message: 'fill or kill insufficient resting volume'
-  }
-}
-Buy failed KXHIGHTLV-26SEP06-B84.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHTLV-26SEP06-B82.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTCHI-26SEP05-B72.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTCHI-26SEP06-B68.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTCHI-26SEP06-B66.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTDEN-26SEP05-B61.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTDEN-26SEP06-B63.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTDEN-26SEP06-B61.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTLAX-26SEP05-B65.5: {
-  error: {
-    code: 'fill_or_kill_insufficient_resting_volume',
-    message: 'fill or kill insufficient resting volume'
-  }
-}
-Buy failed KXLOWTLAX-26SEP06-B68.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTPHIL-26SEP05-B69.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTPHIL-26SEP06-B64.5: {
-  error: {
-    code: 'fill_or_kill_insufficient_resting_volume',
-    message: 'fill or kill insufficient resting volume'
-  }
-}
