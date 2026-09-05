@@ -1,0 +1,66 @@
+Buy failed KXHIGHDEN-26SEP06-B93.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHLAX-26SEP05-B79.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHLAX-26SEP06-B80.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHPHIL-26SEP06-B81.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHTSFO-26SEP05-B73.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHTSFO-26SEP06-B69.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHTSFO-26SEP06-B71.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
+Buy failed KXHIGHTLV-26SEP06-B84.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXHIGHTLV-26SEP06-B82.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTCHI-26SEP05-B72.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTCHI-26SEP06-B68.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTCHI-26SEP06-B66.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTDEN-26SEP05-B61.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTDEN-26SEP06-B63.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTDEN-26SEP06-B61.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTLAX-26SEP05-B65.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
+Buy failed KXLOWTLAX-26SEP06-B68.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTPHIL-26SEP05-B69.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Buy failed KXLOWTPHIL-26SEP06-B64.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
