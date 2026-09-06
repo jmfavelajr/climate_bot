@@ -1,123 +1,33 @@
-Kalshi-only scan 26SEP06 / 26SEP07 CT=0900 clip=2
-Connected to Kalshi. Balance: 102
-MARKET PICK today favorite KXHIGHCHI-26SEP06-B79.5 Chicago high local=0900 America/Chicago enter=true implied=0.49 ask=0.49 maxAsk=0.55
-SKIP already held ticker KXHIGHCHI-26SEP06-B79.5
-MARKET PICK tomorrow favorite KXHIGHCHI-26SEP07-B80.5 Chicago high local=0900 America/Chicago enter=true implied=0.33 ask=0.38 maxAsk=0.55
-BUY YES KXHIGHCHI-26SEP07-B80.5 count=5 @ 0.38 (tomorrow_favorite) opened=2026-09-06T14:00:33.670Z
-MARKET PICK tomorrow runner KXHIGHCHI-26SEP07-B78.5 Chicago high local=0900 America/Chicago enter=true implied=0.29000000000000004 ask=0.34 maxAsk=0.4
-BUY YES KXHIGHCHI-26SEP07-B78.5 count=6 @ 0.34 (tomorrow_runner) opened=2026-09-06T14:00:33.670Z
-MARKET PICK today favorite KXHIGHDEN-26SEP06-B91.5 Denver high local=0800 America/Denver enter=true implied=0.59 ask=0.6 maxAsk=0.55
-SKIP already held ticker KXHIGHDEN-26SEP06-B91.5
-MARKET PICK tomorrow favorite KXHIGHDEN-26SEP07-B92.5 Denver high local=0800 America/Denver enter=true implied=0.505 ask=1 maxAsk=0.55
-SKIP ask 1 above 0.55 (favorite)
-MARKET PICK tomorrow runner KXHIGHDEN-26SEP07-B90.5 Denver high local=0800 America/Denver enter=true implied=0.505 ask=1 maxAsk=0.4
-SKIP ask 1 above 0.4 (runner)
-MARKET PICK today favorite KXHIGHLAX-26SEP06-B78.5 Los Angeles high local=0700 America/Los_Angeles enter=false implied=0.39 ask=0.4 maxAsk=0.55
-SKIP outside high/today window Los Angeles local=0700
-MARKET PICK today favorite KXHIGHPHIL-26SEP06-B81.5 Philadelphia high local=1000 America/New_York enter=true implied=0.57 ask=0.57 maxAsk=0.55
-SKIP already held ticker KXHIGHPHIL-26SEP06-B81.5
-MARKET PICK tomorrow favorite KXHIGHPHIL-26SEP07-B80.5 Philadelphia high local=1000 America/New_York enter=true implied=0.51 ask=0.56 maxAsk=0.55
-SKIP ask 0.56 above 0.55 (favorite)
-MARKET PICK tomorrow runner KXHIGHPHIL-26SEP07-B82.5 Philadelphia high local=1000 America/New_York enter=true implied=0.27 ask=0.32 maxAsk=0.4
-BUY YES KXHIGHPHIL-26SEP07-B82.5 count=6 @ 0.32 (tomorrow_runner) opened=2026-09-06T14:00:33.670Z
-MARKET PICK today favorite KXHIGHTSFO-26SEP06-B69.5 San Francisco high local=0700 America/Los_Angeles enter=false implied=0.46 ask=0.48 maxAsk=0.55
-SKIP outside high/today window San Francisco local=0700
-MARKET PICK tomorrow favorite KXHIGHTSFO-26SEP07-B78.5 San Francisco high local=0700 America/Los_Angeles enter=false implied=0.27 ask=0.32 maxAsk=0.55
-SKIP outside high/tomorrow window San Francisco local=0700
-MARKET PICK tomorrow runner KXHIGHTSFO-26SEP07-B80.5 San Francisco high local=0700 America/Los_Angeles enter=false implied=0.26 ask=0.31 maxAsk=0.4
-SKIP outside high/tomorrow window San Francisco local=0700
-MARKET PICK today favorite KXHIGHTLV-26SEP06-B84.5 Las Vegas high local=0700 America/Los_Angeles enter=false implied=0.83 ask=0.87 maxAsk=0.55
-SKIP outside high/today window Las Vegas local=0700
-MARKET PICK tomorrow favorite KXHIGHTLV-26SEP07-B93.5 Las Vegas high local=0700 America/Los_Angeles enter=false implied=0.31 ask=0.33 maxAsk=0.55
-SKIP outside high/tomorrow window Las Vegas local=0700
-MARKET PICK tomorrow runner KXHIGHTLV-26SEP07-B95.5 Las Vegas high local=0700 America/Los_Angeles enter=false implied=0.27 ask=0.32 maxAsk=0.4
-SKIP outside high/tomorrow window Las Vegas local=0700
-MARKET PICK today favorite KXLOWTCHI-26SEP06-B68.5 Chicago low local=0900 America/Chicago enter=false implied=0.28 ask=0.33 maxAsk=0.55
-SKIP outside low/today window Chicago local=0900
-MARKET PICK tomorrow favorite KXLOWTCHI-26SEP07-B65.5 Chicago low local=0900 America/Chicago enter=false implied=0.35 ask=0.4 maxAsk=0.55
-SKIP outside low/tomorrow window Chicago local=0900
-MARKET PICK tomorrow runner KXLOWTCHI-26SEP07-B63.5 Chicago low local=0900 America/Chicago enter=false implied=0.32 ask=0.37 maxAsk=0.4
-SKIP outside low/tomorrow window Chicago local=0900
-MARKET PICK today favorite KXLOWTDEN-26SEP06-B59.5 Denver low local=0800 America/Denver enter=false implied=0.89 ask=0.89 maxAsk=0.55
-SKIP outside low/today window Denver local=0800
-MARKET PICK tomorrow favorite KXLOWTDEN-26SEP07-B62.5 Denver low local=0800 America/Denver enter=false implied=0.32 ask=0.37 maxAsk=0.55
-SKIP outside low/tomorrow window Denver local=0800
-MARKET PICK tomorrow runner KXLOWTDEN-26SEP07-B60.5 Denver low local=0800 America/Denver enter=false implied=0.29000000000000004 ask=0.34 maxAsk=0.4
-SKIP outside low/tomorrow window Denver local=0800
-MARKET PICK today favorite KXLOWTLAX-26SEP06-B66.5 Los Angeles low local=0700 America/Los_Angeles enter=true implied=0.95 ask=0.95 maxAsk=0.55
-SKIP ask 0.95 above 0.55 (favorite)
-MARKET PICK tomorrow favorite KXLOWTLAX-26SEP07-B69.5 Los Angeles low local=0700 America/Los_Angeles enter=true implied=0.12000000000000001 ask=0.17 maxAsk=0.55
-BUY YES KXLOWTLAX-26SEP07-B69.5 count=8 @ 0.17 (tomorrow_favorite) opened=2026-09-06T14:00:33.670Z
-MARKET PICK tomorrow runner KXLOWTLAX-26SEP07-B65.5 Los Angeles low local=0700 America/Los_Angeles enter=true implied=0.035 ask=0.05 maxAsk=0.4
-BUY YES KXLOWTLAX-26SEP07-B65.5 count=8 @ 0.05 (tomorrow_runner) opened=2026-09-06T14:00:33.670Z
-Kalshi v2 bid KXLOWTLAX-26SEP07-B65.5 count=8.00 price=0.0500 status=201 {
-  average_fee_paid: '0.0033',
-  average_fill_price: '0.0500',
-  client_order_id: 'a402386f-32f4-4d0a-8a39-ce3a790333ec',
-  fill_count: '8.00',
-  order_id: '01a07705-5bb8-7e68-8f86-986705c37cc0',
-  remaining_count: '0.00',
-  ts_ms: 1788703235680
-}
-MARKET PICK today favorite KXLOWTPHIL-26SEP06-B64.5 Philadelphia low local=1000 America/New_York enter=false implied=0.09 ask=0.09 maxAsk=0.55
-SKIP outside low/today window Philadelphia local=1000
-New orders this run: 1
-Manage union live orphan KXHIGHTLV-26SEP05-B97.5 event=KXHIGHTLV-26SEP05
-Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T18:40:15.105539+00:00 entry=0.39 bid=0.36 peak=0.39 pnl=-7.7% trail=0.2925 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
+Kalshi manage-only 2026-09-06T09:05:26-05:00
+Manage union live orphan KXLOWTLAX-26SEP07-B65.5 event=KXLOWTLAX-26SEP07
+Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T18:40:15.105539+00:00 entry=0.39 bid=0.37 peak=0.39 pnl=-5.1% trail=0.2925 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite|promoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.58 peak=0.59 pnl=26.1% trail=0.4425 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 today_favorite|promoted opened=2026-09-06T13:00:34.868769+00:00 entry=0.48 bid=0.46 peak=0.48 pnl=-4.2% trail=0.36 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
-Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.83 peak=0.86 pnl=159.4% trail=0.645 armed=true liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
-Selling YES KXLOWTCHI-26SEP06-B68.5 count=4 @ 0.23 (stop_50pct) peak=0.5 pnl=-54% opened=2026-09-06T11:00:37.390603+00:00
-Kalshi v2 ask KXLOWTCHI-26SEP06-B68.5 count=4.00 price=0.2300 status=201 {
-  average_fee_paid: '0.0124',
-  average_fill_price: '0.2300',
-  client_order_id: 'd2d75d76-8dd9-4b94-979d-cfda1a9e8f21',
-  fill_count: '4.00',
-  order_id: '01a07705-5fa0-7a6e-af2c-93dfada76814',
-  remaining_count: '0.00',
-  ts_ms: 1788703236962
-}
-DEMOTE KXLOWTLAX-26SEP06-B68.5 favorite -> runner liveFav=KXLOWTLAX-26SEP06-B66.5 opened=2026-09-05T18:40:18.658585+00:00
-Selling YES KXLOWTLAX-26SEP06-B68.5 count=8 @ 0 (stop_50pct) peak=0.46 pnl=-100% opened=2026-09-05T18:40:18.658585+00:00
+Manage hold KXHIGHTSFO-26SEP06-B69.5 today_favorite|promoted opened=2026-09-06T13:00:34.868769+00:00 entry=0.48 bid=0.41 peak=0.48 pnl=-14.6% trail=0.36 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
+Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.81 peak=0.86 pnl=153.1% trail=0.645 armed=true liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
+DEMOTE KXLOWTCHI-26SEP06-B68.5 favorite -> runner liveFav=KXLOWTCHI-26SEP06-T69 opened=2026-09-05T23:41:04.341968+00:00
+Manage mark KXLOWTCHI-26SEP06-B68.5 stop_50pct but no live position
+DEMOTE KXLOWTLAX-26SEP06-B68.5 favorite -> runner liveFav=KXLOWTLAX-26SEP06-B66.5 opened=2026-09-05T18:20:19.713203+00:00
+Selling YES KXLOWTLAX-26SEP06-B68.5 count=8 @ 0 (stop_50pct) peak=0.46 pnl=-100% opened=2026-09-05T18:20:19.713203+00:00
 Kalshi v2 ask KXLOWTLAX-26SEP06-B68.5 count=8.00 price=0.9900 status=201 {
-  client_order_id: 'e33eb7c1-2299-4961-a27e-096714eaed48',
+  client_order_id: 'f6eb2bd7-4ef5-4fe4-9907-c6cba33e7465',
   fill_count: '0.00',
-  order_id: '01a07705-6388-779e-974e-ff09496f1691',
+  order_id: '01a07709-d828-7fee-9e7d-0d549f333c00',
   remaining_count: '0.00',
-  ts_ms: 1788703237280
+  ts_ms: 1788703529284
 }
-Manage hold KXHIGHPHIL-26SEP06-B81.5 today_favorite opened=2026-09-06T11:00:36.651153+00:00 entry=0.49 bid=0.56 peak=0.56 pnl=14.3% trail=0.42 armed=false liveFav=KXHIGHPHIL-26SEP06-B81.5 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 today_favorite opened=2026-09-06T11:00:36.651153+00:00 entry=0.49 bid=0.52 peak=0.56 pnl=6.1% trail=0.42 armed=false liveFav=KXHIGHPHIL-26SEP06-B81.5 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B62.5 tomorrow_runner|demoted opened=2026-09-06T05:00:40.829795+00:00 entry=0 bid=0.01 peak=0.01 pnl=null% trail=0.0075 armed=true liveFav=KXLOWTPHIL-26SEP06-T65 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B71.5 today_runner|demoted opened=2026-09-06T11:00:37.027016+00:00 entry=0.44 bid=0.43 peak=0.44 pnl=-2.3% trail=0.33 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP06-B80.5 today_runner|demoted opened=2026-09-06T13:00:34.363039+00:00 entry=0.37 bid=0.23 peak=0.37 pnl=-37.8% trail=0.2775 armed=false liveFav=KXHIGHLAX-26SEP06-B78.5 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B71.5 today_runner|demoted opened=2026-09-06T11:00:37.027016+00:00 entry=0.44 bid=0.37 peak=0.44 pnl=-15.9% trail=0.33 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP06-B80.5 today_runner|demoted opened=2026-09-06T13:00:34.363039+00:00 entry=0.37 bid=0.19 peak=0.37 pnl=-48.6% trail=0.2775 armed=false liveFav=KXHIGHLAX-26SEP06-B78.5 (hold_settlement)
 Manage hold KXHIGHCHI-26SEP05-B83.5 live_position opened=2026-09-06T12:00:39.757186+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=null (hold_settlement)
 Manage hold KXHIGHDEN-26SEP05-B93.5 live_position opened=2026-09-06T13:00:38.109219+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=null (hold_settlement)
-Manage hold KXHIGHCHI-26SEP06-B79.5 today_favorite opened=2026-09-06T13:20:31.783708+00:00 entry=0.54 bid=0.47 peak=0.54 pnl=-13% trail=0.405 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP06-B78.5 today_favorite opened=2026-09-06T13:20:32.091465+00:00 entry=0.37 bid=0.38 peak=0.38 pnl=2.7% trail=0.285 armed=false liveFav=KXHIGHLAX-26SEP06-B78.5 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP07-B80.5 tomorrow_favorite opened=2026-09-06T14:00:34.839483+00:00 entry=0.38 bid=0.28 peak=0.38 pnl=-26.3% trail=0.285 armed=false liveFav=KXHIGHCHI-26SEP07-B80.5 (hold_settlement)
-Manage hold KXHIGHCHI-26SEP07-B78.5 tomorrow_runner opened=2026-09-06T14:00:35.122093+00:00 entry=0.34 bid=0.24 peak=0.34 pnl=-29.4% trail=0.255 armed=false liveFav=KXHIGHCHI-26SEP07-B80.5 (hold_settlement)
-Manage hold KXHIGHPHIL-26SEP07-B82.5 tomorrow_runner opened=2026-09-06T14:00:35.284874+00:00 entry=0.32 bid=0.22 peak=0.32 pnl=-31.3% trail=0.24 armed=false liveFav=KXHIGHPHIL-26SEP07-B80.5 (hold_settlement)
-DEMOTE KXLOWTLAX-26SEP07-B69.5 favorite -> runner liveFav=KXLOWTLAX-26SEP07-T70 opened=2026-09-06T14:00:35.445476+00:00
-Manage mark KXLOWTLAX-26SEP07-B69.5 stop_50pct but no live position
-Selling YES KXLOWTLAX-26SEP07-B65.5 count=8 @ 0.02 (stop_50pct) peak=0.05 pnl=-60% opened=2026-09-06T14:00:35.603304+00:00
-Kalshi v2 ask KXLOWTLAX-26SEP07-B65.5 count=8.00 price=0.0200 status=201 {
-  client_order_id: 'f397f634-2b32-492c-9369-abc1198aa989',
-  fill_count: '0.00',
-  order_id: '01a07705-6f40-786b-a5a7-d9584060b43a',
-  remaining_count: '0.00',
-  ts_ms: 1788703240060
-}
-SETTLED KXHIGHTLV-26SEP05-B97.5 opened=unknown entry=0 lastBid=0 peak=0 pnl=null% status=closed
------ stderr -----
-Buy failed KXHIGHCHI-26SEP07-B80.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHCHI-26SEP07-B78.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXHIGHPHIL-26SEP07-B82.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
-Buy failed KXLOWTLAX-26SEP07-B69.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
+Manage hold KXHIGHCHI-26SEP06-B79.5 today_favorite opened=2026-09-06T13:20:31.783708+00:00 entry=0.54 bid=0.46 peak=0.54 pnl=-14.8% trail=0.405 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP06-B78.5 today_favorite opened=2026-09-06T13:20:32.091465+00:00 entry=0.37 bid=0.43 peak=0.43 pnl=16.2% trail=0.3225 armed=false liveFav=KXHIGHLAX-26SEP06-B78.5 (hold_settlement)
+DEMOTE KXHIGHCHI-26SEP07-B80.5 favorite -> runner liveFav=KXHIGHCHI-26SEP07-B78.5 opened=2026-09-06T14:00:34.839483+00:00
+Manage hold KXHIGHCHI-26SEP07-B80.5 tomorrow_runner|demoted opened=2026-09-06T14:00:34.839483+00:00 entry=0.38 bid=0.27 peak=0.38 pnl=-28.9% trail=0.285 armed=false liveFav=KXHIGHCHI-26SEP07-B78.5 (hold_settlement)
+PROMOTE KXHIGHCHI-26SEP07-B78.5 runner -> favorite opened=2026-09-06T14:00:35.122093+00:00 implied=0.34
+Manage hold KXHIGHCHI-26SEP07-B78.5 tomorrow_favorite|promoted opened=2026-09-06T14:00:35.122093+00:00 entry=0.34 bid=0.31 peak=0.34 pnl=-8.8% trail=0.255 armed=false liveFav=KXHIGHCHI-26SEP07-B78.5 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP07-B82.5 tomorrow_runner opened=2026-09-06T14:00:35.284874+00:00 entry=0.32 bid=0.3 peak=0.32 pnl=-6.3% trail=0.24 armed=false liveFav=KXHIGHPHIL-26SEP07-B80.5 (hold_settlement)
+SETTLED KXHIGHTLV-26SEP05-B97.5 opened=2026-09-06T14:00:40.312567+00:00 entry=0 lastBid=0 peak=0 pnl=null% status=closed
+DEMOTE KXLOWTLAX-26SEP07-B65.5 favorite -> runner liveFav=KXLOWTLAX-26SEP07-T70 opened=unknown
+Manage hold KXLOWTLAX-26SEP07-B65.5 tomorrow_runner|demoted opened=unknown entry=0 bid=0.03 peak=0.03 pnl=null% trail=0.0225 armed=true liveFav=KXLOWTLAX-26SEP07-T70 (hold_settlement)
