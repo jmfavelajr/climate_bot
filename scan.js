@@ -75,12 +75,12 @@ async function main() {
     const eventHeld = held.eventCounts.get(event) || 0;
     const maxAsk = pick.role === 'runner' ? MAX_ASK_RUNNER : MAX_ASK_FAVORITE;
     const local = localHourMinute(pick.tz);
-    const canEnter = inKindWindow(pick.kind, pick.tz);
+    const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
     console.log(
       `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} ${pick.kind} local=${String(local.hhmm).padStart(4, '0')} ${pick.tz} enter=${canEnter} implied=${implied} ask=${ask} maxAsk=${maxAsk}`
     );
     if (!canEnter) {
-      console.log(`SKIP outside ${pick.kind} window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
+      console.log(`SKIP outside ${pick.kind}/${pick.horizon} window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
       continue;
     }
     if (held.tickers.has(market.ticker)) {

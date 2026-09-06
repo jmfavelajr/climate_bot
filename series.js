@@ -46,15 +46,24 @@ export function chicagoHourMinute() {
   return localHourMinute('America/Chicago');
 }
 
-/** High: 06:00-14:00 local. Low: 20:00-08:00 local (overnight through sunrise). */
-export function inKindWindow(kind, timeZone) {
+/**
+ * HIGH today+tomorrow: 08:00-14:00 local
+ * LOW today: 04:00-08:00 local (pre-sunrise)
+ * LOW tomorrow: 20:00-08:00 local (evening through next sunrise)
+ */
+export function inKindWindow(kind, timeZone, horizon = 'today') {
   const { hhmm } = localHourMinute(timeZone || 'America/Chicago');
   if (kind === 'low') {
-    const start = Number(process.env.LOW_ENTRY_START_HHMM || 2000);
-    const end = Number(process.env.LOW_ENTRY_END_HHMM || 800);
-    return hhmm >= start || hhmm < end;
+    const todayStart = Number(process.env.LOW_TODAY_START_HHMM || 400);
+    const todayEnd = Number(process.env.LOW_TODAY_END_HHMM || 800);
+    const tmStart = Number(process.env.LOW_TM_START_HHMM || 2000);
+    const tmEnd = Number(process.env.LOW_TM_END_HHMM || 800);
+    if (horizon === 'tomorrow') {
+      return hhmm >= tmStart || hhmm < tmEnd;
+    }
+    return hhmm >= todayStart && hhmm < todayEnd;
   }
-  const start = Number(process.env.HIGH_ENTRY_START_HHMM || 600);
+  const start = Number(process.env.HIGH_ENTRY_START_HHMM || 800);
   const end = Number(process.env.HIGH_ENTRY_END_HHMM || 1400);
   return hhmm >= start && hhmm < end;
 }
