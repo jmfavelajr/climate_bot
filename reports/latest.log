@@ -1,24 +1,23 @@
-Kalshi-only scan 26SEP06 / 26SEP07 CT=0540 enter=false clip=2
-Connected to Kalshi. Balance: 1125
-SKIP all new entries outside 600-1400 CT
-New orders this run: 0
-Manage union live orphan KXHIGHCHI-26SEP05-B83.5 event=KXHIGHCHI-26SEP05
+Kalshi manage-only 2026-09-06T05:45:34-05:00
+Manage union live orphan KXHIGHDEN-26SEP05-B93.5 event=KXHIGHDEN-26SEP05
+Manage union live orphan KXHIGHTLV-26SEP05-B97.5 event=KXHIGHTLV-26SEP05
 Manage skip closed KXLOWTLAX-26SEP05-B65.5 status=closed
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T19:00:13.457108+00:00 entry=0.39 bid=0.25 peak=0.41 pnl=-35.9% trail=0.3075 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite|promoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.47 peak=0.49 pnl=2.2% trail=0.3675 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite|promoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.48 peak=0.49 pnl=4.3% trail=0.3675 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_runner|demoted opened=2026-09-05T23:41:03.585966+00:00 entry=0.45 bid=0.31 peak=0.45 pnl=-31.1% trail=0.3375 armed=false liveFav=KXHIGHTSFO-26SEP06-B71.5 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.75 peak=0.77 pnl=134.4% trail=0.5775 armed=true liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
 Manage hold KXLOWTCHI-26SEP06-B68.5 tomorrow_favorite|promoted opened=2026-09-05T23:41:04.341968+00:00 entry=0.53 bid=0.44 peak=0.53 pnl=-17% trail=0.3975 armed=false liveFav=KXLOWTCHI-26SEP06-B68.5 (hold_settlement)
-DEMOTE KXLOWTLAX-26SEP06-B68.5 favorite -> runner liveFav=KXLOWTLAX-26SEP06-T69 opened=2026-09-05T20:40:19.640974+00:00
+DEMOTE KXLOWTLAX-26SEP06-B68.5 favorite -> runner liveFav=KXLOWTLAX-26SEP06-T69 opened=2026-09-05T20:20:16.734842+00:00
 Manage mark KXLOWTLAX-26SEP06-B68.5 stop_50pct but no live position
-DEMOTE KXLOWTPHIL-26SEP06-B64.5 favorite -> runner liveFav=KXLOWTPHIL-26SEP06-T65 opened=2026-09-05T20:40:20.189711+00:00
+DEMOTE KXLOWTPHIL-26SEP06-B64.5 favorite -> runner liveFav=KXLOWTPHIL-26SEP06-T65 opened=2026-09-05T20:20:17.1171+00:00
 Manage mark KXLOWTPHIL-26SEP06-B64.5 stop_50pct but no live position
-Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite|promoted opened=2026-09-05T23:41:03.131606+00:00 entry=0.51 bid=0.49 peak=0.52 pnl=-3.9% trail=0.39 armed=false liveFav=KXHIGHPHIL-26SEP06-B81.5 (hold_settlement)
+Manage hold KXHIGHPHIL-26SEP06-B81.5 tomorrow_favorite|promoted opened=2026-09-05T23:41:03.131606+00:00 entry=0.51 bid=0.46 peak=0.52 pnl=-9.8% trail=0.39 armed=false liveFav=KXHIGHPHIL-26SEP06-B81.5 (hold_settlement)
 Manage hold KXLOWTDEN-26SEP06-B63.5 tomorrow_favorite opened=2026-09-05T23:41:04.79096+00:00 entry=0.39 bid=0.33 peak=0.39 pnl=-15.4% trail=0.2925 armed=false liveFav=KXLOWTDEN-26SEP06-B63.5 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner|demoted opened=2026-09-05T23:41:02.527073+00:00 entry=0.37 bid=0.25 peak=0.46 pnl=-32.4% trail=0.345 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_runner|demoted opened=2026-09-05T23:41:02.527073+00:00 entry=0.37 bid=0.23 peak=0.46 pnl=-37.8% trail=0.345 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B62.5 tomorrow_runner|demoted opened=2026-09-06T05:00:40.829795+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=KXLOWTPHIL-26SEP06-T65 (hold_settlement)
+Manage skip closed KXHIGHCHI-26SEP05-B83.5 status=closed
 Manage skip closed KXHIGHDEN-26SEP05-B93.5 status=closed
 Manage skip closed KXHIGHTLV-26SEP05-B97.5 status=closed
-Manage skip closed KXHIGHCHI-26SEP05-B83.5 status=closed
 ----- stderr -----
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
