@@ -30,6 +30,18 @@ export function chicagoYmd(offsetDays = 0) {
   };
 }
 
+export function chicagoHourMinute() {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(new Date());
+  const hour = Number(parts.find((p) => p.type === 'hour')?.value);
+  const minute = Number(parts.find((p) => p.type === 'minute')?.value);
+  return { hour, minute, hhmm: hour * 100 + minute };
+}
+
 /** Kalshi date token, e.g. 26SEP04 */
 export function kalshiDay(offsetDays = 0) {
   const { year, month, day } = chicagoYmd(offsetDays);
