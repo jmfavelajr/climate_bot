@@ -1,0 +1,3 @@
+Buy failed KXHIGHLAX-26SEP06-B78.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
