@@ -47,7 +47,6 @@ export function seriesFromEvent(eventTicker) {
   return String(eventTicker || '').split('-')[0] || '';
 }
 
-/** Favorite / promoted wins over runner so appended |eod_runner does not flip a favorite. */
 export function parseRole(reason = '') {
   const r = String(reason);
   const horizon = r.includes('today') && !r.includes('tomorrow') ? 'today' : (r.includes('tomorrow') ? 'tomorrow' : 'today');
@@ -70,18 +69,40 @@ export function stopLoss(entry) {
   return Number((entry * 0.5).toFixed(4));
 }
 
-export function exitDecision({ reason, entry, bid, flatten }) {
+export function pnlPct(entry, bid) {
+  if (!Number.isFinite(entry) || entry <= 0 || !Number.isFinite(bid)) return null;
+  return Number((((bid - entry) / entry) * 100).toFixed(1));
+}
+
+/** Arm trail after +25% from entry. Exit if bid falls 25% off peak. */
+export function trailArmed(entry, peak) {
+  return Number.isFinite(entry) && Number.isFinite(peak) && peak >= entry * 1.25;
+}
+
+export function trailTrigger(peak) {
+  if (!Number.isFinite(peak) || peak <= 0) return null;
+  return Number((peak * 0.75).toFixed(4));
+}
+
+export function exitDecision({ reason, entry, bid, peak, flatten }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
+  const trail = trailTrigger(peak);
+  const armed = trailArmed(entry, peak);
+  const pnl = pnlPct(entry, bid);
+
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
-    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp };
+    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, peak, pnl };
+  }
+  if (armed && Number.isFinite(bid) && Number.isFinite(trail) && bid <= trail) {
+    return { sell: true, why: 'trail_25pct_off_peak', role, horizon, sl, tp, trail, peak, pnl };
   }
   if (role === 'runner' && Number.isFinite(bid) && Number.isFinite(tp) && bid >= tp) {
-    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp };
+    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp, trail, peak, pnl };
   }
   if (flatten && role === 'runner') {
-    return { sell: true, why: 'eod_runner', role, horizon, sl, tp };
+    return { sell: true, why: 'eod_runner', role, horizon, sl, tp, trail, peak, pnl };
   }
-  return { sell: false, why: 'hold_settlement', role, horizon, sl, tp };
+  return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, peak, pnl, armed };
 }
