@@ -131,12 +131,18 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     }
 
     if (status.includes('close') || status.includes('settled')) {
-      await updateCandidate(row.id, { action: 'settled_or_closed', reason: `${reason}|market_${status}` });
-      console.log(`Manage skip closed ${row.market_ticker} status=${status}`);
+      await updateCandidate(row.id, {
+        action: 'settled',
+        latest_yes_bid: bid,
+        live_sigma: peak,
+        pnl,
+        reason: `${reason}|settled_${status}`,
+      });
+      console.log(`SETTLED ${row.market_ticker} opened=${opened} entry=${entry} lastBid=${bid} peak=${peak} pnl=${pnl}% status=${status}`);
       continue;
     }
 
-    const decision = exitDecision({ reason, entry, bid, peak, flatten });
+    const decision = exitDecision({ reason, entry, bid, peak });
     const count = positionCount(positions, row.market_ticker);
     if (!decision.sell) {
       console.log(
@@ -162,7 +168,7 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     } catch (err) {
       const code = err.data?.error?.code || err.message;
       if (String(code).includes('market_closed')) {
-        await updateCandidate(row.id, { action: 'market_closed', reason: `${reason}|market_closed` });
+        await updateCandidate(row.id, { action: 'settled', reason: `${reason}|market_closed`, latest_yes_bid: bid, pnl });
       }
       console.error(`Sell failed ${row.market_ticker}:`, err.data || err.message);
     }

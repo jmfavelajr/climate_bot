@@ -1,15 +1,15 @@
 /** Kalshi climate series only — no NWS / Open-Meteo fields. */
 export const CLIMATE_SERIES = [
-  { series: 'KXHIGHCHI', city: 'Chicago', kind: 'high' },
-  { series: 'KXHIGHDEN', city: 'Denver', kind: 'high' },
-  { series: 'KXHIGHLAX', city: 'Los Angeles', kind: 'high' },
-  { series: 'KXHIGHPHIL', city: 'Philadelphia', kind: 'high' },
-  { series: 'KXHIGHTSFO', city: 'San Francisco', kind: 'high' },
-  { series: 'KXHIGHTLV', city: 'Las Vegas', kind: 'high' },
-  { series: 'KXLOWTCHI', city: 'Chicago', kind: 'low' },
-  { series: 'KXLOWTDEN', city: 'Denver', kind: 'low' },
-  { series: 'KXLOWTLAX', city: 'Los Angeles', kind: 'low' },
-  { series: 'KXLOWTPHIL', city: 'Philadelphia', kind: 'low' },
+  { series: 'KXHIGHCHI', city: 'Chicago', kind: 'high', tz: 'America/Chicago' },
+  { series: 'KXHIGHDEN', city: 'Denver', kind: 'high', tz: 'America/Denver' },
+  { series: 'KXHIGHLAX', city: 'Los Angeles', kind: 'high', tz: 'America/Los_Angeles' },
+  { series: 'KXHIGHPHIL', city: 'Philadelphia', kind: 'high', tz: 'America/New_York' },
+  { series: 'KXHIGHTSFO', city: 'San Francisco', kind: 'high', tz: 'America/Los_Angeles' },
+  { series: 'KXHIGHTLV', city: 'Las Vegas', kind: 'high', tz: 'America/Los_Angeles' },
+  { series: 'KXLOWTCHI', city: 'Chicago', kind: 'low', tz: 'America/Chicago' },
+  { series: 'KXLOWTDEN', city: 'Denver', kind: 'low', tz: 'America/Denver' },
+  { series: 'KXLOWTLAX', city: 'Los Angeles', kind: 'low', tz: 'America/Los_Angeles' },
+  { series: 'KXLOWTPHIL', city: 'Philadelphia', kind: 'low', tz: 'America/New_York' },
 ];
 
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -30,19 +30,35 @@ export function chicagoYmd(offsetDays = 0) {
   };
 }
 
-export function chicagoHourMinute() {
+export function localHourMinute(timeZone = 'America/Chicago') {
   const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/Chicago',
+    timeZone,
     hour: '2-digit',
     minute: '2-digit',
     hourCycle: 'h23',
   }).formatToParts(new Date());
   const hour = Number(parts.find((p) => p.type === 'hour')?.value);
   const minute = Number(parts.find((p) => p.type === 'minute')?.value);
-  return { hour, minute, hhmm: hour * 100 + minute };
+  return { hour, minute, hhmm: hour * 100 + minute, tz: timeZone };
 }
 
-/** Kalshi date token, e.g. 26SEP04 */
+export function chicagoHourMinute() {
+  return localHourMinute('America/Chicago');
+}
+
+/** High: 06:00-14:00 local. Low: 20:00-08:00 local (overnight through sunrise). */
+export function inKindWindow(kind, timeZone) {
+  const { hhmm } = localHourMinute(timeZone || 'America/Chicago');
+  if (kind === 'low') {
+    const start = Number(process.env.LOW_ENTRY_START_HHMM || 2000);
+    const end = Number(process.env.LOW_ENTRY_END_HHMM || 800);
+    return hhmm >= start || hhmm < end;
+  }
+  const start = Number(process.env.HIGH_ENTRY_START_HHMM || 600);
+  const end = Number(process.env.HIGH_ENTRY_END_HHMM || 1400);
+  return hhmm >= start && hhmm < end;
+}
+
 export function kalshiDay(offsetDays = 0) {
   const { year, month, day } = chicagoYmd(offsetDays);
   return `${String(year).slice(-2)}${MONTHS[month]}${String(day).padStart(2, '0')}`;

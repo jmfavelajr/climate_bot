@@ -31,7 +31,6 @@ export async function persistCandidate(market, forecast, extras = {}) {
   if (!market) return;
   const n = Number(market?.yes_ask_dollars ?? market?.yes_ask ?? extras.entry_yes_ask);
   const ask = Number.isFinite(n) ? (n > 1 ? n / 100 : n) : extras.entry_yes_ask;
-  const opened = extras.opened_at || new Date().toISOString();
   const row = {
     market_ticker: market.ticker,
     event_ticker: market.event_ticker || extras.event_ticker || null,
@@ -44,8 +43,6 @@ export async function persistCandidate(market, forecast, extras = {}) {
     entry_yes_ask: ask,
     latest_yes_bid: extras.latest_yes_bid ?? null,
   };
-  const first = await rest('trade_candidates', { method: 'POST', body: { ...row, opened_at: opened } });
-  if (first) return first;
   return rest('trade_candidates', { method: 'POST', body: row });
 }
 
@@ -57,12 +54,25 @@ export async function listOpenCandidates() {
   return Array.isArray(rows) ? rows : [];
 }
 
+export async function listSettledCandidates() {
+  const rows = await rest(
+    'trade_candidates',
+    { query: '?action=in.(settled,settled_or_closed,market_closed)&order=run_at.desc&limit=80' }
+  );
+  return Array.isArray(rows) ? rows : [];
+}
+
 export async function updateCandidate(id, fields) {
   if (!id) return null;
+  const body = {};
+  for (const [k, v] of Object.entries(fields || {})) {
+    if (v !== undefined) body[k] = v;
+  }
+  if (!Object.keys(body).length) return null;
   return rest('trade_candidates', {
     method: 'PATCH',
     query: `?id=eq.${id}`,
-    body: fields,
+    body,
   });
 }
 
@@ -76,11 +86,7 @@ export async function listUnscoredCandidates() {
 
 export async function scoreCandidate(id, fields) {
   if (!id) return null;
-  return rest('trade_candidates', {
-    method: 'PATCH',
-    query: `?id=eq.${id}`,
-    body: fields,
-  });
+  return updateCandidate(id, fields);
 }
 
 export { dbEnabled };
