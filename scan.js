@@ -4,7 +4,7 @@ import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_ord
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 1);
+const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
 const MAX_NEW_PER_RUN = Number(process.env.MAX_NEW_PER_RUN || 6);
 const MAX_PER_EVENT = Number(process.env.MAX_PER_EVENT || 2);
 const MIN_ASK = 0.02;
@@ -33,7 +33,7 @@ function heldByEvent(positions) {
 
 function contractCount(ask) {
   if (!Number.isFinite(ask) || ask <= 0) return 1;
-  return Math.max(1, Math.min(4, Math.round(FIXED_DOLLARS / ask)));
+  return Math.max(1, Math.min(8, Math.round(FIXED_DOLLARS / ask)));
 }
 
 function inEntryWindow(hhmm) {
@@ -46,7 +46,7 @@ async function main() {
   const clock = chicagoHourMinute();
   const openedAt = new Date().toISOString();
   const canEnter = inEntryWindow(clock.hhmm);
-  console.log(`Kalshi-only scan ${today} / ${tomorrow} CT=${String(clock.hhmm).padStart(4, '0')} enter=${canEnter}`);
+  console.log(`Kalshi-only scan ${today} / ${tomorrow} CT=${String(clock.hhmm).padStart(4, '0')} enter=${canEnter} clip=${FIXED_DOLLARS}`);
 
   let balance = null;
   try {
