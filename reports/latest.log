@@ -1,15 +1,12 @@
-Kalshi-only scan 26SEP06 / 26SEP07 CT=0340 enter=false clip=2
-Connected to Kalshi. Balance: 1125
-SKIP all new entries outside 600-1400 CT
-New orders this run: 0
-Manage union live orphan KXHIGHDEN-26SEP05-B93.5 event=KXHIGHDEN-26SEP05
+Kalshi manage-only 2026-09-06T03:45:33-05:00
+Manage union live orphan KXHIGHCHI-26SEP05-B83.5 event=KXHIGHCHI-26SEP05
 Manage skip closed KXHIGHTLV-26SEP05-B97.5 status=closed
 Manage skip closed KXLOWTLAX-26SEP05-B65.5 status=closed
 Manage skip closed KXLOWTPHIL-26SEP05-B69.5 status=closed
-Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T19:00:13.457108+00:00 entry=0.39 bid=0.25 peak=0.41 pnl=-35.9% trail=0.3075 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_runner|demoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.38 peak=0.49 pnl=-17.4% trail=0.3675 armed=false liveFav=KXHIGHDEN-26SEP06-B93.5 (hold_settlement)
+Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T19:00:13.457108+00:00 entry=0.39 bid=0.23 peak=0.41 pnl=-41% trail=0.3075 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
+Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_runner|demoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.39 peak=0.49 pnl=-15.2% trail=0.3675 armed=false liveFav=KXHIGHDEN-26SEP06-B93.5 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B69.5 tomorrow_favorite|promoted opened=2026-09-05T23:41:03.585966+00:00 entry=0.45 bid=0.45 peak=0.45 pnl=0% trail=0.3375 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
-Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.62 peak=0.62 pnl=93.8% trail=0.465 armed=false liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
+Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.61 peak=0.62 pnl=90.6% trail=0.465 armed=false liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
 Manage hold KXLOWTCHI-26SEP06-B68.5 tomorrow_runner|demoted opened=2026-09-05T23:41:04.341968+00:00 entry=0.53 bid=0.36 peak=0.53 pnl=-32.1% trail=0.3975 armed=false liveFav=KXLOWTCHI-26SEP06-T69 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP06-B68.5 tomorrow_runner|demoted opened=2026-09-05T23:41:05.298698+00:00 entry=0.47 bid=0.3 peak=0.47 pnl=-36.2% trail=0.3525 armed=false liveFav=KXLOWTLAX-26SEP06-T69 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B64.5 tomorrow_runner|demoted opened=2026-09-05T23:21:03.407021+00:00 entry=0.32 bid=0.21 peak=0.32 pnl=-34.4% trail=0.24 armed=false liveFav=KXLOWTPHIL-26SEP06-T65 (hold_settlement)
@@ -18,7 +15,7 @@ Manage skip closed KXHIGHTSFO-26SEP05-B73.5 status=closed
 Manage hold KXLOWTDEN-26SEP06-B63.5 tomorrow_favorite opened=2026-09-05T23:41:04.79096+00:00 entry=0.39 bid=0.35 peak=0.39 pnl=-10.3% trail=0.2925 armed=false liveFav=KXLOWTDEN-26SEP06-B63.5 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B93.5 tomorrow_favorite|promoted opened=2026-09-05T23:41:02.527073+00:00 entry=0.37 bid=0.45 peak=0.46 pnl=21.6% trail=0.345 armed=false liveFav=KXHIGHDEN-26SEP06-B93.5 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B62.5 tomorrow_runner|demoted opened=2026-09-06T05:00:40.829795+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=KXLOWTPHIL-26SEP06-T65 (hold_settlement)
-Manage skip closed KXHIGHCHI-26SEP05-B83.5 status=closed
 Manage skip closed KXHIGHDEN-26SEP05-B93.5 status=closed
+Manage skip closed KXHIGHCHI-26SEP05-B83.5 status=closed
 ----- stderr -----
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
