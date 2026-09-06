@@ -6,6 +6,7 @@ import { manageOpenTrades } from './manage.js';
 
 const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 1);
 const MAX_NEW_PER_RUN = Number(process.env.MAX_NEW_PER_RUN || 6);
+const MAX_PER_EVENT = Number(process.env.MAX_PER_EVENT || 2);
 const MIN_ASK = 0.02;
 
 function askOf(market) {
@@ -15,14 +16,15 @@ function askOf(market) {
 function heldByEvent(positions) {
   const list = positions?.market_positions || positions?.marketPositions || [];
   const tickers = new Set();
-  const events = new Set();
+  const eventCounts = new Map();
   for (const p of list) {
     if (Math.abs(Number(p.position_fp ?? p.position ?? 0)) <= 0) continue;
     const ticker = p.ticker || p.market_ticker;
     tickers.add(ticker);
-    events.add(eventFromMarketTicker(ticker));
+    const event = eventFromMarketTicker(ticker);
+    eventCounts.set(event, (eventCounts.get(event) || 0) + 1);
   }
-  return { tickers, events };
+  return { tickers, eventCounts };
 }
 
 function contractCount(ask) {
@@ -60,60 +62,56 @@ async function main() {
     }
   }
 
-  if (process.env.FLATTEN_EOD === '1') {
-    console.log('EOD flatten — no new entries');
-  } else {
-    let placed = 0;
-    for (const pick of picks) {
-      const market = pick.market;
-      const implied = impliedYes(market);
-      const ask = askOf(market);
-      const event = market.event_ticker || eventFromMarketTicker(market.ticker);
-      console.log(`MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} implied=${implied} ask=${ask}`);
-      if (held.tickers.has(market.ticker)) {
-        console.log(`SKIP already held ticker ${market.ticker}`);
-        continue;
-      }
-      if (held.events.has(event)) {
-        console.log(`SKIP event already has a position ${event} (one ticket per event; manage may promote)`);
-        continue;
-      }
-      if (!Number.isFinite(ask) || ask < MIN_ASK) {
-        console.log(`SKIP thin/no ask ${market.ticker}`);
-        continue;
-      }
-      if (placed >= MAX_NEW_PER_RUN) {
-        console.log(`SKIP cap ${MAX_NEW_PER_RUN} new orders this run`);
-        continue;
-      }
-      const count = contractCount(ask);
-      const cost = count * ask;
-      if (Number.isFinite(balance) && cost > balance * 0.35) {
-        console.log(`SKIP size ${cost} too large vs balance ${balance}`);
-        continue;
-      }
-      try {
-        await persistCandidate(market, null, {
-          action: 'live',
-          reason: pick.reason,
-          entry_yes_ask: ask,
-          confidence: Math.round(implied * 100),
-          opened_at: openedAt,
-        });
-        console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) opened=${openedAt}`);
-        await buyYes(market.ticker, count, ask);
-        placed += 1;
-        held.tickers.add(market.ticker);
-        held.events.add(event);
-        if (Number.isFinite(balance)) balance -= cost;
-      } catch (err) {
-        console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
-      }
+  let placed = 0;
+  for (const pick of picks) {
+    const market = pick.market;
+    const implied = impliedYes(market);
+    const ask = askOf(market);
+    const event = market.event_ticker || eventFromMarketTicker(market.ticker);
+    const eventHeld = held.eventCounts.get(event) || 0;
+    console.log(`MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} implied=${implied} ask=${ask}`);
+    if (held.tickers.has(market.ticker)) {
+      console.log(`SKIP already held ticker ${market.ticker}`);
+      continue;
     }
-    console.log(`New orders this run: ${placed}`);
+    if (eventHeld >= MAX_PER_EVENT) {
+      console.log(`SKIP event ${event} already has ${eventHeld} tickets`);
+      continue;
+    }
+    if (!Number.isFinite(ask) || ask < MIN_ASK) {
+      console.log(`SKIP thin/no ask ${market.ticker}`);
+      continue;
+    }
+    if (placed >= MAX_NEW_PER_RUN) {
+      console.log(`SKIP cap ${MAX_NEW_PER_RUN} new orders this run`);
+      continue;
+    }
+    const count = contractCount(ask);
+    const cost = count * ask;
+    if (Number.isFinite(balance) && cost > balance * 0.35) {
+      console.log(`SKIP size ${cost} too large vs balance ${balance}`);
+      continue;
+    }
+    try {
+      await persistCandidate(market, null, {
+        action: 'live',
+        reason: pick.reason,
+        entry_yes_ask: ask,
+        confidence: Math.round(implied * 100),
+      });
+      console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) opened=${openedAt}`);
+      await buyYes(market.ticker, count, ask);
+      placed += 1;
+      held.tickers.add(market.ticker);
+      held.eventCounts.set(event, eventHeld + 1);
+      if (Number.isFinite(balance)) balance -= cost;
+    } catch (err) {
+      console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
+    }
   }
+  console.log(`New orders this run: ${placed}`);
 
-  await manageOpenTrades({ flatten: process.env.FLATTEN_EOD === '1' });
+  await manageOpenTrades();
 }
 
 main().catch((err) => {

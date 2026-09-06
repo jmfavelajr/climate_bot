@@ -74,8 +74,9 @@ export function pnlPct(entry, bid) {
   return Number((((bid - entry) / entry) * 100).toFixed(1));
 }
 
+/** Peak must reach 2x entry so 0.75*peak >= 1.5*entry. */
 export function trailArmed(entry, peak) {
-  return Number.isFinite(entry) && Number.isFinite(peak) && peak >= entry * 1.25;
+  return Number.isFinite(entry) && Number.isFinite(peak) && peak >= entry * 2;
 }
 
 export function trailTrigger(peak) {
@@ -83,22 +84,35 @@ export function trailTrigger(peak) {
   return Number((peak * 0.75).toFixed(4));
 }
 
+export function trailFloor(entry) {
+  if (!Number.isFinite(entry) || entry <= 0) return null;
+  return Number((entry * 1.5).toFixed(4));
+}
+
 export function exitDecision({ reason, entry, bid, peak }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
   const trail = trailTrigger(peak);
+  const floor = trailFloor(entry);
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
 
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
-    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, peak, pnl };
+    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
-  if (armed && Number.isFinite(bid) && Number.isFinite(trail) && bid <= trail) {
-    return { sell: true, why: 'trail_25pct_off_peak', role, horizon, sl, tp, trail, peak, pnl };
+  if (
+    armed &&
+    Number.isFinite(bid) &&
+    Number.isFinite(trail) &&
+    bid <= trail &&
+    Number.isFinite(floor) &&
+    bid >= floor
+  ) {
+    return { sell: true, why: 'trail_25pct_off_peak', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
   if (role === 'runner' && Number.isFinite(bid) && Number.isFinite(tp) && bid >= tp) {
-    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp, trail, peak, pnl };
+    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
-  return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, peak, pnl, armed };
+  return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
 }
