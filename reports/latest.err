@@ -1,2 +1,10 @@
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Buy failed KXLOWTPHIL-26SEP06-B64.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
