@@ -74,7 +74,6 @@ export function pnlPct(entry, bid) {
   return Number((((bid - entry) / entry) * 100).toFixed(1));
 }
 
-/** Arm trail after +25% from entry. Exit if bid falls 25% off peak. */
 export function trailArmed(entry, peak) {
   return Number.isFinite(entry) && Number.isFinite(peak) && peak >= entry * 1.25;
 }
@@ -84,7 +83,7 @@ export function trailTrigger(peak) {
   return Number((peak * 0.75).toFixed(4));
 }
 
-export function exitDecision({ reason, entry, bid, peak, flatten }) {
+export function exitDecision({ reason, entry, bid, peak }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
@@ -100,9 +99,6 @@ export function exitDecision({ reason, entry, bid, peak, flatten }) {
   }
   if (role === 'runner' && Number.isFinite(bid) && Number.isFinite(tp) && bid >= tp) {
     return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp, trail, peak, pnl };
-  }
-  if (flatten && role === 'runner') {
-    return { sell: true, why: 'eod_runner', role, horizon, sl, tp, trail, peak, pnl };
   }
   return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, peak, pnl, armed };
 }
