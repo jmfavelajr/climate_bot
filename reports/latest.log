@@ -1,22 +1,55 @@
-Kalshi manage-only 2026-09-06T07:15:27-05:00
-Manage union live orphan KXHIGHDEN-26SEP05-B93.5 event=KXHIGHDEN-26SEP05
-Manage union live orphan KXHIGHTLV-26SEP05-B97.5 event=KXHIGHTLV-26SEP05
+Kalshi-only scan 26SEP06 / 26SEP07 CT=0720 enter=true clip=2
+Connected to Kalshi. Balance: 26
+MARKET PICK today favorite KXHIGHCHI-26SEP06-B79.5 implied=0.58 ask=0.59 maxAsk=0.55
+SKIP ask 0.59 above 0.55 (favorite)
+MARKET PICK today favorite KXHIGHDEN-26SEP06-B91.5 implied=0.52 ask=0.53 maxAsk=0.55
+SKIP already held ticker KXHIGHDEN-26SEP06-B91.5
+MARKET PICK today favorite KXHIGHLAX-26SEP06-B80.5 implied=0.29 ask=0.29 maxAsk=0.55
+BUY YES KXHIGHLAX-26SEP06-B80.5 count=7 @ 0.29 (today_favorite) opened=2026-09-06T12:20:27.961Z
+MARKET PICK today favorite KXHIGHPHIL-26SEP06-B81.5 implied=0.47 ask=0.48 maxAsk=0.55
+SKIP already held ticker KXHIGHPHIL-26SEP06-B81.5
+MARKET PICK today favorite KXHIGHTSFO-26SEP06-B69.5 implied=0.5 ask=0.5 maxAsk=0.55
+BUY YES KXHIGHTSFO-26SEP06-B69.5 count=4 @ 0.5 (today_favorite) opened=2026-09-06T12:20:27.961Z
+MARKET PICK today favorite KXHIGHTLV-26SEP06-B84.5 implied=0.83 ask=0.84 maxAsk=0.55
+SKIP ask 0.84 above 0.55 (favorite)
+MARKET PICK today favorite KXLOWTCHI-26SEP06-B68.5 implied=0.39 ask=0.39 maxAsk=0.55
+SKIP already held ticker KXLOWTCHI-26SEP06-B68.5
+MARKET PICK today favorite KXLOWTDEN-26SEP06-B59.5 implied=0.8 ask=0.78 maxAsk=0.55
+SKIP ask 0.78 above 0.55 (favorite)
+MARKET PICK today favorite KXLOWTLAX-26SEP06-B68.5 implied=0.24 ask=0.25 maxAsk=0.55
+SKIP already held ticker KXLOWTLAX-26SEP06-B68.5
+MARKET PICK today favorite KXLOWTPHIL-26SEP06-B64.5 implied=0.09 ask=0.15 maxAsk=0.55
+BUY YES KXLOWTPHIL-26SEP06-B64.5 count=8 @ 0.15 (today_favorite) opened=2026-09-06T12:20:27.961Z
+New orders this run: 0
 Manage hold KXHIGHCHI-26SEP06-B77.5 tomorrow_runner opened=2026-09-05T18:40:15.105539+00:00 entry=0.39 bid=0.2 peak=0.39 pnl=-48.7% trail=0.2925 armed=false liveFav=KXHIGHCHI-26SEP06-B79.5 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP06-B91.5 tomorrow_favorite|promoted opened=2026-09-05T19:00:13.591729+00:00 entry=0.46 bid=0.52 peak=0.54 pnl=13% trail=0.405 armed=false liveFav=KXHIGHDEN-26SEP06-B91.5 (hold_settlement)
-Manage hold KXHIGHTSFO-26SEP06-B69.5 today_favorite opened=2026-09-06T12:00:35.45519+00:00 entry=0.45 bid=0.49 peak=0.49 pnl=8.9% trail=0.3675 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
-Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.78 peak=0.83 pnl=143.8% trail=0.6225 armed=true liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP06-B69.5 today_favorite opened=2026-09-06T12:20:29.513518+00:00 entry=0.5 bid=0.49 peak=0.5 pnl=-2% trail=0.375 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
+Manage hold KXHIGHTLV-26SEP06-B84.5 tomorrow_favorite opened=2026-09-05T23:41:03.882271+00:00 entry=0.32 bid=0.79 peak=0.83 pnl=146.9% trail=0.6225 armed=true liveFav=KXHIGHTLV-26SEP06-B84.5 (hold_settlement)
 Manage hold KXLOWTCHI-26SEP06-B68.5 today_runner|demoted opened=2026-09-06T11:00:37.390603+00:00 entry=0.5 bid=0.32 peak=0.5 pnl=-36% trail=0.375 armed=false liveFav=KXLOWTCHI-26SEP06-T69 (hold_settlement)
 Manage hold KXLOWTLAX-26SEP06-B68.5 today_runner|demoted opened=2026-09-06T11:00:37.758055+00:00 entry=0.23 bid=0.22 peak=0.23 pnl=-4.3% trail=0.1725 armed=false liveFav=KXLOWTLAX-26SEP06-T69 (hold_settlement)
-DEMOTE KXLOWTPHIL-26SEP06-B64.5 favorite -> runner liveFav=KXLOWTPHIL-26SEP06-T65 opened=2026-09-05T17:40:19.503436+00:00
+DEMOTE KXLOWTPHIL-26SEP06-B64.5 favorite -> runner liveFav=KXLOWTPHIL-26SEP06-T65 opened=2026-09-06T12:20:29.753711+00:00
 Manage mark KXLOWTPHIL-26SEP06-B64.5 stop_50pct but no live position
 Manage hold KXHIGHPHIL-26SEP06-B81.5 today_favorite opened=2026-09-06T11:00:36.651153+00:00 entry=0.49 bid=0.46 peak=0.49 pnl=-6.1% trail=0.3675 armed=false liveFav=KXHIGHPHIL-26SEP06-B81.5 (hold_settlement)
 Manage hold KXLOWTPHIL-26SEP06-B62.5 tomorrow_runner|demoted opened=2026-09-06T05:00:40.829795+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=KXLOWTPHIL-26SEP06-T65 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP06-B82.5 today_runner|demoted opened=2026-09-06T11:00:36.282493+00:00 entry=0.3 bid=0.21 peak=0.3 pnl=-30% trail=0.225 armed=false liveFav=KXHIGHLAX-26SEP06-B80.5 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP06-B82.5 today_runner|demoted opened=2026-09-06T11:00:36.282493+00:00 entry=0.3 bid=0.22 peak=0.3 pnl=-26.7% trail=0.225 armed=false liveFav=KXHIGHLAX-26SEP06-B80.5 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP06-B71.5 today_runner|demoted opened=2026-09-06T11:00:37.027016+00:00 entry=0.44 bid=0.35 peak=0.44 pnl=-20.5% trail=0.33 armed=false liveFav=KXHIGHTSFO-26SEP06-B69.5 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP06-B80.5 today_favorite opened=2026-09-06T12:00:34.995555+00:00 entry=0.37 bid=0.3 peak=0.37 pnl=-18.9% trail=0.2775 armed=false liveFav=KXHIGHLAX-26SEP06-B80.5 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP06-B80.5 today_favorite opened=2026-09-06T12:20:29.191087+00:00 entry=0.29 bid=0.27 peak=0.29 pnl=-6.9% trail=0.2175 armed=false liveFav=KXHIGHLAX-26SEP06-B80.5 (hold_settlement)
 Manage hold KXHIGHCHI-26SEP05-B83.5 live_position opened=2026-09-06T12:00:39.757186+00:00 entry=0 bid=0 peak=0 pnl=null% trail=null armed=true liveFav=null (hold_settlement)
 Manage skip closed KXHIGHDEN-26SEP05-B93.5 status=closed
 Manage skip closed KXHIGHTLV-26SEP05-B97.5 status=closed
 ----- stderr -----
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Buy failed KXHIGHLAX-26SEP06-B80.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
 Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Buy failed KXHIGHTSFO-26SEP06-B69.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
+Supabase POST trade_candidates failed 400: {"code":"PGRST204","details":null,"hint":null,"message":"Could not find the 'opened_at' column of 'trade_candidates' in the schema cache"}
+Buy failed KXLOWTPHIL-26SEP06-B64.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
