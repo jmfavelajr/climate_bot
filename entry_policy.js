@@ -37,11 +37,26 @@ export function eventPicks(markets, todayEvent, tomorrowEvent) {
   return [...today, ...tomorrow];
 }
 
+export function eventFromMarketTicker(ticker) {
+  const parts = String(ticker || '').split('-');
+  if (parts.length < 2) return ticker || '';
+  return `${parts[0]}-${parts[1]}`;
+}
+
+export function seriesFromEvent(eventTicker) {
+  return String(eventTicker || '').split('-')[0] || '';
+}
+
+/** Favorite / promoted wins over runner so appended |eod_runner does not flip a favorite. */
 export function parseRole(reason = '') {
   const r = String(reason);
-  if (r.includes('runner')) return { role: 'runner', horizon: r.includes('today') ? 'today' : 'tomorrow' };
-  if (r.includes('tomorrow')) return { role: 'favorite', horizon: 'tomorrow' };
-  if (r.includes('today')) return { role: 'favorite', horizon: 'today' };
+  const horizon = r.includes('today') && !r.includes('tomorrow') ? 'today' : (r.includes('tomorrow') ? 'tomorrow' : 'today');
+  if (r.includes('promoted') || r.includes('favorite')) {
+    return { role: 'favorite', horizon };
+  }
+  if (r.includes('runner')) {
+    return { role: 'runner', horizon: r.includes('today') ? 'today' : 'tomorrow' };
+  }
   return { role: 'favorite', horizon: 'today' };
 }
 
@@ -60,13 +75,13 @@ export function exitDecision({ reason, entry, bid, flatten }) {
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
-    return { sell: true, why: 'stop_50pct' };
+    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp };
   }
   if (role === 'runner' && Number.isFinite(bid) && Number.isFinite(tp) && bid >= tp) {
-    return { sell: true, why: 'runner_cover_cost' };
+    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp };
   }
   if (flatten && role === 'runner') {
-    return { sell: true, why: 'eod_runner' };
+    return { sell: true, why: 'eod_runner', role, horizon, sl, tp };
   }
   return { sell: false, why: 'hold_settlement', role, horizon, sl, tp };
 }

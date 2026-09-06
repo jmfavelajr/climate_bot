@@ -27,58 +27,25 @@ async function rest(path, { method = 'GET', body, query = '' } = {}) {
   return raw ? JSON.parse(raw) : null;
 }
 
-export async function loadLatestSnapshot(eventTicker) {
-  const rows = await rest(
-    'forecast_snapshots',
-    { query: `?event_ticker=eq.${encodeURIComponent(eventTicker)}&order=observed_at.desc&limit=1` }
-  );
-  return Array.isArray(rows) && rows[0] ? rows[0] : null;
-}
-
-export async function persistForecast(forecast) {
-  if (!forecast) return;
-  const om = Number(forecast.getForecastTemperature?.() ?? forecast.forecastTemperature);
-  const nws = Number(forecast.getNWSForecastTemperature?.() ?? forecast.nwsForecastTemperature);
-  if (!Number.isFinite(om) || !Number.isFinite(nws) || om === 0 || nws === 0) return;
-  const row = {
-    event_ticker: forecast.name,
-    location: forecast.location || null,
-    forecast_date: forecast.date || null,
-    om_temp: om,
-    nws_temp: nws,
-    live_sigma: forecast.liveSigma ?? null,
-    confidence: forecast.getConfidence?.() ?? forecast.forecastConfidence ?? null,
-    disagreement: forecast.sourceDisagreement ?? null,
-    revision_delta: forecast.revision?.deltaF ?? 0,
-    revision_flagged: Boolean(forecast.revision?.flagged),
-  };
-  return rest('forecast_snapshots', { method: 'POST', body: row });
-}
-
-function askDollars(market) {
-  const n = Number(market?.yes_ask_dollars ?? market?.yes_ask);
-  if (!Number.isFinite(n)) return null;
-  return n > 1 ? n / 100 : n;
-}
-
 export async function persistCandidate(market, forecast, extras = {}) {
   if (!market) return;
-  const ask = extras.entry_yes_ask ?? askDollars(market);
+  const n = Number(market?.yes_ask_dollars ?? market?.yes_ask ?? extras.entry_yes_ask);
+  const ask = Number.isFinite(n) ? (n > 1 ? n / 100 : n) : extras.entry_yes_ask;
+  const opened = extras.opened_at || new Date().toISOString();
   const row = {
     market_ticker: market.ticker,
-    event_ticker: market.event_ticker,
-    confidence: extras.confidence ?? forecast?.getConfidence?.() ?? null,
-    revision_flagged: Boolean(forecast?.revision?.flagged),
-    revision_delta: forecast?.revision?.deltaF ?? 0,
+    event_ticker: market.event_ticker || extras.event_ticker || null,
+    confidence: extras.confidence ?? null,
+    revision_flagged: false,
+    revision_delta: 0,
     action: extras.action || 'live',
     reason: extras.reason || null,
     yes_ask: ask,
     entry_yes_ask: ask,
     latest_yes_bid: extras.latest_yes_bid ?? null,
-    om_temp: Number(forecast?.getForecastTemperature?.()) || null,
-    nws_temp: Number(forecast?.getNWSForecastTemperature?.()) || null,
-    live_sigma: forecast?.liveSigma ?? null,
   };
+  const first = await rest('trade_candidates', { method: 'POST', body: { ...row, opened_at: opened } });
+  if (first) return first;
   return rest('trade_candidates', { method: 'POST', body: row });
 }
 

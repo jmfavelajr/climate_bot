@@ -1,5 +1,5 @@
 import { CLIMATE_SERIES, eventTicker, kalshiDay } from './series.js';
-import { eventPicks, impliedYes, dollars } from './entry_policy.js';
+import { eventPicks, impliedYes, dollars, eventFromMarketTicker } from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
@@ -12,15 +12,17 @@ function askOf(market) {
   return dollars(market.yes_ask_dollars ?? market.yes_ask);
 }
 
-function positionTickers(positions) {
+function heldByEvent(positions) {
   const list = positions?.market_positions || positions?.marketPositions || [];
-  const set = new Set();
+  const tickers = new Set();
+  const events = new Set();
   for (const p of list) {
-    if (Math.abs(Number(p.position_fp ?? p.position ?? 0)) > 0) {
-      set.add(p.ticker || p.market_ticker);
-    }
+    if (Math.abs(Number(p.position_fp ?? p.position ?? 0)) <= 0) continue;
+    const ticker = p.ticker || p.market_ticker;
+    tickers.add(ticker);
+    events.add(eventFromMarketTicker(ticker));
   }
-  return set;
+  return { tickers, events };
 }
 
 function contractCount(ask) {
@@ -31,7 +33,8 @@ function contractCount(ask) {
 async function main() {
   const today = kalshiDay(0);
   const tomorrow = kalshiDay(1);
-  console.log(`Kalshi-only scan ${today} / ${tomorrow} (no NWS, no Open-Meteo, no Kelly)`);
+  const openedAt = new Date().toISOString();
+  console.log(`Kalshi-only scan ${today} / ${tomorrow} at ${openedAt}`);
 
   let balance = null;
   try {
@@ -42,7 +45,7 @@ async function main() {
   }
 
   const positions = await getPositions();
-  const held = positionTickers(positions);
+  const held = heldByEvent(positions);
 
   const picks = [];
   for (const row of CLIMATE_SERIES) {
@@ -65,9 +68,14 @@ async function main() {
       const market = pick.market;
       const implied = impliedYes(market);
       const ask = askOf(market);
+      const event = market.event_ticker || eventFromMarketTicker(market.ticker);
       console.log(`MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} implied=${implied} ask=${ask}`);
-      if (held.has(market.ticker)) {
-        console.log(`SKIP already held ${market.ticker}`);
+      if (held.tickers.has(market.ticker)) {
+        console.log(`SKIP already held ticker ${market.ticker}`);
+        continue;
+      }
+      if (held.events.has(event)) {
+        console.log(`SKIP event already has a position ${event} (one ticket per event; manage may promote)`);
         continue;
       }
       if (!Number.isFinite(ask) || ask < MIN_ASK) {
@@ -90,11 +98,13 @@ async function main() {
           reason: pick.reason,
           entry_yes_ask: ask,
           confidence: Math.round(implied * 100),
+          opened_at: openedAt,
         });
-        console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason})`);
+        console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) opened=${openedAt}`);
         await buyYes(market.ticker, count, ask);
         placed += 1;
-        held.add(market.ticker);
+        held.tickers.add(market.ticker);
+        held.events.add(event);
         if (Number.isFinite(balance)) balance -= cost;
       } catch (err) {
         console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
