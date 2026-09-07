@@ -30,7 +30,11 @@ async function rest(path, { method = 'GET', body, query = '' } = {}) {
 export async function persistCandidate(market, forecast, extras = {}) {
   if (!market) return;
   const n = Number(market?.yes_ask_dollars ?? market?.yes_ask ?? extras.entry_yes_ask);
-  const ask = Number.isFinite(n) ? (n > 1 ? n / 100 : n) : extras.entry_yes_ask;
+  let ask = Number.isFinite(n) ? (n > 1 ? n / 100 : n) : Number(extras.entry_yes_ask);
+  if (!Number.isFinite(ask) || ask <= 0) {
+    console.error(`persist skip ${market.ticker}: no positive entry`);
+    return null;
+  }
   const row = {
     market_ticker: market.ticker,
     event_ticker: market.event_ticker || extras.event_ticker || null,

@@ -9,6 +9,8 @@ import {
   eventFromMarketTicker,
   seriesFromEvent,
   pnlPct,
+  resolveEntry,
+  positionAvgPrice,
 } from './entry_policy.js';
 
 const TAKE_PROFIT_CAP = 0.99;
@@ -17,8 +19,12 @@ function liveList(positions) {
   return positions?.market_positions || positions?.marketPositions || [];
 }
 
+function positionByTicker(positions, ticker) {
+  return liveList(positions).find((p) => (p.ticker || p.market_ticker) === ticker) || null;
+}
+
 function positionCount(positions, ticker) {
-  const row = liveList(positions).find((p) => (p.ticker || p.market_ticker) === ticker);
+  const row = positionByTicker(positions, ticker);
   if (!row) return 0;
   return Math.abs(Number(row.position_fp ?? row.position ?? row.yes_count ?? 0));
 }
@@ -28,7 +34,7 @@ function liveRows(positions) {
     .filter((p) => Math.abs(Number(p.position_fp ?? p.position ?? 0)) > 0)
     .map((p) => {
       const ticker = p.ticker || p.market_ticker;
-      const avg = dollars(p.average_price ?? p.average_price_dollars);
+      const avg = positionAvgPrice(p);
       return {
         id: null,
         market_ticker: ticker,
@@ -53,9 +59,17 @@ function mergeRows(dbRows, positions) {
     });
   }
   for (const row of live) {
-    if (!byTicker.has(row.market_ticker)) {
+    const existing = byTicker.get(row.market_ticker);
+    if (!existing) {
       byTicker.set(row.market_ticker, row);
-      console.log(`Manage union live orphan ${row.market_ticker} event=${row.event_ticker}`);
+      console.log(`Manage union live orphan ${row.market_ticker} event=${row.event_ticker} avg=${row.entry_yes_ask}`);
+      continue;
+    }
+    const dbEntry = resolveEntry(existing.entry_yes_ask, existing.yes_ask);
+    if (!dbEntry && row.entry_yes_ask) {
+      existing.entry_yes_ask = row.entry_yes_ask;
+      existing.yes_ask = row.entry_yes_ask;
+      console.log(`Manage backfill entry ${row.market_ticker} from Kalshi avg=${row.entry_yes_ask}`);
     }
   }
   return [...byTicker.values()];
@@ -92,12 +106,17 @@ export async function manageOpenTrades({ flatten = false } = {}) {
   for (const row of rows) {
     const eventTicker = row.event_ticker || eventFromMarketTicker(row.market_ticker);
     const opened = row.run_at || 'unknown';
+    const livePos = positionByTicker(positions, row.market_ticker);
     const market = await getMarket(row.market_ticker);
     const status = String(market?.status || '').toLowerCase();
     const bid = dollars(market?.yes_bid_dollars ?? market?.yes_bid);
-    const entry = dollars(row.entry_yes_ask ?? row.yes_ask);
-    const storedPeak = dollars(row.live_sigma);
-    const peak = [storedPeak, bid, entry].filter(Number.isFinite).reduce((a, b) => Math.max(a, b), 0);
+    const entry = resolveEntry(
+      row.entry_yes_ask,
+      row.yes_ask,
+      positionAvgPrice(livePos)
+    );
+    const storedPeak = resolveEntry(row.live_sigma);
+    const peak = [storedPeak, bid, entry].filter((n) => Number.isFinite(n) && n > 0).reduce((a, b) => Math.max(a, b), entry || 0);
     const pnl = pnlPct(entry, bid);
     const implied = market ? impliedYes(market) : bid;
     const liveFav = await favoriteOf(eventTicker);
@@ -114,15 +133,24 @@ export async function manageOpenTrades({ flatten = false } = {}) {
       row.reason = reason;
     }
 
-    if (row.id) {
+    if (row.id && Number.isFinite(entry) && entry > 0) {
+      await updateCandidate(row.id, {
+        reason,
+        entry_yes_ask: entry,
+        yes_ask: row.yes_ask || entry,
+        latest_yes_bid: Number.isFinite(bid) ? bid : undefined,
+        live_sigma: Number.isFinite(peak) && peak > 0 ? peak : undefined,
+        pnl: Number.isFinite(pnl) ? pnl : undefined,
+      });
+    } else if (row.id) {
       await updateCandidate(row.id, {
         reason,
         latest_yes_bid: Number.isFinite(bid) ? bid : undefined,
-        live_sigma: Number.isFinite(peak) ? peak : undefined,
+        live_sigma: Number.isFinite(peak) && peak > 0 ? peak : undefined,
         pnl: Number.isFinite(pnl) ? pnl : undefined,
       });
     }
-    if (row.from_live && !row.id) {
+    if (row.from_live && !row.id && entry) {
       await persistCandidate(
         { ticker: row.market_ticker, event_ticker: eventTicker },
         null,
@@ -155,9 +183,10 @@ export async function manageOpenTrades({ flatten = false } = {}) {
       console.log(`Manage mark ${row.market_ticker} ${decision.why} but no live position`);
       continue;
     }
+    const sellPx = Number.isFinite(bid) && bid > 0 ? bid : 0.01;
     try {
-      console.log(`Selling YES ${row.market_ticker} count=${count} @ ${bid} (${decision.why}) peak=${peak} pnl=${pnl}% opened=${opened}`);
-      await submitSellYes(row.market_ticker, count, bid || TAKE_PROFIT_CAP);
+      console.log(`Selling YES ${row.market_ticker} count=${count} @ ${sellPx} (${decision.why}) entry=${entry} peak=${peak} pnl=${pnl}% opened=${opened}`);
+      await submitSellYes(row.market_ticker, count, sellPx);
       await updateCandidate(row.id, {
         action: decision.why,
         latest_yes_bid: bid,
