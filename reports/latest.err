@@ -1,0 +1,3 @@
+Buy failed KXLOWTPHIL-26SEP07-B62.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
