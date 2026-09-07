@@ -4,6 +4,30 @@ export function dollars(raw) {
   return n > 1 ? n / 100 : n;
 }
 
+/** First positive dollar price from Kalshi/DB fields. */
+export function resolveEntry(...vals) {
+  for (const v of vals) {
+    const d = dollars(v);
+    if (Number.isFinite(d) && d > 0) return d;
+  }
+  return null;
+}
+
+export function positionAvgPrice(p) {
+  if (!p) return null;
+  return resolveEntry(
+    p.average_price_dollars,
+    p.avg_price_dollars,
+    p.average_fill_price,
+    p.average_price,
+    p.avg_price,
+    p.yes_average_price,
+    p.market_exposure_dollars && p.position_fp
+      ? Number(p.market_exposure_dollars) / Math.abs(Number(p.position_fp))
+      : null
+  );
+}
+
 export function impliedYes(market) {
   const last = dollars(market?.last_price_dollars ?? market?.last_price);
   const bid = dollars(market?.yes_bid_dollars ?? market?.yes_bid);
@@ -74,7 +98,6 @@ export function pnlPct(entry, bid) {
   return Number((((bid - entry) / entry) * 100).toFixed(1));
 }
 
-/** Peak must reach 2x entry so 0.75*peak >= 1.5*entry. */
 export function trailArmed(entry, peak) {
   return Number.isFinite(entry) && Number.isFinite(peak) && peak >= entry * 2;
 }
@@ -98,6 +121,9 @@ export function exitDecision({ reason, entry, bid, peak }) {
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
 
+  if (Number.isFinite(bid) && bid <= 0.02) {
+    return { sell: true, why: 'dust_bid', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
+  }
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
     return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
