@@ -1,0 +1,6 @@
+Buy failed KXLOWTPHIL-26SEP07-B62.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
