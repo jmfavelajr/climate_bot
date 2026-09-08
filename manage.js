@@ -4,7 +4,6 @@ import {
   exitDecision,
   dollars,
   impliedYes,
-  pickByImplied,
   parseRole,
   eventFromMarketTicker,
   seriesFromEvent,
@@ -12,8 +11,6 @@ import {
   resolveEntry,
   positionAvgPrice,
 } from './entry_policy.js';
-
-const TAKE_PROFIT_CAP = 0.99;
 
 function liveList(positions) {
   return positions?.market_positions || positions?.marketPositions || [];
@@ -78,10 +75,9 @@ function mergeRows(dbRows, positions) {
 async function liveFavoriteTicker(eventTicker) {
   if (!eventTicker) return null;
   const markets = await getSeriesMarkets(seriesFromEvent(eventTicker));
-  const top = pickByImplied(
-    (markets || []).filter((m) => m.event_ticker === eventTicker),
-    1
-  )[0];
+  const top = [...(markets || [])]
+    .filter((m) => m.event_ticker === eventTicker)
+    .sort((a, b) => impliedYes(b) - impliedYes(a))[0];
   return top?.ticker || null;
 }
 
@@ -110,11 +106,7 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     const market = await getMarket(row.market_ticker);
     const status = String(market?.status || '').toLowerCase();
     const bid = dollars(market?.yes_bid_dollars ?? market?.yes_bid);
-    const entry = resolveEntry(
-      row.entry_yes_ask,
-      row.yes_ask,
-      positionAvgPrice(livePos)
-    );
+    const entry = resolveEntry(row.entry_yes_ask, row.yes_ask, positionAvgPrice(livePos));
     const storedPeak = resolveEntry(row.live_sigma);
     const peak = [storedPeak, bid, entry].filter((n) => Number.isFinite(n) && n > 0).reduce((a, b) => Math.max(a, b), entry || 0);
     const pnl = pnlPct(entry, bid);
@@ -170,7 +162,7 @@ export async function manageOpenTrades({ flatten = false } = {}) {
       continue;
     }
 
-    const decision = exitDecision({ reason, entry, bid, peak });
+    const decision = exitDecision({ reason, entry, bid, peak, liveFav });
     const count = positionCount(positions, row.market_ticker);
     if (!decision.sell) {
       console.log(
