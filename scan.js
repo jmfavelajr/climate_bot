@@ -1,5 +1,5 @@
-import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, localHourMinute, inKindWindow, isThresholdTicker } from './series.js';
-import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker } from './entry_policy.js';
+import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, localHourMinute, inKindWindow } from './series.js';
+import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker, isThresholdTicker } from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
@@ -40,6 +40,8 @@ async function main() {
   const openedAt = new Date().toISOString();
   console.log(`HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} clip=${FIXED_DOLLARS}`);
 
+  await manageOpenTrades();
+
   let balance = null;
   try {
     balance = await getBalance();
@@ -74,6 +76,7 @@ async function main() {
     const eventHeld = held.eventCounts.get(event) || 0;
     const local = localHourMinute(pick.tz);
     const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
+    const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
     console.log(
       `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} local=${String(local.hhmm).padStart(4, '0')} enter=${canEnter} implied=${implied} ask=${ask}`
     );
@@ -81,8 +84,8 @@ async function main() {
       console.log(`SKIP outside HIGH window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
       continue;
     }
-    if (isThresholdTicker(market.ticker) || !isBetweenTicker(market.ticker)) {
-      console.log(`SKIP not a between bucket ${market.ticker}`);
+    if (!okStrike) {
+      console.log(`SKIP unsupported strike ${market.ticker}`);
       continue;
     }
     if (held.tickers.has(market.ticker)) {

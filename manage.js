@@ -1,5 +1,5 @@
 import { listOpenCandidates, updateCandidate, persistCandidate } from './persist.js';
-import { sellYes as submitSellYes, getPositions, getMarket, getSeriesMarkets } from './kalshi_orders.js';
+import { sellYes as submitSellYes, buyYes, getPositions, getMarket, getSeriesMarkets } from './kalshi_orders.js';
 import {
   exitDecision,
   dollars,
@@ -10,7 +10,12 @@ import {
   pnlPct,
   resolveEntry,
   positionAvgPrice,
+  isThresholdTicker,
 } from './entry_policy.js';
+
+const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
+const MIN_ASK = 0.15;
+const MAX_ASK = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 
 function liveList(positions) {
   return positions?.market_positions || positions?.marketPositions || [];
@@ -24,6 +29,11 @@ function positionCount(positions, ticker) {
   const row = positionByTicker(positions, ticker);
   if (!row) return 0;
   return Math.abs(Number(row.position_fp ?? row.position ?? row.yes_count ?? 0));
+}
+
+function contractCount(ask) {
+  if (!Number.isFinite(ask) || ask <= 0) return 1;
+  return Math.max(1, Math.min(8, Math.round(FIXED_DOLLARS / ask)));
 }
 
 function liveRows(positions) {
@@ -81,6 +91,28 @@ async function liveFavoriteTicker(eventTicker) {
   return top?.ticker || null;
 }
 
+async function buyFavoriteT(liveFav, eventTicker) {
+  if (!isThresholdTicker(liveFav)) return;
+  const tMarket = await getMarket(liveFav);
+  const ask = dollars(tMarket?.yes_ask_dollars ?? tMarket?.yes_ask);
+  if (!Number.isFinite(ask) || ask < MIN_ASK || ask > MAX_ASK) {
+    console.log(`FLIP skip buy ${liveFav} ask=${ask}`);
+    return;
+  }
+  const count = contractCount(ask);
+  try {
+    await persistCandidate(tMarket || { ticker: liveFav, event_ticker: eventTicker }, null, {
+      action: 'live',
+      reason: 'flip_to_T_favorite',
+      entry_yes_ask: ask,
+    });
+    console.log(`FLIP BUY YES ${liveFav} count=${count} @ ${ask}`);
+    await buyYes(liveFav, count, ask);
+  } catch (err) {
+    console.error(`FLIP buy failed ${liveFav}:`, err.data || err.message);
+  }
+}
+
 export async function manageOpenTrades({ flatten = false } = {}) {
   const positions = await getPositions();
   const dbRows = await listOpenCandidates();
@@ -98,6 +130,8 @@ export async function manageOpenTrades({ flatten = false } = {}) {
     }
     return favCache.get(eventTicker);
   }
+
+  const flippedEvents = new Set();
 
   for (const row of rows) {
     const eventTicker = row.event_ticker || eventFromMarketTicker(row.market_ticker);
@@ -162,7 +196,7 @@ export async function manageOpenTrades({ flatten = false } = {}) {
       continue;
     }
 
-    const decision = exitDecision({ reason, entry, bid, peak, liveFav });
+    const decision = exitDecision({ reason, entry, bid, peak, liveFav, ticker: row.market_ticker });
     const count = positionCount(positions, row.market_ticker);
     if (!decision.sell) {
       console.log(
@@ -186,6 +220,10 @@ export async function manageOpenTrades({ flatten = false } = {}) {
         pnl,
         reason: `${reason}|${decision.why}`,
       });
+      if (decision.why === 'flip_B_to_T' && liveFav && !flippedEvents.has(eventTicker)) {
+        flippedEvents.add(eventTicker);
+        await buyFavoriteT(liveFav, eventTicker);
+      }
     } catch (err) {
       const code = err.data?.error?.code || err.message;
       if (String(code).includes('market_closed')) {
