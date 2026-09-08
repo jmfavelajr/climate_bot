@@ -1,15 +1,14 @@
-import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, localHourMinute, inKindWindow } from './series.js';
-import { eventPicks, impliedYes, dollars, eventFromMarketTicker } from './entry_policy.js';
+import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, localHourMinute, inKindWindow, isThresholdTicker } from './series.js';
+import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker } from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
 
 const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
 const MAX_NEW_PER_RUN = Number(process.env.MAX_NEW_PER_RUN || 6);
-const MAX_PER_EVENT = Number(process.env.MAX_PER_EVENT || 2);
-const MIN_ASK = 0.02;
+const MAX_PER_EVENT = 1;
+const MIN_ASK = 0.15;
 const MAX_ASK_FAVORITE = Number(process.env.MAX_ASK_FAVORITE || 0.55);
-const MAX_ASK_RUNNER = Number(process.env.MAX_ASK_RUNNER || 0.40);
 
 function askOf(market) {
   return dollars(market.yes_ask_dollars ?? market.yes_ask);
@@ -39,7 +38,7 @@ async function main() {
   const tomorrow = kalshiDay(1);
   const ct = chicagoHourMinute();
   const openedAt = new Date().toISOString();
-  console.log(`Kalshi-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} clip=${FIXED_DOLLARS}`);
+  console.log(`HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} clip=${FIXED_DOLLARS}`);
 
   let balance = null;
   try {
@@ -73,14 +72,17 @@ async function main() {
     const ask = askOf(market);
     const event = market.event_ticker || eventFromMarketTicker(market.ticker);
     const eventHeld = held.eventCounts.get(event) || 0;
-    const maxAsk = pick.role === 'runner' ? MAX_ASK_RUNNER : MAX_ASK_FAVORITE;
     const local = localHourMinute(pick.tz);
     const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} ${pick.kind} local=${String(local.hhmm).padStart(4, '0')} ${pick.tz} enter=${canEnter} implied=${implied} ask=${ask} maxAsk=${maxAsk}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} local=${String(local.hhmm).padStart(4, '0')} enter=${canEnter} implied=${implied} ask=${ask}`
     );
     if (!canEnter) {
-      console.log(`SKIP outside ${pick.kind}/${pick.horizon} window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
+      console.log(`SKIP outside HIGH window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
+      continue;
+    }
+    if (isThresholdTicker(market.ticker) || !isBetweenTicker(market.ticker)) {
+      console.log(`SKIP not a between bucket ${market.ticker}`);
       continue;
     }
     if (held.tickers.has(market.ticker)) {
@@ -88,19 +90,19 @@ async function main() {
       continue;
     }
     if (eventHeld >= MAX_PER_EVENT) {
-      console.log(`SKIP event ${event} already has ${eventHeld} tickets`);
+      console.log(`SKIP event ${event} already has a ticket`);
       continue;
     }
     if (!Number.isFinite(ask) || ask < MIN_ASK) {
-      console.log(`SKIP thin/no ask ${market.ticker}`);
+      console.log(`SKIP thin/low ask ${market.ticker} ${ask}`);
       continue;
     }
-    if (ask > maxAsk) {
-      console.log(`SKIP ask ${ask} above ${maxAsk} (${pick.role})`);
+    if (ask > MAX_ASK_FAVORITE) {
+      console.log(`SKIP ask ${ask} above ${MAX_ASK_FAVORITE}`);
       continue;
     }
     if (placed >= MAX_NEW_PER_RUN) {
-      console.log(`SKIP cap ${MAX_NEW_PER_RUN} new orders this run`);
+      console.log(`SKIP cap ${MAX_NEW_PER_RUN}`);
       continue;
     }
     const count = contractCount(ask);
