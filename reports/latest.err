@@ -1,6 +1,0 @@
-Buy failed KXHIGHTLV-26SEP09-B105.5: {
-  error: {
-    code: 'fill_or_kill_insufficient_resting_volume',
-    message: 'fill or kill insufficient resting volume'
-  }
-}
