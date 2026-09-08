@@ -1,3 +1,0 @@
-Buy failed KXHIGHTLV-26SEP09-B105.5: {
-  error: { code: 'insufficient_balance', message: 'insufficient balance' }
-}
