@@ -46,24 +46,23 @@ export function isThresholdTicker(ticker) {
 
 export function pickByImplied(markets, count) {
   return [...(markets || [])]
-    .filter((m) => m && m.ticker && isBetweenTicker(m.ticker))
+    .filter((m) => m && m.ticker && (isBetweenTicker(m.ticker) || isThresholdTicker(m.ticker)))
     .sort((a, b) => impliedYes(b) - impliedYes(a))
     .slice(0, count);
 }
 
 export function eventPicks(markets, todayEvent, tomorrowEvent) {
-  const open = (markets || []).filter((m) => m.strike_type === 'between' || isBetweenTicker(m?.ticker));
-  const today = pickByImplied(open.filter((m) => m.event_ticker === todayEvent), 1).map((market) => ({
+  const today = pickByImplied((markets || []).filter((m) => m.event_ticker === todayEvent), 1).map((market) => ({
     market,
     role: 'favorite',
     horizon: 'today',
-    reason: 'today_favorite',
+    reason: isThresholdTicker(market.ticker) ? 'today_favorite_T' : 'today_favorite',
   }));
-  const tomorrow = pickByImplied(open.filter((m) => m.event_ticker === tomorrowEvent), 1).map((market) => ({
+  const tomorrow = pickByImplied((markets || []).filter((m) => m.event_ticker === tomorrowEvent), 1).map((market) => ({
     market,
     role: 'favorite',
     horizon: 'tomorrow',
-    reason: 'tomorrow_favorite',
+    reason: isThresholdTicker(market.ticker) ? 'tomorrow_favorite_T' : 'tomorrow_favorite',
   }));
   return [...today, ...tomorrow];
 }
@@ -119,7 +118,7 @@ export function trailFloor(entry) {
   return Number((entry * 1.5).toFixed(4));
 }
 
-export function exitDecision({ reason, entry, bid, peak }) {
+export function exitDecision({ reason, entry, bid, peak, liveFav, ticker }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
@@ -130,6 +129,9 @@ export function exitDecision({ reason, entry, bid, peak }) {
 
   if (Number.isFinite(bid) && bid <= 0.02) {
     return { sell: true, why: 'dust_bid', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
+  }
+  if (isBetweenTicker(ticker) && isThresholdTicker(liveFav)) {
+    return { sell: true, why: 'flip_B_to_T', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
     return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
