@@ -4,7 +4,6 @@ export function dollars(raw) {
   return n > 1 ? n / 100 : n;
 }
 
-/** First positive dollar price from Kalshi/DB fields. */
 export function resolveEntry(...vals) {
   for (const v of vals) {
     const d = dollars(v);
@@ -37,26 +36,34 @@ export function impliedYes(market) {
   return bid ?? ask ?? 0;
 }
 
+export function isBetweenTicker(ticker) {
+  return /-[0-9]{2}[A-Z]{3}[0-9]{2}-B\d/.test(String(ticker || ''));
+}
+
+export function isThresholdTicker(ticker) {
+  return /-[0-9]{2}[A-Z]{3}[0-9]{2}-T\d/.test(String(ticker || ''));
+}
+
 export function pickByImplied(markets, count) {
   return [...(markets || [])]
-    .filter((m) => m && m.ticker)
+    .filter((m) => m && m.ticker && isBetweenTicker(m.ticker))
     .sort((a, b) => impliedYes(b) - impliedYes(a))
     .slice(0, count);
 }
 
 export function eventPicks(markets, todayEvent, tomorrowEvent) {
-  const open = (markets || []).filter((m) => m.strike_type === 'between' || !m.strike_type);
+  const open = (markets || []).filter((m) => m.strike_type === 'between' || isBetweenTicker(m?.ticker));
   const today = pickByImplied(open.filter((m) => m.event_ticker === todayEvent), 1).map((market) => ({
     market,
     role: 'favorite',
     horizon: 'today',
     reason: 'today_favorite',
   }));
-  const tomorrow = pickByImplied(open.filter((m) => m.event_ticker === tomorrowEvent), 2).map((market, i) => ({
+  const tomorrow = pickByImplied(open.filter((m) => m.event_ticker === tomorrowEvent), 1).map((market) => ({
     market,
-    role: i === 0 ? 'favorite' : 'runner',
+    role: 'favorite',
     horizon: 'tomorrow',
-    reason: i === 0 ? 'tomorrow_favorite' : 'tomorrow_runner',
+    reason: 'tomorrow_favorite',
   }));
   return [...today, ...tomorrow];
 }
@@ -112,7 +119,7 @@ export function trailFloor(entry) {
   return Number((entry * 1.5).toFixed(4));
 }
 
-export function exitDecision({ reason, entry, bid, peak }) {
+export function exitDecision({ reason, entry, bid, peak, liveFav }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
@@ -120,9 +127,13 @@ export function exitDecision({ reason, entry, bid, peak }) {
   const floor = trailFloor(entry);
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
+  const favIsT = isThresholdTicker(liveFav);
 
   if (Number.isFinite(bid) && bid <= 0.02) {
     return { sell: true, why: 'dust_bid', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
+  }
+  if (favIsT) {
+    return { sell: true, why: 'lost_to_T', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
   if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
     return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
@@ -136,9 +147,6 @@ export function exitDecision({ reason, entry, bid, peak }) {
     bid >= floor
   ) {
     return { sell: true, why: 'trail_25pct_off_peak', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
-  }
-  if (role === 'runner' && Number.isFinite(bid) && Number.isFinite(tp) && bid >= tp) {
-    return { sell: true, why: 'runner_cover_cost', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
   return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
 }
