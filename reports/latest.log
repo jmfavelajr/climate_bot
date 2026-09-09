@@ -1,21 +1,24 @@
-Kalshi manage-only 2026-09-09T09:46:03-05:00
+Kalshi manage-only 2026-09-09T09:51:01-05:00
+Manage union live orphan KXHIGHPHIL-26SEP09-B86.5 event=KXHIGHPHIL-26SEP09 avg=0.3
 Manage hold KXHIGHCHI-26SEP09-B80.5 tomorrow_favorite|promoted opened=2026-09-08T14:00:50.024101+00:00 entry=0.46 bid=0.51 peak=0.52 pnl=10.9% trail=0.39 armed=false liveFav=KXHIGHCHI-26SEP09-B80.5 (hold_settlement)
-Manage hold KXHIGHDEN-26SEP09-B82.5 tomorrow_favorite opened=2026-09-08T14:00:50.371325+00:00 entry=0.48 bid=0.44 peak=0.59 pnl=-8.3% trail=0.4425 armed=false liveFav=KXHIGHDEN-26SEP09-B82.5 (hold_settlement)
-Selling YES KXHIGHPHIL-26SEP09-B86.5 count=7 @ 0.12 (stop_50pct) entry=0.3 peak=0.37 pnl=-60% opened=2026-09-08T14:00:50.74989+00:00
-Kalshi v2 ask KXHIGHPHIL-26SEP09-B86.5 count=7.00 price=0.1200 status=201 {
-  average_fee_paid: '0.0074',
-  average_fill_price: '0.1200',
-  client_order_id: '12884339-f914-4924-883d-415fb5588443',
-  fill_count: '1.00',
-  order_id: '01a086a2-17c8-7cc2-a552-6f120972b73f',
-  remaining_count: '0.00',
-  ts_ms: 1788965165035
-}
+DEMOTE KXHIGHDEN-26SEP09-B82.5 favorite -> runner liveFav=KXHIGHDEN-26SEP09-B80.5 opened=2026-09-08T14:00:50.371325+00:00
+Manage hold KXHIGHDEN-26SEP09-B82.5 tomorrow_runner|demoted opened=2026-09-08T14:00:50.371325+00:00 entry=0.48 bid=0.39 peak=0.59 pnl=-18.7% trail=0.4425 armed=false liveFav=KXHIGHDEN-26SEP09-B80.5 (hold_settlement)
 Manage hold KXHIGHPHIL-26SEP09-B88.5 tomorrow_favorite opened=2026-09-08T15:20:38.479894+00:00 entry=0.51 bid=0.68 peak=0.68 pnl=33.3% trail=0.51 armed=false liveFav=KXHIGHPHIL-26SEP09-B88.5 (hold_settlement)
 Manage hold KXHIGHTLV-26SEP09-B105.5 tomorrow_favorite|promoted opened=2026-09-08T20:20:50.058623+00:00 entry=0.5 bid=0.57 peak=0.67 pnl=14% trail=0.5025 armed=false liveFav=KXHIGHTLV-26SEP09-B105.5 (hold_settlement)
-Manage hold KXHIGHTLV-26SEP09-B103.5 tomorrow_runner|demoted opened=2026-09-08T20:40:40.214197+00:00 entry=0.44 bid=0.41 peak=0.49 pnl=-6.8% trail=0.3675 armed=false liveFav=KXHIGHTLV-26SEP09-B105.5 (hold_settlement)
+Manage hold KXHIGHTLV-26SEP09-B103.5 tomorrow_runner|demoted opened=2026-09-08T20:40:40.214197+00:00 entry=0.44 bid=0.42 peak=0.49 pnl=-4.5% trail=0.3675 armed=false liveFav=KXHIGHTLV-26SEP09-B105.5 (hold_settlement)
 Manage hold KXHIGHLAX-26SEP09-T92 live_position opened=2026-09-08T15:46:06.791928+00:00 entry=0.42344262295081975 bid=0.84 peak=0.91 pnl=98.4% trail=0.6825 armed=true liveFav=KXHIGHLAX-26SEP09-T92 (hold_settlement)
-Manage hold KXHIGHNY-26SEP09-T84 today_favorite_T opened=2026-09-09T13:21:07.854434+00:00 entry=0.52 bid=0.55 peak=0.61 pnl=5.8% trail=0.4575 armed=false liveFav=KXHIGHNY-26SEP09-T84 (hold_settlement)
-Manage hold KXHIGHMIA-26SEP09-B91.5 today_favorite|promoted opened=2026-09-09T14:01:07.140477+00:00 entry=0.45 bid=0.55 peak=0.55 pnl=22.2% trail=0.4125 armed=false liveFav=KXHIGHMIA-26SEP09-B91.5 (hold_settlement)
+Manage hold KXHIGHNY-26SEP09-T84 today_favorite_T opened=2026-09-09T13:21:07.854434+00:00 entry=0.52 bid=0.54 peak=0.61 pnl=3.8% trail=0.4575 armed=false liveFav=KXHIGHNY-26SEP09-T84 (hold_settlement)
+Manage hold KXHIGHMIA-26SEP09-B91.5 today_favorite|promoted opened=2026-09-09T14:01:07.140477+00:00 entry=0.45 bid=0.54 peak=0.55 pnl=20% trail=0.4125 armed=false liveFav=KXHIGHMIA-26SEP09-B91.5 (hold_settlement)
 Manage hold KXHIGHPHIL-26SEP10-B86.5 tomorrow_runner|demoted opened=2026-09-09T14:01:07.314843+00:00 entry=0.32 bid=0.23 peak=0.32 pnl=-28.1% trail=0.24 armed=false liveFav=KXHIGHPHIL-26SEP10-B88.5 (hold_settlement)
 Manage hold KXHIGHCHI-26SEP10-B79.5 tomorrow_runner|demoted opened=2026-09-09T14:01:07.480984+00:00 entry=0.34 bid=0.31 peak=0.34 pnl=-8.8% trail=0.255 armed=false liveFav=KXHIGHCHI-26SEP10-B77.5 (hold_settlement)
+DEMOTE KXHIGHPHIL-26SEP09-B86.5 favorite -> runner liveFav=KXHIGHPHIL-26SEP09-B88.5 opened=unknown
+Selling YES KXHIGHPHIL-26SEP09-B86.5 count=6 @ 0.15 (stop_50pct) entry=0.3 peak=0.3 pnl=-50% opened=unknown
+Kalshi v2 ask KXHIGHPHIL-26SEP09-B86.5 count=6.00 price=0.1500 status=201 {
+  average_fee_paid: '0.0089',
+  average_fill_price: '0.1500',
+  client_order_id: 'a7186ce8-ed86-4b22-be18-9448aabf49b4',
+  fill_count: '2.00',
+  order_id: '01a086a6-a7c0-79d1-be1f-8de409c4068c',
+  remaining_count: '0.00',
+  ts_ms: 1788965464993
+}
