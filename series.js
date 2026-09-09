@@ -6,6 +6,10 @@ export const CLIMATE_SERIES = [
   { series: 'KXHIGHPHIL', city: 'Philadelphia', kind: 'high', tz: 'America/New_York' },
   { series: 'KXHIGHTSFO', city: 'San Francisco', kind: 'high', tz: 'America/Los_Angeles' },
   { series: 'KXHIGHTLV', city: 'Las Vegas', kind: 'high', tz: 'America/Los_Angeles' },
+  { series: 'KXHIGHAUS', city: 'Austin', kind: 'high', tz: 'America/Chicago' },
+  { series: 'KXHIGHMIA', city: 'Miami', kind: 'high', tz: 'America/New_York' },
+  { series: 'KXHIGHNY', city: 'New York', kind: 'high', tz: 'America/New_York' },
+  { series: 'KXHIGHTSEA', city: 'Seattle', kind: 'high', tz: 'America/Los_Angeles' },
 ];
 
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
