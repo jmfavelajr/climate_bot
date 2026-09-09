@@ -1,0 +1,3 @@
+Buy failed KXHIGHTSFO-26SEP10-B80.5: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
