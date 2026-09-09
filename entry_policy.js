@@ -126,6 +126,7 @@ export function exitDecision({ reason, entry, bid, peak, liveFav, ticker }) {
   const floor = trailFloor(entry);
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
+  const stillFavorite = Boolean(liveFav && ticker && liveFav === ticker);
 
   if (Number.isFinite(bid) && bid <= 0.02) {
     return { sell: true, why: 'dust_bid', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
@@ -133,7 +134,7 @@ export function exitDecision({ reason, entry, bid, peak, liveFav, ticker }) {
   if (isBetweenTicker(ticker) && isThresholdTicker(liveFav)) {
     return { sell: true, why: 'flip_B_to_T', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
-  if (Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
+  if (!stillFavorite && Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
     return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
   }
   if (
