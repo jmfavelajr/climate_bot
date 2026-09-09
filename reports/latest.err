@@ -1,0 +1,3 @@
+FLIP buy failed KXHIGHCHI-26SEP09-T80: {
+  error: { code: 'insufficient_balance', message: 'insufficient balance' }
+}
