@@ -1,19 +1,7 @@
-Kalshi manage-only 2026-09-10T13:55:52-05:00
+Kalshi manage-only 2026-09-10T13:56:36-05:00
 Manage hold KXHIGHLAX-26SEP10-T90 live_position opened=2026-09-09T16:46:06.940266+00:00 entry=0.49 bid=0.99 peak=0.99 pnl=102% trail=0.7425 armed=true liveFav=KXHIGHLAX-26SEP10-T90 (hold_settlement)
 Manage hold KXHIGHTSEA-26SEP10-B71.5 today_favorite opened=2026-09-10T15:00:21.694943+00:00 entry=0.5 bid=0.55 peak=0.55 pnl=10% trail=0.4125 armed=false liveFav=KXHIGHTSEA-26SEP10-B71.5 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP10-T83 tomorrow_favorite|promoted opened=2026-09-09T17:41:05.21878+00:00 entry=0.24 bid=0.85 peak=0.85 pnl=254.2% trail=0.6375 armed=true liveFav=KXHIGHTSFO-26SEP10-T83 (hold_settlement)
-DEMOTE KXHIGHNY-26SEP10-B85.5 favorite -> runner liveFav=KXHIGHNY-26SEP10-T85 opened=2026-09-10T12:00:21.115609+00:00
-Selling YES KXHIGHNY-26SEP10-B85.5 count=4 @ 0.37 (flip_B_to_T) entry=0.51 peak=0.7 pnl=-27.5% opened=2026-09-10T12:00:21.115609+00:00
-Kalshi v2 ask KXHIGHNY-26SEP10-B85.5 count=4.00 price=0.3700 status=201 {
-  average_fee_paid: '0.0163',
-  average_fill_price: '0.3700',
-  client_order_id: '25297991-26f9-4fd3-b680-43511e57e1de',
-  fill_count: '4.00',
-  order_id: '01a08cad-2a90-75e5-8cc7-b8de01081621',
-  remaining_count: '0.00',
-  ts_ms: 1789066554768
-}
-FLIP skip buy KXHIGHNY-26SEP10-T85 ask=0.61
 Manage hold KXHIGHMIA-26SEP10-B90.5 today_favorite|promoted opened=2026-09-10T13:20:17.843767+00:00 entry=0.44 bid=0.99 peak=0.99 pnl=125% trail=0.7425 armed=true liveFav=KXHIGHMIA-26SEP10-B90.5 (hold_settlement)
 Manage hold KXHIGHCHI-26SEP11-B80.5 tomorrow_favorite opened=2026-09-10T14:40:17.638926+00:00 entry=0.39 bid=0.44 peak=0.44 pnl=12.8% trail=0.33 armed=false liveFav=KXHIGHCHI-26SEP11-B80.5 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP11-B91.5 tomorrow_favorite|promoted opened=2026-09-10T14:40:17.780272+00:00 entry=0.39 bid=0.46 peak=0.46 pnl=17.9% trail=0.345 armed=false liveFav=KXHIGHDEN-26SEP11-B91.5 (hold_settlement)
