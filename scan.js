@@ -4,7 +4,7 @@ import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_ord
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
+const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 4);
 const MAX_TODAY = Number(process.env.MAX_TODAY_PICKS || 4);
 const MAX_TOMORROW = Number(process.env.MAX_TOMORROW_PICKS || 4);
 const MAX_NEW_PER_RUN = MAX_TODAY + MAX_TOMORROW;
@@ -49,7 +49,7 @@ function heldByEvent(positions) {
 
 function contractCount(ask) {
   if (!Number.isFinite(ask) || ask <= 0) return 1;
-  return Math.max(1, Math.min(8, Math.round(FIXED_DOLLARS / ask)));
+  return Math.max(1, Math.min(20, Math.round(FIXED_DOLLARS / ask)));
 }
 
 async function main() {
