@@ -1,9 +1,47 @@
-Kalshi manage-only 2026-09-10T07:35:15-05:00
-Manage union live orphan KXHIGHLAX-26SEP09-T92 event=KXHIGHLAX-26SEP09 avg=0.45
-Manage hold KXHIGHCHI-26SEP10-B79.5 tomorrow_favorite|promoted opened=2026-09-09T16:46:07.068124+00:00 entry=0.32 bid=0.54 peak=0.58 pnl=68.8% trail=0.435 armed=false liveFav=KXHIGHCHI-26SEP10-B79.5 (hold_settlement)
+HIGH favorite-only scan 26SEP10 / 26SEP11 CT=0740 clip=2 cap=4+4
+Manage union live orphan KXHIGHDEN-26SEP09-B82.5 event=KXHIGHDEN-26SEP09 avg=0.44
+Manage hold KXHIGHCHI-26SEP10-B79.5 tomorrow_favorite|promoted opened=2026-09-09T16:46:07.068124+00:00 entry=0.32 bid=0.55 peak=0.58 pnl=71.9% trail=0.435 armed=false liveFav=KXHIGHCHI-26SEP10-B79.5 (hold_settlement)
 Manage hold KXHIGHLAX-26SEP10-T90 live_position opened=2026-09-09T16:46:06.940266+00:00 entry=0.49 bid=0.88 peak=0.9 pnl=79.6% trail=0.675 armed=false liveFav=KXHIGHLAX-26SEP10-T90 (hold_settlement)
-Manage hold KXHIGHTSEA-26SEP10-B71.5 tomorrow_favorite|promoted opened=2026-09-09T15:01:03.987742+00:00 entry=0.31 bid=0.44 peak=0.48 pnl=41.9% trail=0.36 armed=false liveFav=KXHIGHTSEA-26SEP10-B71.5 (hold_settlement)
+Manage hold KXHIGHTSEA-26SEP10-B71.5 tomorrow_favorite|promoted opened=2026-09-09T15:01:03.987742+00:00 entry=0.31 bid=0.45 peak=0.48 pnl=45.2% trail=0.36 armed=false liveFav=KXHIGHTSEA-26SEP10-B71.5 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP10-T83 tomorrow_favorite|promoted opened=2026-09-09T20:01:05.438776+00:00 entry=0.25 bid=0.76 peak=0.76 pnl=204% trail=0.57 armed=true liveFav=KXHIGHTSFO-26SEP10-T83 (hold_settlement)
-Manage hold KXHIGHNY-26SEP10-B85.5 today_favorite opened=2026-09-10T12:00:21.115609+00:00 entry=0.51 bid=0.5 peak=0.51 pnl=-2% trail=0.3825 armed=false liveFav=KXHIGHNY-26SEP10-B85.5 (hold_settlement)
-SETTLED KXHIGHDEN-26SEP09-B82.5 opened=2026-09-10T12:30:17.77607+00:00 entry=0.44 lastBid=0 peak=0.44 pnl=-100% status=closed
+Manage hold KXHIGHNY-26SEP10-B85.5 today_favorite opened=2026-09-10T12:00:21.115609+00:00 entry=0.51 bid=0.51 peak=0.51 pnl=0% trail=0.3825 armed=false liveFav=KXHIGHNY-26SEP10-B85.5 (hold_settlement)
+SETTLED KXHIGHLAX-26SEP09-T92 opened=2026-09-10T12:35:16.953331+00:00 entry=0.45 lastBid=0 peak=0.45 pnl=-100% status=closed
+SETTLED KXHIGHDEN-26SEP09-B82.5 opened=unknown entry=0.44 lastBid=0 peak=0.44 pnl=-100% status=closed
+Connected to Kalshi. Balance: 206
+RANK today Los Angeles KXHIGHLAX-26SEP10-T90 T=1 ok=0 pot=0 ask=0.91
+RANK today San Francisco KXHIGHTSFO-26SEP10-T83 T=1 ok=0 pot=0 ask=0.8
+RANK today Philadelphia KXHIGHPHIL-26SEP10-B88.5 T=0 ok=1 pot=2.2222 ask=0.45
+RANK today Seattle KXHIGHTSEA-26SEP10-B71.5 T=0 ok=1 pot=2.1277 ask=0.47
+RANK today New York KXHIGHNY-26SEP10-B85.5 T=0 ok=1 pot=1.8868 ask=0.53
+RANK today Chicago KXHIGHCHI-26SEP10-B79.5 T=0 ok=0 pot=0 ask=0.57
+RANK today Denver KXHIGHDEN-26SEP10-B88.5 T=0 ok=0 pot=0 ask=0.68
+RANK today Las Vegas KXHIGHTLV-26SEP10-B107.5 T=0 ok=0 pot=0 ask=0.73
+RANK today Austin KXHIGHAUS-26SEP10-B99.5 T=0 ok=0 pot=0 ask=0.63
+RANK today Miami KXHIGHMIA-26SEP10-B90.5 T=0 ok=0 pot=0 ask=0.57
+MARKET PICK today favorite KXHIGHLAX-26SEP10-T90 Los Angeles local=0540 enter=false implied=0.91 ask=0.91 pot=0
+SKIP outside HIGH window Los Angeles local=0540
+MARKET PICK today favorite KXHIGHTSFO-26SEP10-T83 San Francisco local=0540 enter=false implied=0.76 ask=0.8 pot=0
+SKIP outside HIGH window San Francisco local=0540
+MARKET PICK today favorite KXHIGHPHIL-26SEP10-B88.5 Philadelphia local=0840 enter=true implied=0.41 ask=0.45 pot=2.2222
+BUY YES KXHIGHPHIL-26SEP10-B88.5 count=4 @ 0.45 (today_favorite) pot=2.2222 opened=2026-09-10T12:40:17.548Z
+Kalshi v2 bid KXHIGHPHIL-26SEP10-B88.5 count=4.00 price=0.4500 status=201 {
+  average_fee_paid: '0.0172',
+  average_fill_price: '0.4400',
+  client_order_id: 'cc3fc203-b0f6-4f3c-96e9-488743d5cdd3',
+  fill_count: '4.00',
+  order_id: '01a08b55-5708-7a96-9bd3-0a1887c06118',
+  remaining_count: '0.00',
+  ts_ms: 1789044021254
+}
+MARKET PICK today favorite KXHIGHTSEA-26SEP10-B71.5 Seattle local=0540 enter=false implied=0.46 ask=0.47 pot=2.1277
+SKIP outside HIGH window Seattle local=0540
+New orders this run: 1
+Manage union live orphan KXHIGHLAX-26SEP09-T92 event=KXHIGHLAX-26SEP09 avg=0.45
+Manage hold KXHIGHCHI-26SEP10-B79.5 tomorrow_favorite|promoted opened=2026-09-09T16:46:07.068124+00:00 entry=0.32 bid=0.55 peak=0.58 pnl=71.9% trail=0.435 armed=false liveFav=KXHIGHCHI-26SEP10-B79.5 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP10-T90 live_position opened=2026-09-09T16:46:06.940266+00:00 entry=0.49 bid=0.88 peak=0.9 pnl=79.6% trail=0.675 armed=false liveFav=KXHIGHLAX-26SEP10-T90 (hold_settlement)
+Manage hold KXHIGHTSEA-26SEP10-B71.5 tomorrow_favorite|promoted opened=2026-09-09T15:01:03.987742+00:00 entry=0.31 bid=0.45 peak=0.48 pnl=45.2% trail=0.36 armed=false liveFav=KXHIGHTSEA-26SEP10-B71.5 (hold_settlement)
+Manage hold KXHIGHTSFO-26SEP10-T83 tomorrow_favorite|promoted opened=2026-09-09T20:01:05.438776+00:00 entry=0.25 bid=0.76 peak=0.76 pnl=204% trail=0.57 armed=true liveFav=KXHIGHTSFO-26SEP10-T83 (hold_settlement)
+Manage hold KXHIGHNY-26SEP10-B85.5 today_favorite opened=2026-09-10T12:00:21.115609+00:00 entry=0.51 bid=0.51 peak=0.51 pnl=0% trail=0.3825 armed=false liveFav=KXHIGHNY-26SEP10-B85.5 (hold_settlement)
+SETTLED KXHIGHDEN-26SEP09-B82.5 opened=2026-09-10T12:40:20.584798+00:00 entry=0.44 lastBid=0 peak=0.44 pnl=-100% status=closed
+Manage hold KXHIGHPHIL-26SEP10-B88.5 today_favorite opened=2026-09-10T12:40:21.172525+00:00 entry=0.45 bid=0.42 peak=0.45 pnl=-6.7% trail=0.3375 armed=false liveFav=KXHIGHPHIL-26SEP10-B88.5 (hold_settlement)
 SETTLED KXHIGHLAX-26SEP09-T92 opened=unknown entry=0.45 lastBid=0 peak=0.45 pnl=-100% status=closed
