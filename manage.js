@@ -13,7 +13,7 @@ import {
   isThresholdTicker,
 } from './entry_policy.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
+const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 4);
 const MIN_ASK = 0.15;
 const MAX_ASK = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 
@@ -33,7 +33,7 @@ function positionCount(positions, ticker) {
 
 function contractCount(ask) {
   if (!Number.isFinite(ask) || ask <= 0) return 1;
-  return Math.max(1, Math.min(8, Math.round(FIXED_DOLLARS / ask)));
+  return Math.max(1, Math.min(20, Math.round(FIXED_DOLLARS / ask)));
 }
 
 function liveRows(positions) {
