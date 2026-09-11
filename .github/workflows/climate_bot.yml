@@ -22,10 +22,12 @@ jobs:
 
       - name: Trading window (America/Chicago)
         id: window
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           NOW=$(TZ=America/Chicago date +%H%M)
           MIN=$(TZ=America/Chicago date +%M)
-          echo "chicago_hhmm=$NOW"
+          echo "chicago_hhmm=$NOW event=$EVENT_NAME"
           if [ "$NOW" -ge 1915 ]; then
             echo "After 19:15 CT — skip"
             echo "run=0" >> "$GITHUB_OUTPUT"
@@ -37,7 +39,7 @@ jobs:
           else
             echo "flatten=0" >> "$GITHUB_OUTPUT"
           fi
-          if [ "$MIN" = "00" ] || [ "$MIN" = "20" ] || [ "$MIN" = "40" ]; then
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$MIN" = "00" ] || [ "$MIN" = "20" ] || [ "$MIN" = "40" ]; then
             echo "mode=full" >> "$GITHUB_OUTPUT"
           else
             echo "mode=manage" >> "$GITHUB_OUTPUT"
