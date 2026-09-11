@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate-report:
@@ -72,19 +72,5 @@ jobs:
             echo "----- stderr -----" >> reports/latest.log
             cat reports/latest.err >> reports/latest.log
           fi
-
-      - name: Commit and push the report
-        if: steps.window.outputs.run == '1'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          mkdir -p reports
-          git add reports/latest.log reports/latest.err || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update climate report - $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "===== latest.log ====="
+          cat reports/latest.log
