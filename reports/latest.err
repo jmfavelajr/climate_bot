@@ -1,0 +1,7 @@
+FLIP buy failed KXHIGHTSFO-26SEP11-T70: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
+Sell failed KXHIGHMIA-26SEP10-B90.5: { error: { code: 'market_closed', message: 'market closed' } }
