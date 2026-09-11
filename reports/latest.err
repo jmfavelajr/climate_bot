@@ -1,3 +1,9 @@
+Buy failed KXHIGHAUS-26SEP11-B102.5: {
+  error: {
+    code: 'fill_or_kill_insufficient_resting_volume',
+    message: 'fill or kill insufficient resting volume'
+  }
+}
 Buy failed KXHIGHTSEA-26SEP12-B70.5: {
   error: {
     code: 'fill_or_kill_insufficient_resting_volume',
