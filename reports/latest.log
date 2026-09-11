@@ -1,10 +1,9 @@
-Kalshi manage-only 2026-09-11T06:15:34-05:00
+Kalshi manage-only 2026-09-11T06:21:08-05:00
+Manage union live orphan KXHIGHLAX-26SEP10-T90 event=KXHIGHLAX-26SEP10 avg=0.49
 Manage hold KXHIGHCHI-26SEP11-B80.5 tomorrow_favorite opened=2026-09-10T14:40:17.638926+00:00 entry=0.39 bid=0.6 peak=0.62 pnl=53.8% trail=0.465 armed=false liveFav=KXHIGHCHI-26SEP11-B80.5 (hold_settlement)
 Manage hold KXHIGHDEN-26SEP11-B91.5 tomorrow_favorite|promoted opened=2026-09-10T14:40:17.780272+00:00 entry=0.39 bid=0.64 peak=0.65 pnl=64.1% trail=0.4875 armed=false liveFav=KXHIGHDEN-26SEP11-B91.5 (hold_settlement)
-Manage hold KXHIGHLAX-26SEP11-T85 tomorrow_favorite_T opened=2026-09-10T15:20:21.454822+00:00 entry=0.5 bid=0.85 peak=0.87 pnl=70% trail=0.6525 armed=false liveFav=KXHIGHLAX-26SEP11-T85 (hold_settlement)
+Manage hold KXHIGHLAX-26SEP11-T85 tomorrow_favorite_T opened=2026-09-10T15:20:21.454822+00:00 entry=0.5 bid=0.87 peak=0.87 pnl=74% trail=0.6525 armed=false liveFav=KXHIGHLAX-26SEP11-T85 (hold_settlement)
 Manage hold KXHIGHTSFO-26SEP11-B72.5 tomorrow_favorite opened=2026-09-10T16:20:23.740053+00:00 entry=0.37 bid=0.29 peak=0.37 pnl=-21.6% trail=0.2775 armed=false liveFav=KXHIGHTSFO-26SEP11-B72.5 (hold_settlement)
 Manage hold KXHIGHTSEA-26SEP11-B68.5 tomorrow_favorite opened=2026-09-10T16:40:20.081413+00:00 entry=0.39 bid=0.45 peak=0.53 pnl=15.4% trail=0.3975 armed=false liveFav=KXHIGHTSEA-26SEP11-B68.5 (hold_settlement)
-DEMOTE KXHIGHTSFO-26SEP11-T70 favorite -> runner liveFav=KXHIGHTSFO-26SEP11-B72.5 opened=2026-09-11T11:10:35.831297+00:00
 Manage hold KXHIGHTSFO-26SEP11-T70 tomorrow_runner|demoted opened=2026-09-11T11:10:35.831297+00:00 entry=0.27 bid=0.21 peak=0.27 pnl=-22.2% trail=0.2025 armed=false liveFav=KXHIGHTSFO-26SEP11-B72.5 (hold_settlement)
-Manage mark KXHIGHMIA-26SEP10-B90.5 dust_bid but no live position
-SETTLED KXHIGHLAX-26SEP10-T90 opened=2026-09-11T11:10:36.624925+00:00 entry=0.49 lastBid=0 peak=0.49 pnl=-100% status=closed
+SETTLED KXHIGHLAX-26SEP10-T90 opened=unknown entry=0.49 lastBid=0 peak=0.49 pnl=-100% status=closed
