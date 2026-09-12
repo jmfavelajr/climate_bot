@@ -13,7 +13,7 @@ import {
   isThresholdTicker,
 } from './entry_policy.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 4);
+const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
 const MIN_ASK = 0.15;
 const MAX_ASK = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 
