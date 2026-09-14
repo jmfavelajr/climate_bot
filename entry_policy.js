@@ -118,7 +118,7 @@ export function trailFloor(entry) {
   return Number((entry * 1.5).toFixed(4));
 }
 
-export function exitDecision({ reason, entry, bid, peak, liveFav, ticker }) {
+export function exitDecision({ reason, entry, bid, peak }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
   const tp = runnerTakeProfit(entry);
@@ -126,26 +126,5 @@ export function exitDecision({ reason, entry, bid, peak, liveFav, ticker }) {
   const floor = trailFloor(entry);
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
-  const stillFavorite = Boolean(liveFav && ticker && liveFav === ticker);
-
-  if (Number.isFinite(bid) && bid <= 0.02) {
-    return { sell: true, why: 'dust_bid', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
-  }
-  if (isBetweenTicker(ticker) && isThresholdTicker(liveFav)) {
-    return { sell: true, why: 'flip_B_to_T', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
-  }
-  if (!stillFavorite && Number.isFinite(bid) && Number.isFinite(sl) && bid <= sl) {
-    return { sell: true, why: 'stop_50pct', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
-  }
-  if (
-    armed &&
-    Number.isFinite(bid) &&
-    Number.isFinite(trail) &&
-    bid <= trail &&
-    Number.isFinite(floor) &&
-    bid >= floor
-  ) {
-    return { sell: true, why: 'trail_25pct_off_peak', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
-  }
   return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
 }
