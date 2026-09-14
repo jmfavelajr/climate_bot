@@ -50,11 +50,11 @@ export function isThresholdTicker(ticker) {
   return /-[0-9]{2}[A-Z]{3}[0-9]{2}-T\d/.test(String(ticker || ''));
 }
 
-/** HIGH today+tomorrow: 08:00-14:00 local */
-export function inKindWindow(kind, timeZone, horizon = 'today') {
-  const { hhmm } = localHourMinute(timeZone || 'America/Chicago');
-  const start = Number(process.env.HIGH_ENTRY_START_HHMM || 800);
-  const end = Number(process.env.HIGH_ENTRY_END_HHMM || 1400);
+/** All HIGH cities share one Chicago window. Default 09:30-10:30 CT. */
+export function inKindWindow(_kind, _timeZone, _horizon = 'today') {
+  const { hhmm } = chicagoHourMinute();
+  const start = Number(process.env.HIGH_ENTRY_START_HHMM || 930);
+  const end = Number(process.env.HIGH_ENTRY_END_HHMM || 1030);
   return hhmm >= start && hhmm < end;
 }
 
