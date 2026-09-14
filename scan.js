@@ -1,4 +1,4 @@
-import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, localHourMinute, inKindWindow } from './series.js';
+import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, inKindWindow } from './series.js';
 import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker, isThresholdTicker } from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
@@ -57,7 +57,10 @@ async function main() {
   const tomorrow = kalshiDay(1);
   const ct = chicagoHourMinute();
   const openedAt = new Date().toISOString();
-  console.log(`HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`);
+  const canEnter = inKindWindow();
+  console.log(
+    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} window=0930-1030CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
+  );
 
   await manageOpenTrades();
 
@@ -105,22 +108,23 @@ async function main() {
     console.log(`RANK tomorrow ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask}`);
   }
 
-  let placed = 0;
+  if (!canEnter) {
+    console.log(`SKIP all new buys outside 09:30-10:30 CT (now=${String(ct.hhmm).padStart(4, '0')})`);
+    console.log('New orders this run: 0');
+    await manageOpenTrades();
+    return;
+  }
+
+  const batch = [];
   for (const pick of selected) {
     const market = pick.market;
     const ask = pick.ask;
     const event = market.event_ticker || eventFromMarketTicker(market.ticker);
     const eventHeld = held.eventCounts.get(event) || 0;
-    const local = localHourMinute(pick.tz);
-    const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
     const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} local=${String(local.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} pot=${pick.potential}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=true implied=${pick.implied} ask=${ask} pot=${pick.potential}`
     );
-    if (!canEnter) {
-      console.log(`SKIP outside HIGH window ${pick.city} local=${String(local.hhmm).padStart(4, '0')}`);
-      continue;
-    }
     if (!okStrike) {
       console.log(`SKIP unsupported strike ${market.ticker}`);
       continue;
@@ -137,7 +141,7 @@ async function main() {
       console.log(`SKIP event ${event} already has a ticket`);
       continue;
     }
-    if (placed >= MAX_NEW_PER_RUN) {
+    if (batch.length >= MAX_NEW_PER_RUN) {
       console.log(`SKIP cap ${MAX_NEW_PER_RUN}`);
       continue;
     }
@@ -147,24 +151,32 @@ async function main() {
       console.log(`SKIP size ${cost} too large vs balance ${balance}`);
       continue;
     }
-    try {
-      await persistCandidate(market, null, {
-        action: 'live',
-        reason: pick.reason,
-        entry_yes_ask: ask,
-        confidence: Math.round(pick.implied * 100),
-      });
-      console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) pot=${pick.potential} opened=${openedAt}`);
-      await buyYes(market.ticker, count, ask);
-      placed += 1;
-      held.tickers.add(market.ticker);
-      held.eventCounts.set(event, eventHeld + 1);
-      if (Number.isFinite(balance)) balance -= cost;
-    } catch (err) {
-      console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
-    }
+    held.tickers.add(market.ticker);
+    held.eventCounts.set(event, eventHeld + 1);
+    if (Number.isFinite(balance)) balance -= cost;
+    batch.push({ pick, market, ask, count, cost });
   }
-  console.log(`New orders this run: ${placed}`);
+
+  const results = await Promise.all(
+    batch.map(async ({ pick, market, ask, count }) => {
+      try {
+        await persistCandidate(market, null, {
+          action: 'live',
+          reason: pick.reason,
+          entry_yes_ask: ask,
+          confidence: Math.round(pick.implied * 100),
+        });
+        console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) pot=${pick.potential} opened=${openedAt}`);
+        await buyYes(market.ticker, count, ask);
+        return true;
+      } catch (err) {
+        console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
+        return false;
+      }
+    })
+  );
+  const placed = results.filter(Boolean).length;
+  console.log(`New orders this run: ${placed} (batch=${batch.length})`);
 
   await manageOpenTrades();
 }
