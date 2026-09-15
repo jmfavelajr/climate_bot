@@ -57,9 +57,10 @@ async function main() {
   const tomorrow = kalshiDay(1);
   const ct = chicagoHourMinute();
   const openedAt = new Date().toISOString();
-  const canEnter = inKindWindow();
+  const enterToday = inKindWindow(null, null, 'today');
+  const enterTomorrow = inKindWindow(null, null, 'tomorrow');
   console.log(
-    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} window=0930-1030CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
+    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} todayWin=1200-1915 enterToday=${enterToday} tmrWin=0930-1030 enterTmr=${enterTomorrow} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
   );
 
   await manageOpenTrades();
@@ -108,13 +109,6 @@ async function main() {
     console.log(`RANK tomorrow ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask}`);
   }
 
-  if (!canEnter) {
-    console.log(`SKIP all new buys outside 09:30-10:30 CT (now=${String(ct.hhmm).padStart(4, '0')})`);
-    console.log('New orders this run: 0');
-    await manageOpenTrades();
-    return;
-  }
-
   const batch = [];
   for (const pick of selected) {
     const market = pick.market;
@@ -122,9 +116,15 @@ async function main() {
     const event = market.event_ticker || eventFromMarketTicker(market.ticker);
     const eventHeld = held.eventCounts.get(event) || 0;
     const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
+    const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=true implied=${pick.implied} ask=${ask} pot=${pick.potential}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} pot=${pick.potential}`
     );
+    if (!canEnter) {
+      const win = pick.horizon === 'today' ? 'after 12:00 CT' : '09:30-10:30 CT';
+      console.log(`SKIP outside ${pick.horizon} window ${win} now=${String(ct.hhmm).padStart(4, '0')}`);
+      continue;
+    }
     if (!okStrike) {
       console.log(`SKIP unsupported strike ${market.ticker}`);
       continue;
