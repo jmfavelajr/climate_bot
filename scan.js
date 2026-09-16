@@ -57,10 +57,9 @@ async function main() {
   const tomorrow = kalshiDay(1);
   const ct = chicagoHourMinute();
   const openedAt = new Date().toISOString();
-  const enterToday = inKindWindow(null, null, 'today');
-  const enterTomorrow = inKindWindow(null, null, 'tomorrow');
+  const canEnter = inKindWindow();
   console.log(
-    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} todayWin=1200-1915 enterToday=${enterToday} tmrWin=0930-1030 enterTmr=${enterTomorrow} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
+    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
   );
 
   await manageOpenTrades();
@@ -116,13 +115,11 @@ async function main() {
     const event = market.event_ticker || eventFromMarketTicker(market.ticker);
     const eventHeld = held.eventCounts.get(event) || 0;
     const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
-    const canEnter = inKindWindow(pick.kind, pick.tz, pick.horizon);
     console.log(
       `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} pot=${pick.potential}`
     );
     if (!canEnter) {
-      const win = pick.horizon === 'today' ? 'after 12:00 CT' : '09:30-10:30 CT';
-      console.log(`SKIP outside ${pick.horizon} window ${win} now=${String(ct.hhmm).padStart(4, '0')}`);
+      console.log(`SKIP outside 12:00-13:00 CT now=${String(ct.hhmm).padStart(4, '0')}`);
       continue;
     }
     if (!okStrike) {
