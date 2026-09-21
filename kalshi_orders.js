@@ -38,6 +38,26 @@ function dollars4(raw) {
   return Math.max(0.01, Math.min(0.99, d)).toFixed(4);
 }
 
+export function filledCount(result) {
+  const d = result?.data || result || {};
+  const order = d.order || d;
+  const vals = [
+    order.fill_count,
+    order.filled_count,
+    order.filled_count_fp,
+    order.count_fp,
+    d.fill_count,
+    d.filled_count,
+  ];
+  for (const v of vals) {
+    const n = Number(v);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  const status = String(order.status || d.status || '').toLowerCase();
+  if (status.includes('executed') || status.includes('filled')) return 1;
+  return 0;
+}
+
 export async function createOrderV2({
   ticker,
   side,
@@ -72,8 +92,9 @@ export async function createOrderV2({
     err.data = data;
     throw err;
   }
-  console.log(`Kalshi v2 ${side} ${ticker} count=${body.count} price=${body.price} status=${res.status}`, data);
-  return { status: res.status, data };
+  const fills = filledCount({ data });
+  console.log(`Kalshi v2 ${side} ${ticker} count=${body.count} price=${body.price} tif=${timeInForce} fills=${fills} status=${res.status}`, data);
+  return { status: res.status, data, fills };
 }
 
 export async function buyYes(ticker, count, price) {
@@ -82,7 +103,7 @@ export async function buyYes(ticker, count, price) {
     side: 'bid',
     count,
     price,
-    timeInForce: 'fill_or_kill',
+    timeInForce: 'immediate_or_cancel',
   });
 }
 
