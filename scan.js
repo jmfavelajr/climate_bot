@@ -11,9 +11,23 @@ const MAX_NEW_PER_RUN = MAX_TODAY + MAX_TOMORROW;
 const MAX_PER_EVENT = 1;
 const MIN_ASK = 0.15;
 const MAX_ASK_FAVORITE = Number(process.env.MAX_ASK_FAVORITE || 0.55);
+const PAY_THROUGH = Number(process.env.PAY_THROUGH || 0.02);
+const MAX_CONTRACTS = Number(process.env.MAX_CONTRACTS || 3);
 
 function askOf(market) {
   return dollars(market.yes_ask_dollars ?? market.yes_ask);
+}
+
+function askSize(market) {
+  const n = Number(
+    market?.yes_ask_size_fp ?? market?.yes_ask_size ?? market?.volume_fp ?? market?.volume ?? 0
+  );
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 0;
+}
+
+function limitPrice(ask) {
+  if (!Number.isFinite(ask) || ask <= 0) return null;
+  return Number(Math.min(0.99, ask + PAY_THROUGH).toFixed(4));
 }
 
 function profitMultiple(ask) {
@@ -47,9 +61,11 @@ function heldByEvent(positions) {
   return { tickers, eventCounts };
 }
 
-function contractCount(ask) {
+function contractCount(ask, book) {
   if (!Number.isFinite(ask) || ask <= 0) return 1;
-  return Math.max(1, Math.min(20, Math.round(FIXED_DOLLARS / ask)));
+  const want = Math.max(1, Math.round(FIXED_DOLLARS / ask));
+  const depth = book > 0 ? book : MAX_CONTRACTS;
+  return Math.max(1, Math.min(MAX_CONTRACTS, depth, want));
 }
 
 async function main() {
@@ -59,7 +75,7 @@ async function main() {
   const openedAt = new Date().toISOString();
   const canEnter = inKindWindow();
   console.log(
-    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW}`
+    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW} ioc +${PAY_THROUGH}`
   );
 
   await manageOpenTrades();
@@ -89,6 +105,7 @@ async function main() {
         kind: row.kind,
         tz: row.tz,
         ask,
+        book: askSize(pick.market),
         implied: impliedYes(pick.market),
         isT: isThresholdTicker(pick.market?.ticker) ? 1 : 0,
         okProfit: clearsProfit(ask) ? 1 : 0,
@@ -102,10 +119,10 @@ async function main() {
   const selected = [...todayRanked.slice(0, MAX_TODAY), ...tomorrowRanked.slice(0, MAX_TOMORROW)];
 
   for (const p of todayRanked) {
-    console.log(`RANK today ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask}`);
+    console.log(`RANK today ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask} book=${p.book}`);
   }
   for (const p of tomorrowRanked) {
-    console.log(`RANK tomorrow ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask}`);
+    console.log(`RANK tomorrow ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask} book=${p.book}`);
   }
 
   const batch = [];
@@ -115,8 +132,9 @@ async function main() {
     const event = market.event_ticker || eventFromMarketTicker(market.ticker);
     const eventHeld = held.eventCounts.get(event) || 0;
     const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
+    const px = limitPrice(ask);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} pot=${pick.potential}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} px=${px} book=${pick.book} pot=${pick.potential}`
     );
     if (!canEnter) {
       console.log(`SKIP outside 12:00-13:00 CT now=${String(ct.hhmm).padStart(4, '0')}`);
@@ -142,8 +160,8 @@ async function main() {
       console.log(`SKIP cap ${MAX_NEW_PER_RUN}`);
       continue;
     }
-    const count = contractCount(ask);
-    const cost = count * ask;
+    const count = contractCount(ask, pick.book);
+    const cost = count * (px || ask);
     if (Number.isFinite(balance) && cost > balance * 0.35) {
       console.log(`SKIP size ${cost} too large vs balance ${balance}`);
       continue;
@@ -151,20 +169,26 @@ async function main() {
     held.tickers.add(market.ticker);
     held.eventCounts.set(event, eventHeld + 1);
     if (Number.isFinite(balance)) balance -= cost;
-    batch.push({ pick, market, ask, count, cost });
+    batch.push({ pick, market, ask, px, count, cost });
   }
 
   const results = await Promise.all(
-    batch.map(async ({ pick, market, ask, count }) => {
+    batch.map(async ({ pick, market, ask, px, count }) => {
       try {
+        console.log(`BUY IOC YES ${market.ticker} count=${count} limit=${px} ask=${ask} (${pick.reason})`);
+        const result = await buyYes(market.ticker, count, px);
+        const fills = Number(result?.fills || 0);
+        if (fills <= 0) {
+          console.log(`NO FILL ${market.ticker} — not persisted`);
+          return false;
+        }
         await persistCandidate(market, null, {
           action: 'live',
           reason: pick.reason,
-          entry_yes_ask: ask,
+          entry_yes_ask: px || ask,
           confidence: Math.round(pick.implied * 100),
         });
-        console.log(`BUY YES ${market.ticker} count=${count} @ ${ask} (${pick.reason}) pot=${pick.potential} opened=${openedAt}`);
-        await buyYes(market.ticker, count, ask);
+        console.log(`FILLED ${market.ticker} fills=${fills} @ ${px} opened=${openedAt}`);
         return true;
       } catch (err) {
         console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
