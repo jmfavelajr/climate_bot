@@ -118,6 +118,8 @@ export function trailFloor(entry) {
   return Number((entry * 1.5).toFixed(4));
 }
 
+const SETTLE_TAKE = Number(process.env.SETTLE_TAKE_FRAC || 0.8);
+
 export function exitDecision({ reason, entry, bid, peak }) {
   const { role, horizon } = parseRole(reason);
   const sl = stopLoss(entry);
@@ -126,5 +128,8 @@ export function exitDecision({ reason, entry, bid, peak }) {
   const floor = trailFloor(entry);
   const armed = trailArmed(entry, peak);
   const pnl = pnlPct(entry, bid);
+  if (Number.isFinite(bid) && bid >= SETTLE_TAKE) {
+    return { sell: true, why: 'take_80pct_settle', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
+  }
   return { sell: false, why: 'hold_settlement', role, horizon, sl, tp, trail, floor, peak, pnl, armed };
 }
