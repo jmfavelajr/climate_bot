@@ -12,7 +12,8 @@ const MAX_PER_EVENT = 1;
 const MIN_ASK = 0.15;
 const MAX_ASK_FAVORITE = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 const PAY_THROUGH = Number(process.env.PAY_THROUGH || 0.02);
-const MAX_CONTRACTS = Number(process.env.MAX_CONTRACTS || 3);
+const MAX_CONTRACTS = Number(process.env.MAX_CONTRACTS || 25);
+const BUY_RETRIES = Number(process.env.BUY_RETRIES || 3);
 
 function askOf(market) {
   return dollars(market.yes_ask_dollars ?? market.yes_ask);
@@ -61,11 +62,26 @@ function heldByEvent(positions) {
   return { tickers, eventCounts };
 }
 
-function contractCount(ask, book) {
-  if (!Number.isFinite(ask) || ask <= 0) return 1;
-  const want = Math.max(1, Math.round(FIXED_DOLLARS / ask));
-  const depth = book > 0 ? book : MAX_CONTRACTS;
-  return Math.max(1, Math.min(MAX_CONTRACTS, depth, want));
+function contractCount(px) {
+  if (!Number.isFinite(px) || px <= 0) return 1;
+  return Math.max(1, Math.min(MAX_CONTRACTS, Math.ceil(FIXED_DOLLARS / px)));
+}
+
+async function fillToSeed(ticker, px, reason) {
+  let filled = 0;
+  for (let attempt = 1; attempt <= BUY_RETRIES; attempt += 1) {
+    const notional = filled * px;
+    if (notional + 0.005 >= FIXED_DOLLARS) break;
+    const remain = contractCount(px) - filled;
+    if (remain <= 0) break;
+    console.log(`BUY IOC YES ${ticker} try=${attempt} remain=${remain} filled=${filled} limit=${px} (${reason})`);
+    const result = await buyYes(ticker, remain, px);
+    const got = Number(result?.fills || 0);
+    filled += got;
+    console.log(`FILL ${ticker} try=${attempt} got=${got} total=${filled} notional=${(filled * px).toFixed(2)}`);
+    if (got <= 0) break;
+  }
+  return filled;
 }
 
 async function main() {
@@ -133,8 +149,10 @@ async function main() {
     const eventHeld = held.eventCounts.get(event) || 0;
     const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
     const px = limitPrice(ask);
+    const count = contractCount(px || ask);
+    const cost = count * (px || ask);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} px=${px} book=${pick.book} pot=${pick.potential}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} px=${px} count=${count} cost=${cost.toFixed(2)} book=${pick.book} pot=${pick.potential}`
     );
     if (!canEnter) {
       console.log(`SKIP outside 12:00-13:00 CT now=${String(ct.hhmm).padStart(4, '0')}`);
@@ -160,8 +178,6 @@ async function main() {
       console.log(`SKIP cap ${MAX_NEW_PER_RUN}`);
       continue;
     }
-    const count = contractCount(ask, pick.book);
-    const cost = count * (px || ask);
     if (Number.isFinite(balance) && cost > balance * 0.35) {
       console.log(`SKIP size ${cost} too large vs balance ${balance}`);
       continue;
@@ -173,14 +189,16 @@ async function main() {
   }
 
   const results = await Promise.all(
-    batch.map(async ({ pick, market, ask, px, count }) => {
+    batch.map(async ({ pick, market, ask, px }) => {
       try {
-        console.log(`BUY IOC YES ${market.ticker} count=${count} limit=${px} ask=${ask} (${pick.reason})`);
-        const result = await buyYes(market.ticker, count, px);
-        const fills = Number(result?.fills || 0);
+        const fills = await fillToSeed(market.ticker, px || ask, pick.reason);
+        const notional = fills * (px || ask);
         if (fills <= 0) {
           console.log(`NO FILL ${market.ticker} — not persisted`);
           return false;
+        }
+        if (notional + 0.005 < FIXED_DOLLARS) {
+          console.log(`UNDERSEED ${market.ticker} fills=${fills} notional=${notional.toFixed(2)} seed=${FIXED_DOLLARS}`);
         }
         await persistCandidate(market, null, {
           action: 'live',
@@ -188,7 +206,7 @@ async function main() {
           entry_yes_ask: px || ask,
           confidence: Math.round(pick.implied * 100),
         });
-        console.log(`FILLED ${market.ticker} fills=${fills} @ ${px} opened=${openedAt}`);
+        console.log(`FILLED ${market.ticker} fills=${fills} notional=${notional.toFixed(2)} @ ${px} opened=${openedAt}`);
         return true;
       } catch (err) {
         console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
