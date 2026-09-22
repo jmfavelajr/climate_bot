@@ -1,3 +1,4 @@
+import { SEED_VALUE as FIXED_DOLLARS } from './config.js';
 import { listOpenCandidates, updateCandidate, persistCandidate } from './persist.js';
 import { sellYes as submitSellYes, buyYes, getPositions, getMarket, getSeriesMarkets } from './kalshi_orders.js';
 import {
@@ -13,7 +14,6 @@ import {
   isThresholdTicker,
 } from './entry_policy.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
 const MIN_ASK = 0.15;
 const MAX_ASK = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 
