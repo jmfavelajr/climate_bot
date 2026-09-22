@@ -51,7 +51,10 @@ jobs:
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           FLATTEN_EOD: ${{ steps.window.outputs.flatten }}
+          EXIT_PCT: ${{ vars.exit_pct }}
+          SEED_VALUE: ${{ vars.seed_value }}
         run: |
+          echo "vars seed_value=$SEED_VALUE exit_pct=$EXIT_PCT"
           mkdir -p reports
           node scan.js > reports/latest.log 2> reports/latest.err
           if [ -s reports/latest.err ]; then
