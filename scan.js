@@ -1,10 +1,10 @@
+import { SEED_VALUE as FIXED_DOLLARS } from './config.js';
 import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, inKindWindow } from './series.js';
 import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker, isThresholdTicker } from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
 
-const FIXED_DOLLARS = Number(process.env.FIXED_BET_DOLLARS || 2);
 const MAX_TODAY = Number(process.env.MAX_TODAY_PICKS || 4);
 const MAX_TOMORROW = Number(process.env.MAX_TOMORROW_PICKS || 4);
 const MAX_NEW_PER_RUN = MAX_TODAY + MAX_TOMORROW;
@@ -75,7 +75,7 @@ async function main() {
   const openedAt = new Date().toISOString();
   const canEnter = inKindWindow();
   console.log(
-    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} clip=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW} ioc +${PAY_THROUGH}`
+    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} seed=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW} ioc +${PAY_THROUGH}`
   );
 
   await manageOpenTrades();
