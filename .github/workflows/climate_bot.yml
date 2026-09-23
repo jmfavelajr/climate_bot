@@ -2,9 +2,6 @@ name: Generate Kalshi_Climate_Markets Report
 
 on:
   workflow_dispatch:
-  # Backup only. Cloudflare worker is the primary clock (reads vars.check_interval).
-  schedule:
-    - cron: "*/5 * * * *"
 
 concurrency:
   group: climate-bot
