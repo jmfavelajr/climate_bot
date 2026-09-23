@@ -2,9 +2,9 @@ name = "clima-markets-report-fetch"
 main = "worker.js"
 compatibility_date = "2026-07-30"
 
-# Primary clock. Set this in the Cloudflare dashboard if you change cadence.
+# Primary clock. Deploys overwrite the Cloudflare dashboard trigger.
 [triggers]
-crons = ["*/20 * * * *"]
+crons = ["*/5 * * * *"]
 
 [observability.logs]
 enabled = true
