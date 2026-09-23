@@ -58,10 +58,6 @@ jobs:
           echo "vars seed_value=$SEED_VALUE exit_pct=$EXIT_PCT check_interval=$CHECK_INTERVAL"
           mkdir -p reports
           node scan.js > reports/latest.log 2> reports/latest.err
-          if [ -s reports.latest.err ]; then
-            echo "----- stderr -----" >> reports/latest.log
-            cat reports/latest.err >> reports/latest.log
-          fi
           if [ -s reports/latest.err ]; then
             echo "----- stderr -----" >> reports/latest.log
             cat reports/latest.err >> reports/latest.log
