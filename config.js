@@ -8,3 +8,4 @@ function num(...keys) {
 
 export const SEED_VALUE = num('SEED_VALUE', 'seed_value', 'FIXED_BET_DOLLARS') ?? 2;
 export const EXIT_PCT = num('EXIT_PCT', 'exit_pct', 'SETTLE_TAKE_FRAC') ?? 0.8;
+export const CHECK_INTERVAL = Math.max(60, num('CHECK_INTERVAL', 'check_interval') ?? 300);
