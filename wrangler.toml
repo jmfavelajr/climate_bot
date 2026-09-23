@@ -2,9 +2,9 @@ name = "clima-markets-report-fetch"
 main = "worker.js"
 compatibility_date = "2026-07-30"
 
-# Wake every minute. worker.js only dispatches when check_interval seconds have elapsed.
+# Primary clock. Set this in the Cloudflare dashboard if you change cadence.
 [triggers]
-crons = ["* * * * *"]
+crons = ["*/20 * * * *"]
 
 [observability.logs]
 enabled = true
