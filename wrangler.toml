@@ -2,9 +2,9 @@ name = "clima-markets-report-fetch"
 main = "worker.js"
 compatibility_date = "2026-07-30"
 
-# Primary clock: every 20 minutes.
+# Wake every minute. worker.js only dispatches when check_interval seconds have elapsed.
 [triggers]
-crons = ["*/20 * * * *"]
+crons = ["* * * * *"]
 
 [observability.logs]
 enabled = true
