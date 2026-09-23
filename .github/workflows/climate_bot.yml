@@ -2,9 +2,9 @@ name: Generate Kalshi_Climate_Markets Report
 
 on:
   workflow_dispatch:
-  # Backup only. Cloudflare 20-minute cron is the primary clock.
+  # Backup only. Cloudflare worker is the primary clock (reads vars.check_interval).
   schedule:
-    - cron: "*/20 * * * *"
+    - cron: "*/5 * * * *"
 
 concurrency:
   group: climate-bot
@@ -53,10 +53,15 @@ jobs:
           FLATTEN_EOD: ${{ steps.window.outputs.flatten }}
           EXIT_PCT: ${{ vars.exit_pct }}
           SEED_VALUE: ${{ vars.seed_value }}
+          CHECK_INTERVAL: ${{ vars.check_interval }}
         run: |
-          echo "vars seed_value=$SEED_VALUE exit_pct=$EXIT_PCT"
+          echo "vars seed_value=$SEED_VALUE exit_pct=$EXIT_PCT check_interval=$CHECK_INTERVAL"
           mkdir -p reports
           node scan.js > reports/latest.log 2> reports/latest.err
+          if [ -s reports.latest.err ]; then
+            echo "----- stderr -----" >> reports/latest.log
+            cat reports/latest.err >> reports/latest.log
+          fi
           if [ -s reports/latest.err ]; then
             echo "----- stderr -----" >> reports/latest.log
             cat reports/latest.err >> reports/latest.log
