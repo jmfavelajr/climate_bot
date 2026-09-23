@@ -53,20 +53,21 @@ export function pickByImplied(markets, count) {
     .slice(0, count);
 }
 
+function mapPicks(markets, eventTicker, horizon) {
+  return pickByImplied((markets || []).filter((m) => m.event_ticker === eventTicker), 2).map((market, i) => {
+    const role = i === 0 ? 'favorite' : 'runner';
+    const t = isThresholdTicker(market.ticker) ? '_T' : '';
+    return {
+      market,
+      role,
+      horizon,
+      reason: `${horizon}_${role}${t}`,
+    };
+  });
+}
+
 export function eventPicks(markets, todayEvent, tomorrowEvent) {
-  const today = pickByImplied((markets || []).filter((m) => m.event_ticker === todayEvent), 1).map((market) => ({
-    market,
-    role: 'favorite',
-    horizon: 'today',
-    reason: isThresholdTicker(market.ticker) ? 'today_favorite_T' : 'today_favorite',
-  }));
-  const tomorrow = pickByImplied((markets || []).filter((m) => m.event_ticker === tomorrowEvent), 1).map((market) => ({
-    market,
-    role: 'favorite',
-    horizon: 'tomorrow',
-    reason: isThresholdTicker(market.ticker) ? 'tomorrow_favorite_T' : 'tomorrow_favorite',
-  }));
-  return [...today, ...tomorrow];
+  return [...mapPicks(markets, todayEvent, 'today'), ...mapPicks(markets, tomorrowEvent, 'tomorrow')];
 }
 
 export function eventFromMarketTicker(ticker) {
@@ -77,6 +78,10 @@ export function eventFromMarketTicker(ticker) {
 
 export function seriesFromEvent(eventTicker) {
   return String(eventTicker || '').split('-')[0] || '';
+}
+
+export function seriesFromTicker(ticker) {
+  return String(ticker || '').split('-')[0] || '';
 }
 
 export function parseRole(reason = '') {
