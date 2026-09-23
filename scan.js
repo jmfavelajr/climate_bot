@@ -1,16 +1,21 @@
 import { SEED_VALUE as FIXED_DOLLARS } from './config.js';
 import { CLIMATE_SERIES, eventTicker, kalshiDay, chicagoHourMinute, inKindWindow } from './series.js';
-import { eventPicks, impliedYes, dollars, eventFromMarketTicker, isBetweenTicker, isThresholdTicker } from './entry_policy.js';
+import {
+  eventPicks,
+  impliedYes,
+  dollars,
+  eventFromMarketTicker,
+  seriesFromTicker,
+  isBetweenTicker,
+  isThresholdTicker,
+} from './entry_policy.js';
 import { buyYes, getBalance, getPositions, getSeriesMarkets } from './kalshi_orders.js';
 import { persistCandidate } from './persist.js';
 import { manageOpenTrades } from './manage.js';
 
-const MAX_TODAY = Number(process.env.MAX_TODAY_PICKS || 4);
-const MAX_TOMORROW = Number(process.env.MAX_TOMORROW_PICKS || 4);
-const MAX_NEW_PER_RUN = MAX_TODAY + MAX_TOMORROW;
-const MAX_PER_EVENT = 1;
+const MIN_MULT = Number(process.env.MIN_PROFIT_MULT || 2);
+const MAX_ASK = Number((1 / MIN_MULT).toFixed(4));
 const MIN_ASK = 0.15;
-const MAX_ASK_FAVORITE = Number(process.env.MAX_ASK_FAVORITE || 0.55);
 const PAY_THROUGH = Number(process.env.PAY_THROUGH || 0.02);
 const MAX_CONTRACTS = Number(process.env.MAX_CONTRACTS || 25);
 const BUY_RETRIES = Number(process.env.BUY_RETRIES || 3);
@@ -36,30 +41,21 @@ function profitMultiple(ask) {
   return Number((1 / ask).toFixed(4));
 }
 
-function clearsProfit(ask) {
-  return Number.isFinite(ask) && ask >= MIN_ASK && ask <= MAX_ASK_FAVORITE;
+function clears2x(ask) {
+  return Number.isFinite(ask) && ask >= MIN_ASK && ask <= MAX_ASK && profitMultiple(ask) >= MIN_MULT;
 }
 
-function rankPicks(picks) {
-  return [...picks].sort((a, b) => {
-    if (b.isT !== a.isT) return b.isT - a.isT;
-    if (b.okProfit !== a.okProfit) return b.okProfit - a.okProfit;
-    return b.potential - a.potential;
-  });
-}
-
-function heldByEvent(positions) {
+function heldSeries(positions) {
   const list = positions?.market_positions || positions?.marketPositions || [];
   const tickers = new Set();
-  const eventCounts = new Map();
+  const series = new Set();
   for (const p of list) {
     if (Math.abs(Number(p.position_fp ?? p.position ?? 0)) <= 0) continue;
     const ticker = p.ticker || p.market_ticker;
     tickers.add(ticker);
-    const event = eventFromMarketTicker(ticker);
-    eventCounts.set(event, (eventCounts.get(event) || 0) + 1);
+    series.add(seriesFromTicker(ticker));
   }
-  return { tickers, eventCounts };
+  return { tickers, series };
 }
 
 function contractCount(px) {
@@ -89,9 +85,8 @@ async function main() {
   const tomorrow = kalshiDay(1);
   const ct = chicagoHourMinute();
   const openedAt = new Date().toISOString();
-  const canEnter = inKindWindow();
   console.log(
-    `HIGH favorite-only scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} buyWin=1200-1300CT enter=${canEnter} seed=${FIXED_DOLLARS} cap=${MAX_TODAY}+${MAX_TOMORROW} ioc +${PAY_THROUGH}`
+    `HIGH scan ${today} / ${tomorrow} CT=${String(ct.hhmm).padStart(4, '0')} localWin=0900-1400 seed=${FIXED_DOLLARS} minMult=${MIN_MULT} maxAsk=${MAX_ASK}`
   );
 
   await manageOpenTrades();
@@ -105,87 +100,75 @@ async function main() {
   }
 
   const positions = await getPositions();
-  const held = heldByEvent(positions);
+  const held = heldSeries(positions);
 
-  const scored = [];
+  const bySeries = new Map();
   for (const row of CLIMATE_SERIES) {
     const markets = await getSeriesMarkets(row.series);
     const todayEvent = eventTicker(row.series, 0);
     const tomorrowEvent = eventTicker(row.series, 1);
     const chosen = eventPicks(markets, todayEvent, tomorrowEvent);
+    const scored = [];
     for (const pick of chosen) {
       const ask = askOf(pick.market);
+      const px = limitPrice(ask);
+      const pot = profitMultiple(ask);
       scored.push({
         ...pick,
         city: row.city,
-        kind: row.kind,
+        series: row.series,
         tz: row.tz,
         ask,
+        px,
         book: askSize(pick.market),
         implied: impliedYes(pick.market),
         isT: isThresholdTicker(pick.market?.ticker) ? 1 : 0,
-        okProfit: clearsProfit(ask) ? 1 : 0,
-        potential: clearsProfit(ask) ? profitMultiple(ask) : 0,
+        ok2x: clears2x(ask) ? 1 : 0,
+        potential: pot,
       });
     }
-  }
-
-  const todayRanked = rankPicks(scored.filter((p) => p.horizon === 'today'));
-  const tomorrowRanked = rankPicks(scored.filter((p) => p.horizon === 'tomorrow'));
-  const selected = [...todayRanked.slice(0, MAX_TODAY), ...tomorrowRanked.slice(0, MAX_TOMORROW)];
-
-  for (const p of todayRanked) {
-    console.log(`RANK today ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask} book=${p.book}`);
-  }
-  for (const p of tomorrowRanked) {
-    console.log(`RANK tomorrow ${p.city} ${p.market.ticker} T=${p.isT} ok=${p.okProfit} pot=${p.potential} ask=${p.ask} book=${p.book}`);
+    bySeries.set(row.series, { row, scored });
+    for (const p of scored) {
+      console.log(
+        `RANK ${p.horizon} ${p.role} ${p.city} ${p.market.ticker} ask=${p.ask} pot=${p.potential} 2x=${p.ok2x} implied=${p.implied}`
+      );
+    }
   }
 
   const batch = [];
-  for (const pick of selected) {
-    const market = pick.market;
-    const ask = pick.ask;
-    const event = market.event_ticker || eventFromMarketTicker(market.ticker);
-    const eventHeld = held.eventCounts.get(event) || 0;
-    const okStrike = isBetweenTicker(market.ticker) || isThresholdTicker(market.ticker);
-    const px = limitPrice(ask);
-    const count = contractCount(px || ask);
-    const cost = count * (px || ask);
+  for (const { row, scored } of bySeries.values()) {
+    const local = inKindWindow(row.kind, row.tz);
+    if (!local) {
+      console.log(`SKIP ${row.city} outside 09:00-14:00 ${row.tz}`);
+      continue;
+    }
+    if (held.series.has(row.series)) {
+      console.log(`SKIP ${row.city} series ${row.series} already has a ticket`);
+      continue;
+    }
+    const eligible = scored.filter((p) => {
+      const okStrike = isBetweenTicker(p.market.ticker) || isThresholdTicker(p.market.ticker);
+      return okStrike && p.ok2x && !held.tickers.has(p.market.ticker);
+    });
+    eligible.sort((a, b) => b.potential - a.potential);
+    const pick = eligible[0];
+    if (!pick) {
+      console.log(`SKIP ${row.city} no 2x favorite/runner`);
+      continue;
+    }
+    const count = contractCount(pick.px || pick.ask);
+    const cost = count * (pick.px || pick.ask);
     console.log(
-      `MARKET PICK ${pick.horizon} ${pick.role} ${market.ticker} ${pick.city} CT=${String(ct.hhmm).padStart(4, '0')} enter=${canEnter} implied=${pick.implied} ask=${ask} px=${px} count=${count} cost=${cost.toFixed(2)} book=${pick.book} pot=${pick.potential}`
+      `MARKET PICK ${pick.horizon} ${pick.role} ${pick.market.ticker} ${pick.city} pot=${pick.potential} ask=${pick.ask} px=${pick.px} count=${count} cost=${cost.toFixed(2)}`
     );
-    if (!canEnter) {
-      console.log(`SKIP outside 12:00-13:00 CT now=${String(ct.hhmm).padStart(4, '0')}`);
-      continue;
-    }
-    if (!okStrike) {
-      console.log(`SKIP unsupported strike ${market.ticker}`);
-      continue;
-    }
-    if (!pick.okProfit) {
-      console.log(`SKIP profit band ${market.ticker} ask=${ask}`);
-      continue;
-    }
-    if (held.tickers.has(market.ticker)) {
-      console.log(`SKIP already held ticker ${market.ticker}`);
-      continue;
-    }
-    if (eventHeld >= MAX_PER_EVENT) {
-      console.log(`SKIP event ${event} already has a ticket`);
-      continue;
-    }
-    if (batch.length >= MAX_NEW_PER_RUN) {
-      console.log(`SKIP cap ${MAX_NEW_PER_RUN}`);
-      continue;
-    }
     if (Number.isFinite(balance) && cost > balance * 0.35) {
       console.log(`SKIP size ${cost} too large vs balance ${balance}`);
       continue;
     }
-    held.tickers.add(market.ticker);
-    held.eventCounts.set(event, eventHeld + 1);
+    held.tickers.add(pick.market.ticker);
+    held.series.add(row.series);
     if (Number.isFinite(balance)) balance -= cost;
-    batch.push({ pick, market, ask, px, count, cost });
+    batch.push({ pick, market: pick.market, ask: pick.ask, px: pick.px, count, cost });
   }
 
   const results = await Promise.all(
