@@ -4,7 +4,6 @@ import {
   eventPicks,
   impliedYes,
   dollars,
-  eventFromMarketTicker,
   seriesFromTicker,
   isBetweenTicker,
   isThresholdTicker,
@@ -45,17 +44,26 @@ function clears2x(ask) {
   return Number.isFinite(ask) && ask >= MIN_ASK && ask <= MAX_ASK && profitMultiple(ask) >= MIN_MULT;
 }
 
+function liveList(positions) {
+  return positions?.market_positions || positions?.marketPositions || [];
+}
+
 function heldSeries(positions) {
-  const list = positions?.market_positions || positions?.marketPositions || [];
   const tickers = new Set();
   const series = new Set();
-  for (const p of list) {
+  for (const p of liveList(positions)) {
     if (Math.abs(Number(p.position_fp ?? p.position ?? 0)) <= 0) continue;
     const ticker = p.ticker || p.market_ticker;
     tickers.add(ticker);
     series.add(seriesFromTicker(ticker));
   }
   return { tickers, series };
+}
+
+function positionSize(positions, ticker) {
+  const row = liveList(positions).find((p) => (p.ticker || p.market_ticker) === ticker);
+  if (!row) return 0;
+  return Math.abs(Number(row.position_fp ?? row.position ?? 0));
 }
 
 function contractCount(px) {
@@ -91,7 +99,7 @@ async function main() {
 
   await manageOpenTrades();
 
-  let balance = null;
+  let balance = 0;
   try {
     balance = await getBalance();
     console.log(`Connected to Kalshi. Balance: ${balance}`);
@@ -99,8 +107,8 @@ async function main() {
     console.error('Balance read failed', err.data || err.message);
   }
 
-  const positions = await getPositions();
-  const held = heldSeries(positions);
+  let positions = await getPositions();
+  let held = heldSeries(positions);
 
   const bySeries = new Map();
   for (const row of CLIMATE_SERIES) {
@@ -135,7 +143,7 @@ async function main() {
     }
   }
 
-  const batch = [];
+  const queue = [];
   for (const { row, scored } of bySeries.values()) {
     const local = inKindWindow(row.kind, row.tz);
     if (!local) {
@@ -161,44 +169,62 @@ async function main() {
     console.log(
       `MARKET PICK ${pick.horizon} ${pick.role} ${pick.market.ticker} ${pick.city} pot=${pick.potential} ask=${pick.ask} px=${pick.px} count=${count} cost=${cost.toFixed(2)}`
     );
-    if (Number.isFinite(balance) && cost > balance * 0.35) {
-      console.log(`SKIP size ${cost} too large vs balance ${balance}`);
-      continue;
-    }
-    held.tickers.add(pick.market.ticker);
-    held.series.add(row.series);
-    if (Number.isFinite(balance)) balance -= cost;
-    batch.push({ pick, market: pick.market, ask: pick.ask, px: pick.px, count, cost });
+    queue.push({ pick, market: pick.market, ask: pick.ask, px: pick.px, count, cost, series: row.series, city: row.city });
   }
 
-  const results = await Promise.all(
-    batch.map(async ({ pick, market, ask, px }) => {
-      try {
-        const fills = await fillToSeed(market.ticker, px || ask, pick.reason);
-        const notional = fills * (px || ask);
-        if (fills <= 0) {
-          console.log(`NO FILL ${market.ticker} — not persisted`);
-          return false;
-        }
-        if (notional + 0.005 < FIXED_DOLLARS) {
-          console.log(`UNDERSEED ${market.ticker} fills=${fills} notional=${notional.toFixed(2)} seed=${FIXED_DOLLARS}`);
-        }
-        await persistCandidate(market, null, {
-          action: 'live',
-          reason: pick.reason,
-          entry_yes_ask: px || ask,
-          confidence: Math.round(pick.implied * 100),
-        });
-        console.log(`FILLED ${market.ticker} fills=${fills} notional=${notional.toFixed(2)} @ ${px} opened=${openedAt}`);
-        return true;
-      } catch (err) {
-        console.error(`Buy failed ${market.ticker}:`, err.data || err.message);
-        return false;
+  let placed = 0;
+  for (const item of queue) {
+    const { pick, market, ask, px, cost, series, city } = item;
+    const ticker = market.ticker;
+    if (held.series.has(series) || held.tickers.has(ticker)) {
+      console.log(`SKIP ${city} already held after prior fill`);
+      continue;
+    }
+    if (!Number.isFinite(balance) || balance + 0.005 < Math.max(FIXED_DOLLARS, cost)) {
+      console.log(`STOP cash ${balance} < need ${Math.max(FIXED_DOLLARS, cost).toFixed(2)} — no more buys`);
+      break;
+    }
+    try {
+      const fills = await fillToSeed(ticker, px || ask, pick.reason);
+      const notional = fills * (px || ask);
+      if (fills <= 0) {
+        console.log(`NO FILL ${ticker} — not persisted, continue`);
+        continue;
       }
-    })
-  );
-  const placed = results.filter(Boolean).length;
-  console.log(`New orders this run: ${placed} (batch=${batch.length})`);
+      positions = await getPositions();
+      held = heldSeries(positions);
+      const liveSize = positionSize(positions, ticker);
+      console.log(`PORTFOLIO ${ticker} liveSize=${liveSize} seriesHeld=${held.series.has(series)}`);
+      if (liveSize <= 0) {
+        console.log(`UNCONFIRMED ${ticker} fill reported but not in portfolio`);
+        continue;
+      }
+      balance = await getBalance();
+      console.log(`CASH after ${ticker}: ${balance}`);
+      if (notional + 0.005 < FIXED_DOLLARS) {
+        console.log(`UNDERSEED ${ticker} fills=${fills} notional=${notional.toFixed(2)} seed=${FIXED_DOLLARS}`);
+      }
+      await persistCandidate(market, null, {
+        action: 'live',
+        reason: pick.reason,
+        entry_yes_ask: px || ask,
+        confidence: Math.round(pick.implied * 100),
+      });
+      console.log(`FILLED ${ticker} fills=${fills} notional=${notional.toFixed(2)} @ ${px} opened=${openedAt}`);
+      placed += 1;
+    } catch (err) {
+      console.error(`Buy failed ${ticker}:`, err.data || err.message);
+      try {
+        balance = await getBalance();
+        positions = await getPositions();
+        held = heldSeries(positions);
+        console.log(`CASH after fail ${ticker}: ${balance}`);
+      } catch (readErr) {
+        console.error('post-fail refresh failed', readErr.message);
+      }
+    }
+  }
+  console.log(`New orders this run: ${placed} (queue=${queue.length})`);
 
   await manageOpenTrades();
 }
