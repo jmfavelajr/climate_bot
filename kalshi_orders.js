@@ -164,7 +164,7 @@ export async function getPositions() {
 export async function getSeriesMarkets(seriesTicker) {
   const path = `/trade-api/v2/markets?series_ticker=${encodeURIComponent(seriesTicker)}&status=open&limit=200`;
   try {
-    const data = await kalshiGet(path, { auth = false } = {});
+    const data = await kalshiGet(path, { auth: false });
     return data?.markets || [];
   } catch (err) {
     console.error(`markets ${seriesTicker} failed`, err.data || err.message);
