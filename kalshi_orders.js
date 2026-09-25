@@ -38,6 +38,14 @@ function dollars4(raw) {
   return Math.max(0.01, Math.min(0.99, d)).toFixed(4);
 }
 
+export function cashDollars(data) {
+  const labeled = Number(data?.balance_dollars);
+  if (Number.isFinite(labeled) && labeled >= 0) return labeled;
+  const cents = Number(data?.balance);
+  if (Number.isFinite(cents) && cents >= 0) return cents / 100;
+  return 0;
+}
+
 export function filledCount(result) {
   const d = result?.data || result || {};
   const order = d.order || d;
@@ -139,7 +147,9 @@ export async function kalshiGet(path, { auth = true } = {}) {
 
 export async function getBalance() {
   const data = await kalshiGet('/trade-api/v2/portfolio/balance');
-  return Number(data?.balance ?? data?.balance_dollars ?? 0);
+  const dollars = cashDollars(data);
+  console.log(`Balance raw cents=${data?.balance} dollars=${data?.balance_dollars} cash=${dollars}`);
+  return dollars;
 }
 
 export async function getPositions() {
@@ -154,7 +164,7 @@ export async function getPositions() {
 export async function getSeriesMarkets(seriesTicker) {
   const path = `/trade-api/v2/markets?series_ticker=${encodeURIComponent(seriesTicker)}&status=open&limit=200`;
   try {
-    const data = await kalshiGet(path, { auth: false });
+    const data = await kalshiGet(path, { auth = false } = {});
     return data?.markets || [];
   } catch (err) {
     console.error(`markets ${seriesTicker} failed`, err.data || err.message);
